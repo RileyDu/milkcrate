@@ -6,7 +6,6 @@ router.get("/", (req, res) => {
     const query = `
       SELECT * FROM "albums"
       WHERE user_id = $1
-        ORDER BY "id" DESC
         ORDER BY RANDOM()
         LIMIT 1;
     `;

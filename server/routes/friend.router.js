@@ -2,12 +2,22 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
-router.get('/', (req, res) => {
-  // GET route code here
-});
+router.get("/", (req, res) => {
+    const query = `
+      SELECT * FROM "friends"
+      WHERE user_id = $1
+        ORDER BY "id" DESC;
+    `;
+    pool
+      .query(query, [req.user.id])
+      .then((result) => {
+        res.send(result.rows);
+      })
+      .catch((err) => {
+        console.error("ERROR: Get a user's friends", err);
+        res.sendStatus(500);
+      });
+  });
 
 /**
  * POST route template
