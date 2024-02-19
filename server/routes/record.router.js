@@ -19,13 +19,41 @@ router.get("/", (req, res) => {
       });
   });
 
-  
+
+
+
 /**
  * POST route template
  */
 router.post('/', (req, res) => {
   // POST route code here
 });
+
+router.put("/:id", (req, res) => {
+    const updatedRecord = req.body;
+    console.log('updated record contenets', req.body);
+    // req.body should contain the data needed for PUT
+    const queryText = `
+      UPDATE "album"
+        SET 
+          "title"=$1,
+          "artist"=$2,
+          "mood"=$3,
+          "details"=$4
+        WHERE
+          "id"=$5;
+    `;
+    const queryValues = [updatedRecord.title, updatedRecord.artists, updatedRecord.mood, updatedRecord.details, updatedRecord.id];
+    pool
+      .query(queryText, queryValues)
+      .then((result) => {
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.error("Error in PUT /api/record/:id", err);
+        res.sendStatus(500);
+      });
+  });
 
 router.delete("/:id", (req, res) => {
     pool
