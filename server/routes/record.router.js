@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
     const query = `
-      SELECT * FROM "movies"
+      SELECT * FROM "albums"
+      WHERE user_id = 1
         ORDER BY "id" DESC;
     `;
     pool
@@ -13,7 +14,7 @@ router.get("/", (req, res) => {
         res.send(result.rows);
       })
       .catch((err) => {
-        console.log("ERROR: Get all movies", err);
+        console.error("ERROR: Get a user's albums", err);
         res.sendStatus(500);
       });
   });
