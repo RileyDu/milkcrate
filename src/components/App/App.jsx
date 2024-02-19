@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
+import './App.css';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
@@ -19,8 +20,9 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import MyMilkcrate from '../../newComponents/userCollection/myMilkcrate';
+import SocialPage from '../../newComponents/Social/socialPage';
 
-import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -57,7 +59,7 @@ function App() {
             exact
             path="/user"
           >
-            <UserPage />
+            <MyMilkcrate/>
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -68,6 +70,13 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/social"
+          >
+            <SocialPage />
+          </ProtectedRoute>
           <Route
             exact
             path="/login"

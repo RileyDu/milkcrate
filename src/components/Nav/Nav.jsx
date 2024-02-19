@@ -32,6 +32,17 @@ function Nav() {
               Info Page
             </Link>
 
+            <Link className="navLink" to="/social">
+              social
+            </Link>
+
+            <Link className="navLink" to="/spins">
+              spin session
+            </Link>
+
+            <Link className="navLink" to="/blindbag">
+              blind bag
+            </Link>
             <LogOutButton className="navLink" />
           </>
         )}
