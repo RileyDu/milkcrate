@@ -23,8 +23,11 @@ import RegisterPage from "../RegisterPage/RegisterPage";
 import MyMilkcrate from "../../newComponents/userCollection/myMilkcrate";
 import SocialPage from "../../newComponents/Social/socialPage";
 import SpinSessions from "../../newComponents/SpinSessions/spinSessions";
-import Blindbag from "../../newComponents/BlindBag/Blindbag";
-
+import Blindbag from "../../newComponents/BlindBag/blindbag";
+import AddFriendForm from "../../newComponents/Social/AddFriendForm";
+import FriendCollection from "../../newComponents/Social/friendCollection";
+import AddSpinForm from "../../newComponents/SpinSessions/addSpinForm";
+import SingleSpin from "../../newComponents/SpinSessions/singleSpin";
 function App() {
   const dispatch = useDispatch();
 
@@ -72,14 +75,27 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
             exact
             path="/social"
           >
             <SocialPage />
           </ProtectedRoute>
+
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/social/add"
+          >
+            <AddFriendForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/social/friend"
+          >
+            <FriendCollection />
+          </ProtectedRoute>
+
+          <ProtectedRoute
             exact
             path="/spins"
           >
@@ -87,7 +103,19 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/spins/add"
+          >
+            <AddSpinForm />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/spins/details"
+          >
+<SingleSpin />
+          </ProtectedRoute>
+
+          <ProtectedRoute
             exact
             path="/blindbag"
           >

@@ -28,9 +28,7 @@ function Nav() {
               Home
             </Link>
 
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
+
 
             <Link className="navLink" to="/social">
               social
@@ -44,6 +42,9 @@ function Nav() {
               blind bag
             </Link>
             <LogOutButton className="navLink" />
+            <Link className="navLink" to="/info">
+              Info Page
+            </Link>
           </>
         )}
 
