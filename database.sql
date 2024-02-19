@@ -5,9 +5,7 @@ CREATE TABLE "user" (
 	CONSTRAINT "Users_pk" PRIMARY KEY ("id")
 );
 
-
-
-CREATE TABLE "Albums" (
+CREATE TABLE "albums" (
 	"id" serial NOT NULL,
 	"user_id" integer NOT NULL,
 	"title" TEXT NOT NULL,
@@ -20,17 +18,13 @@ CREATE TABLE "Albums" (
 	CONSTRAINT "Albums_pk" PRIMARY KEY ("id")
 );
 
-
-
-CREATE TABLE "Moods" (
+CREATE TABLE "moods" (
 	"id" serial NOT NULL,
 	"mood" TEXT NOT NULL UNIQUE,
 	CONSTRAINT "Moods_pk" PRIMARY KEY ("id")
 );
 
-
-
-CREATE TABLE "Spins" (
+CREATE TABLE "spins" (
 	"id" serial NOT NULL,
 	"time_spent" TIME NOT NULL,
 	"album_id" integer NOT NULL,
@@ -39,26 +33,22 @@ CREATE TABLE "Spins" (
 	CONSTRAINT "Spins_pk" PRIMARY KEY ("id")
 );
 
-
-
-CREATE TABLE "Friends" (
+CREATE TABLE "friends" (
 	"id" serial NOT NULL,
 	"user_id" integer NOT NULL,
 	"friend" integer NOT NULL,
 	CONSTRAINT "friends_pk" PRIMARY KEY ("id")
 );
 
-ALTER TABLE "Albums" ADD CONSTRAINT "Albums_fk0" FOREIGN KEY ("user_id") REFERENCES "Users"("id");
-ALTER TABLE "Albums" ADD CONSTRAINT "Albums_fk1" FOREIGN KEY ("mood") REFERENCES "Moods"("id");
+ALTER TABLE "albums" ADD CONSTRAINT "albums_fk0" FOREIGN KEY ("user_id") REFERENCES "Users"("id");
+ALTER TABLE "albums" ADD CONSTRAINT "albums_fk1" FOREIGN KEY ("mood") REFERENCES "Moods"("id");
 
+ALTER TABLE "spins" ADD CONSTRAINT "spins_fk0" FOREIGN KEY ("album_id") REFERENCES "albums"("id");
 
-ALTER TABLE "Spins" ADD CONSTRAINT "Spins_fk0" FOREIGN KEY ("album_id") REFERENCES "Albums"("id");
+ALTER TABLE "friends" ADD CONSTRAINT "friends_fk0" FOREIGN KEY ("user_id") REFERENCES "Users"("id");
+ALTER TABLE "friends" ADD CONSTRAINT "friends_fk1" FOREIGN KEY ("friend") REFERENCES "Users"("id");
 
-ALTER TABLE "Friends" ADD CONSTRAINT "Friends_fk0" FOREIGN KEY ("user_id") REFERENCES "Users"("id");
-ALTER TABLE "Friends" ADD CONSTRAINT "Friends_fk1" FOREIGN KEY ("friend") REFERENCES "Users"("id");
-
-
-INSERT INTO "Moods" (mood) VALUES
+INSERT INTO "moods" (mood) VALUES
 ('Ambient'),
 ('Chill'),
 ('Cooking'),
@@ -79,6 +69,17 @@ INSERT INTO "Moods" (mood) VALUES
 ('Smooth'),
 ('Soulful'),
 ('Upbeat');
+
+select * from "user";
+select * from "albums";
+select * from "spins";
+select * from "friends";
+select * from "moods";
+
+
+
+
+
 
 
 
