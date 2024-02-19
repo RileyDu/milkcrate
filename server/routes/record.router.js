@@ -19,9 +19,6 @@ router.get("/", (req, res) => {
       });
   });
 
-
-
-
 /**
  * POST route template
  */
