@@ -9,6 +9,10 @@ const passport = require('./strategies/user.strategy');
 
 // Route Includes
 const userRouter = require('./routes/user.router');
+const blindbagRouter = require('./routes/blindbag.router');
+const friendRouter = require('./routes/friend.router');
+const recordRouter = require('./routes/record.router');
+const spinsRouter = require('./routes/spins.router');
 
 // Express Middleware
 app.use(express.json());
@@ -24,6 +28,10 @@ app.use(passport.session());
 
 // Routes
 app.use('/api/user', userRouter);
+app.use('/api/blindbag', blindbagRouter);
+app.use('/api/social', friendRouter)
+app.use('/api/record', recordRouter)
+app.use('/api/spins', spinsRouter)
 
 // Listen Server & Port
 app.listen(PORT, () => {

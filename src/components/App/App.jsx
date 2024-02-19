@@ -24,10 +24,13 @@ import MyMilkcrate from "../../newComponents/userCollection/myMilkcrate";
 import SocialPage from "../../newComponents/Social/socialPage";
 import SpinSessions from "../../newComponents/SpinSessions/spinSessions";
 import Blindbag from "../../newComponents/BlindBag/blindbag";
-import AddFriendForm from "../../newComponents/Social/AddFriendForm";
+import AddFriendForm from "../../newComponents/Social/addFriendForm";
 import FriendCollection from "../../newComponents/Social/friendCollection";
 import AddSpinForm from "../../newComponents/SpinSessions/addSpinForm";
 import SingleSpin from "../../newComponents/SpinSessions/singleSpin";
+import AddRecordForm from "../../newComponents/userCollection/addRecordForm";
+import EditRecordForm from "../../newComponents/userCollection/editRecordForm";
+import RecordDetails from "../../newComponents/userCollection/recordDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -65,6 +68,27 @@ function App() {
             path="/user"
           >
             <MyMilkcrate />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/user/add"
+          >
+            <AddRecordForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/user/edit"
+          >
+            <EditRecordForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/user/details"
+          >
+            <RecordDetails />
           </ProtectedRoute>
 
           <ProtectedRoute
