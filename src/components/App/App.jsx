@@ -28,6 +28,7 @@ import AddFriendForm from "../../newComponents/Social/AddFriendForm";
 import FriendCollection from "../../newComponents/Social/friendCollection";
 import AddSpinForm from "../../newComponents/SpinSessions/addSpinForm";
 import SingleSpin from "../../newComponents/SpinSessions/singleSpin";
+
 function App() {
   const dispatch = useDispatch();
 
