@@ -5,6 +5,26 @@ const dispatch = useDispatch();
 
 
 function EditRecordForm(props) {
+  const dispatch = useDispatch();
+  const record = useSelector((store) => store.record)
+  const [recordArtist, setRecordArtist] = useState(record.artist);
+  const [recordTitle, setRecordTitle] = useState(record.title);
+  const [recordMood, setRecordMood] = useState(record.mood);
+  const [recordDetails, setRecordDetails] = useState(record.details);
+
+  const handleInputChangeArtist = (e) => {
+    setRecordArtist(e.target.value);
+  };
+
+
+  const handleInputChangeTitle = (e) => {
+    setRecordTitle(e.target.value);
+  };
+
+
+  const handleInputChangeDetails = (e) => {
+    setRecordDetails(e.target.value);
+  };
 
   function editRecord(event) {
     event.preventDefault()
@@ -23,7 +43,7 @@ function EditRecordForm(props) {
     }
 
     dispatch({
-      type: "POST_RECORD",
+      type: "EDIT_RECORD",
       payload: newEdits
     })
     setRecordArtist('');
