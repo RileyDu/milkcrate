@@ -89,6 +89,7 @@ function AddRecordForm(props) {
           onChange={handleInputChangeDetails}
           placeholder="Enter Record Details"
         />
+        <button type='submit'>ADD RECORD</button>
       </form>
     </div>
   );

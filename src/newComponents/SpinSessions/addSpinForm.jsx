@@ -1,18 +1,51 @@
-import React, { useState } from 'react';
-import {useSelector} from 'react-redux';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import DateTimePicker from "react-bootstrap-datetimepicker";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css";
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
 function AddSpinForm(props) {
-  // Using hooks we're creating local state for a "heading" variable with
-  // a default value of 'Functional Component'
-//   const store = useSelector((store) => store);
-//   const [heading, setHeading] = useState('Functional Component');
+  const dispatch = useDispatch();
+  const [selectedDate, setSelectedDate] = useState(null);
 
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+  
   return (
     <div>
       <h2>In addSpinForm</h2>
+      <form onSubmit={(event) => postSpin(event)}>
+        {/* hours and minutes for how long the spin session was */}
+        <label for="hours">Hours:</label>
+        <input type="number" id="hours" min="0" placeholder="Hours Listened" />
+        <label for="minutes">Minutes:</label>
+        <input
+          type="number"
+          id="minutes"
+          min="0"
+          max="59"
+          placeholder="Minutes Listened"
+        />
+        <div>
+          {/* Let's user pick time and date when the spin occured */}
+          <DateTimePicker
+            onChange={handleDateChange}
+            format="YYYY-MM-DD HH:mm"
+            inputProps={{ placeholder: "Select Date and Time" }}
+            sideBySide
+          />
+        </div>
+        {/* Details about the spin session they are adding */}
+        <input
+          type="text"
+          value={spinDetails}
+          onChange={handleInputChangeDetails}
+          placeholder="Enter Spin Details"
+        />
+        <button type="submit">ADD SPIN</button>
+      </form>
     </div>
   );
 }
