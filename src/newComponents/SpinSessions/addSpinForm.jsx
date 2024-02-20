@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import DateTimePicker from "react-bootstrap-datetimepicker";
+import AsyncSelect from 'react-select/async';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css";
 
@@ -12,7 +13,7 @@ function AddSpinForm(props) {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
-  
+
   return (
     <div>
       <h2>In addSpinForm</h2>
