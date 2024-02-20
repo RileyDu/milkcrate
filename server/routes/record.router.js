@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+//GET the user's milkcrate
 router.get("/", (req, res) => {
     const query = `
       SELECT * FROM "albums"
@@ -26,6 +27,7 @@ router.post('/', (req, res) => {
   // POST route code here
 });
 
+//PUT the new details of a record into the db
 router.put("/:id", (req, res) => {
     const updatedRecord = req.body;
     console.log('updated record contenets', req.body);
@@ -52,6 +54,7 @@ router.put("/:id", (req, res) => {
       });
   });
 
+  // DELETE a selected record
 router.delete("/:id", (req, res) => {
     pool
       .query('DELETE FROM "albums" WHERE id=$1', [req.params.id])

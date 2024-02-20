@@ -2,6 +2,8 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 
+
+// GET all of a user's spins session from db
 router.get("/", (req, res) => {
   const query = `
       SELECT * FROM "spins"
@@ -20,6 +22,7 @@ router.get("/", (req, res) => {
     });
 });
 
+// GET a specific spins details
 router.get("/", (req, res) => {
   const query = `
       SELECT * FROM "spins"
@@ -37,7 +40,7 @@ router.get("/", (req, res) => {
     });
 });
 
-
+// POST a spin session through AddSpinForm
 router.post("/", (req, res) => {
   console.log(req.body);
   const insertSpinQuery = `

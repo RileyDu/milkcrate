@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+// GET all of a user's friends
 router.get("/", (req, res) => {
     const query = `
       SELECT * FROM "friends"
@@ -19,6 +20,25 @@ router.get("/", (req, res) => {
       });
   });
 
+// GET a friend's collection
+  router.get("/", (req, res) => {
+    const query = `
+      SELECT * FROM "albums"
+      WHERE user_id = $1
+        ORDER BY "id" DESC;
+    `;
+    pool
+      .query(query, [req.body.id])
+      .then((result) => {
+        res.send(result.rows);
+      })
+      .catch((err) => {
+        console.error("ERROR: Get a user's albums", err);
+        res.sendStatus(500);
+      });
+  });
+
+  // POST a new frienship
   router.post("/", (req, res) => {
     console.log(req.body);
     const insertFriendQuery = `
@@ -40,6 +60,8 @@ router.get("/", (req, res) => {
       });
   });
 
+
+// DELETE a friendship
 router.delete("/:id", (req, res) => {
     pool
       .query('DELETE FROM "friends" WHERE user_id=$1 AND friend=$2', [req.user.id, req.params.id])
