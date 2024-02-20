@@ -41,12 +41,23 @@ function AddRecordForm(props) {
           onChange={handleInputChangeTitle}
           placeholder="Enter Record Title"
         />
-        <input
-          type="text"
-          value={friendUsername}
-          onChange={handleInputChangeFriend}
-          placeholder="Select Record Mood"
-        />
+          <select
+            value={recordMood}
+            onChange={(e) => {
+              const selectedMood = e.target.value;
+              console.log("Selected Mood from user:", selectedMood);
+              setRecordMood(selectedMood);
+            }}
+          >
+            {/* onChange assigns the selected value to local state */}
+            <option value=""> Select Record Mood </option>
+            {/* make shift placeholder above */}
+            {moods.map((mood) => (
+              <option key={mood.id} value={mood.id}>
+                {mood.mood}
+              </option>
+            ))}
+          </select>
         <input
           type="text"
           value={recordDetails}
