@@ -38,6 +38,28 @@ router.get("/", (req, res) => {
       });
   });
 
+  //GET albums from friend's milkcrate W/SEARCH params
+router.get("/", (req, res) => {
+    const query = `
+    SELECT *
+    FROM "albums"
+    WHERE
+        "title" % $1
+        OR "artist" % $1
+        OR "tags" % $1
+        OR CAST("mood" AS TEXT) % $1;
+    `;
+    pool
+      .query(query, [req.params])
+      .then((result) => {
+        res.send(result.rows);
+      })
+      .catch((err) => {
+        console.error("ERROR: seaching user's milkcrate", err);
+        res.sendStatus(500);
+      });
+  });
+
   // POST a new frienship
   router.post("/", (req, res) => {
     console.log(req.body);

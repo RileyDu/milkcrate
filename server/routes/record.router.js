@@ -20,12 +20,33 @@ router.get("/", (req, res) => {
       });
   });
 
-/**
- * POST route template
- */
+
+  //POST the form data & last.fm response [API CALL HERE]
 router.post('/', (req, res) => {
   // POST route code here
 });
+
+//GET albums from milkcrate W/SEARCH params
+router.get("/", (req, res) => {
+    const query = `
+    SELECT *
+    FROM "albums"
+    WHERE
+        "title" % $1
+        OR "artist" % $1
+        OR "tags" % $1
+        OR CAST("mood" AS TEXT) % $1;
+    `;
+    pool
+      .query(query, [req.params])
+      .then((result) => {
+        res.send(result.rows);
+      })
+      .catch((err) => {
+        console.error("ERROR: seaching user's milkcrate", err);
+        res.sendStatus(500);
+      });
+  });
 
 //PUT the new details of a record into the db
 router.put("/:id", (req, res) => {
