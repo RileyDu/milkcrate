@@ -1,6 +1,6 @@
 const spinsReducer = (state = {}, action) => {
     switch (action.type) {
-        case '':
+        case 'SET_SPINS':
           return action.payload;
         default:
           return state;
