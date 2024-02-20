@@ -24,11 +24,36 @@ function AddRecordForm(props) {
     setRecordDetails(e.target.value);
   };
 
+  function postRecord(event) {
+    event.preventDefault()
+    console.log('checking payload of submit', recordArtist, recordTitle, recordDetails, recordMood,);
+    
+    if (!recordArtist || !recordTitle || !recordMood || !recordDetails) {
+      alert('PLEASE FILL FORM BEFORE SUBMIT')
+      return;
+    }
+  
+    const newRecord = {
+      artist: recordArtist,
+      title: recordTitle,
+      mood: recordMood,
+      details: recordDetails
+    }
+
+    dispatch({
+      type: "POST_RECORD",
+      payload: newRecord
+    })
+    setRecordArtist('');
+    setRecordTitle('');
+    setRecordMood('');
+    setRecordDetails('');
+  }
 
   return (
     <div>
       <h2>In addRecordForm</h2>
-      <form>
+      <form onSubmit={(event) => postRecord(event)}>
         <input
           type="text"
           value={recordArtist}
