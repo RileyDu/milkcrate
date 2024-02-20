@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import DateTimePicker from "react-bootstrap-datetimepicker";
-import AsyncSelect from 'react-select/async';
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css";
+// import DateTimePicker from "react-bootstrap-datetimepicker";
+// import AsyncSelect from 'react-select/async';
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css";
 
 function AddSpinForm(props) {
   const dispatch = useDispatch();
@@ -31,12 +31,12 @@ function AddSpinForm(props) {
         />
         <div>
           {/* Let's user pick time and date when the spin occured */}
-          <DateTimePicker
+          {/* <DateTimePicker
             onChange={handleDateChange}
             format="YYYY-MM-DD HH:mm"
             inputProps={{ placeholder: "Select Date and Time" }}
             sideBySide
-          />
+          /> */}
         </div>
         {/* Details about the spin session they are adding */}
         <input

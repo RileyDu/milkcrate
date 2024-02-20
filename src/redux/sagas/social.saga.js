@@ -41,7 +41,7 @@ function* deleteFriendship() {
     }
   }
 
-  function* fetchFriends() {
+  function* fetchFriendsRecords() {
     try {
       const config = {
         headers: { "Content-Type": "application/json" },

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {useSelector} from 'react-redux';
 import { useDispatch } from "react-redux";
-const dispatch = useDispatch();
 
 
 function EditRecordForm(props) {
