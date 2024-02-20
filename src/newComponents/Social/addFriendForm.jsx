@@ -34,6 +34,7 @@ function postFriendship(event) {
         type="text"
         value={friendUsername}
         onChange={handleInputChangeFriend}
+        placeholder="ENTER FRIENDS USERNAME"
       />
       <button type='submit'>ADD FRIEND</button>
 </form>
