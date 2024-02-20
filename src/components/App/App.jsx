@@ -70,24 +70,15 @@ function App() {
             <MyMilkcrate />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/user/add"
-          >
+          <ProtectedRoute exact path="/user/add">
             <AddRecordForm />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/user/edit"
-          >
+          <ProtectedRoute exact path="/user/edit">
             <EditRecordForm />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/user/details"
-          >
+          <ProtectedRoute exact path="/user/details">
             <RecordDetails />
           </ProtectedRoute>
 
@@ -99,51 +90,31 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/social"
-          >
+          <ProtectedRoute exact path="/social">
             <SocialPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/social/add"
-          >
+          <ProtectedRoute exact path="/social/add">
             <AddFriendForm />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/social/friend"
-          >
+          <ProtectedRoute exact path="/social/friend">
             <FriendCollection />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/spins"
-          >
+          <ProtectedRoute exact path="/spins">
             <SpinSessions />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/spins/add"
-          >
+          <ProtectedRoute exact path="/spins/add">
             <AddSpinForm />
           </ProtectedRoute>
-          <ProtectedRoute
-            exact
-            path="/spins/details"
-          >
-<SingleSpin />
+          
+          <ProtectedRoute exact path="/spins/details">
+            <SingleSpin />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/blindbag"
-          >
+          <ProtectedRoute exact path="/blindbag">
             <Blindbag />
           </ProtectedRoute>
 

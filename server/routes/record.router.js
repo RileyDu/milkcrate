@@ -5,6 +5,7 @@ const LAST_FM_API_KEY = process.env.LAST_FM_API_KEY;
 const {
     rejectUnauthenticated,
   } = require('../modules/authentication-middleware');
+  const axios = require('axios');
 
 //GET the user's milkcrate
 router.get("/", rejectUnauthenticated, (req, res) => {
@@ -25,50 +26,62 @@ router.get("/", rejectUnauthenticated, (req, res) => {
 });
 
 //POST the form data & last.fm response [API CALL HERE]
-router.post("/", rejectUnauthenticated, (req, res) => {
-  const albumTitle = req.query.albumTitle;
-  const albumArtist = req.query.albumArtist;
-  const albumMood = req.query.albumMood;
-  const albumDetails = req.query.albumDetails;
-  // console.log(`http://ws.audioscrobbler.com/2.0/?api_key=${LAST_FM_API_KEY}&format=json&method=album.getinfo&artist=${albumArtist}&album=${albumTitle}`);
-  axios
-    .get(
-      `http://ws.audioscrobbler.com/2.0/?api_key=${LAST_FM_API_KEY}&format=json&method=album.getinfo&artist=${albumArtist}&album=${albumTitle}&autocorrect=1`
-    )
-    .then((response) => {
-      // POST THIS TO THE DB VVV
-      const finalAlbumTitle = response.data.album.name;
-      const finalArtist = response.data.album.artists;
-      const finalCoverArt = response.data.album.image[4]["#text"];
-      const finalTags = response.data.album.tags;
-      // .tags is an array of 5 usually...hmmm....
-      const finalMood = albumMood;
-      // not really needed ^^^
-      const finalDetails = albumDetails;
-      // not really needed ^^^
-      // POST TO DB WITH FORM DATA (ALBUM MOOD AND DETAILS ONLY) AND LAST.FM OBJECT (COVER ART, ARTIST, ALBUM AND TAGS)
-    });
-  const insertRecordQuery = `
-      INSERT INTO "albums" 
-      ("title", "artist", "coverart", "tags","mood","details")
-      VALUES
-      ($1, $2, $3, $4, $5, $6)
-      `;
-  const insertRecordValues = [
-    finalAlbumTitle,
-    finalArtist,
-    finalCoverArt,
-    finalTags,
-    finalMood,
-    finalDetails
-  ];
-  pool.query(insertRecordQuery, insertRecordValues).catch((err) => {
-    res.sendStatus(500);
+router.post("/add", rejectUnauthenticated, (req, res) => {
+    const albumTitle = req.body.albumTitle;
+    const albumArtist = req.body.albumArtist;
+    const albumMood = req.body.albumMood;
+    const albumDetails = req.body.albumDetails;
+  
+    axios
+      .get(
+        `http://ws.audioscrobbler.com/2.0/?api_key=${LAST_FM_API_KEY}&format=json&method=album.getinfo&artist=${albumArtist}&album=${albumTitle}&autocorrect=1`
+      )
+      .then((response) => {
+        const finalAlbumTitle = response.data.album.name;
+        const finalArtist = response.data.album.artist;
+        const finalCoverArt = response.data.album.image[4]["#text"];
+        const finalTags = response.data.album.tags.tag;
+        const tagNames = finalTags.map((tag) => tag.name);
+        const finalMood = albumMood;
+        const finalDetails = albumDetails;
+  
+        // POST TO DB WITH FORM DATA (ALBUM MOOD AND DETAILS ONLY) AND LAST.FM OBJECT (COVER ART, ARTIST, ALBUM AND TAGS)
+        const insertRecordQuery = `
+          INSERT INTO "albums" 
+          ("title", "artist", "coverart", "tags", "mood", "details", "user_id")
+          VALUES
+          ($1, $2, $3, $4, $5, $6, $7)
+        `;
+  
+        const insertRecordValues = [
+          finalAlbumTitle,
+          finalArtist,
+          finalCoverArt,
+          tagNames,
+          finalMood,
+          finalDetails,
+          req.user.id
+        ];
+  
+        pool
+          .query(insertRecordQuery, insertRecordValues)
+          .then(() => {
+            res.sendStatus(201);
+          })
+          .catch((err) => {
+            console.error("ERROR: Adding album to DB", err);
+            res.sendStatus(500);
+          });
+      })
+      .catch((err) => {
+        console.error("ERROR: Fetching album information from Last.fm", err);
+        res.sendStatus(500);
+      });
   });
-});
+  
 
 //GET albums from milkcrate W/SEARCH params
-router.get("/", rejectUnauthenticated, (req, res) => {
+router.get("/search", rejectUnauthenticated, (req, res) => {
   const query = `
     SELECT *
     FROM "albums"

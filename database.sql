@@ -24,13 +24,17 @@ CREATE TABLE "moods" (
 	CONSTRAINT "Moods_pk" PRIMARY KEY ("id")
 );
 
-CREATE TABLE "spins" (
-	"id" serial NOT NULL,
-	"time_spent" TIME NOT NULL,
-	"album_id" integer NOT NULL,
-	"details" TEXT,
-	"listened_at" TIMESTAMP NOT NULL,
-	CONSTRAINT "Spins_pk" PRIMARY KEY ("id")
+CREATE TABLE spins (
+    id SERIAL PRIMARY KEY,
+    time_spent TIME NOT NULL,
+    listened_at TIMESTAMP NOT NULL,
+    details TEXT
+);
+
+CREATE TABLE spin_albums (
+    spin_id INTEGER REFERENCES spins(id),
+    album_id INTEGER REFERENCES albums(id),
+    PRIMARY KEY (spin_id, album_id)
 );
 
 CREATE TABLE "friends" (
