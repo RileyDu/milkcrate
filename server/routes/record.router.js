@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const LAST_FM_API_KEY = process.env.LAST_FM_API_KEY;
 
 //GET the user's milkcrate
 router.get("/", (req, res) => {
@@ -23,7 +24,23 @@ router.get("/", (req, res) => {
 
   //POST the form data & last.fm response [API CALL HERE]
 router.post('/', (req, res) => {
-  // POST route code here
+    const albumTitle = req.query.albumTitle
+    const albumArtist = req.query.albumArtist
+    const albumMood = req.query.albumMood
+    const albumDetails = req.query.albumDetails
+    // console.log(`http://ws.audioscrobbler.com/2.0/?api_key=${LAST_FM_API_KEY}&format=json&method=album.getinfo&artist=${albumArtist}&album=${albumTitle}`);
+    axios
+      .get(
+        
+        `http://ws.audioscrobbler.com/2.0/?api_key=${LAST_FM_API_KEY}&format=json&method=album.getinfo&artist=${albumArtist}&album=${albumTitle}&autocorrect=1`
+      )
+      .then((response) => {
+        // res.send(response.data);
+        // POST TO DB WITH FORM DATA (ALBUM MOOD AND DETAILS ONLY) AND LAST.FM OBJECT (COVER ART, ARTIST, ALBUM AND TAGS)
+      })
+      .catch((err) => {
+        res.sendStatus(500);
+      });
 });
 
 //GET albums from milkcrate W/SEARCH params
