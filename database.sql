@@ -35,8 +35,8 @@ CREATE TABLE "spins" (
 
 CREATE TABLE "friends" (
 	"id" serial NOT NULL,
-	"user_id" integer NOT NULL,
-	"friend" integer NOT NULL,
+	"user_id" integer REFERENCES "user" ("id") NOT NULL,
+	"friend_username" TEXT REFERENCES "user" ("username") NOT NULL,
 	CONSTRAINT "friends_pk" PRIMARY KEY ("id")
 );
 

@@ -54,6 +54,7 @@ router.get("/friends/collection/search", rejectUnauthenticated, (req, res) => {
   const query = `
     SELECT *
     FROM "albums"
+    WHERE user_id = $1
     WHERE
         "title" % $1
         OR "artist" % $1
@@ -61,7 +62,7 @@ router.get("/friends/collection/search", rejectUnauthenticated, (req, res) => {
         OR CAST("mood" AS TEXT) % $1;
     `;
   pool
-    .query(query, [req.params])
+    .query(query, [req.body.id, req.params])
     .then((result) => {
       res.send(result.rows);
     })
@@ -76,13 +77,13 @@ router.post("/add", rejectUnauthenticated, (req, res) => {
   console.log(req.body);
   const insertFriendQuery = `
   INSERT INTO "friends"
-  ("user_id", "friend")
+  ("user_id", "friend_username")
   VALUES
   ($1, $2)
   `;
-  const insertFriendValues = [req.body];
+  const insertFriendValues = [req.user.id, req.body.friendName];
   pool
-    .query(insertFriendQuery, [insertFriendValues])
+    .query(insertFriendQuery, insertFriendValues)
     //   above query param needs a check
     .then((result) => {
       res.send(result.rows);
@@ -94,11 +95,11 @@ router.post("/add", rejectUnauthenticated, (req, res) => {
 });
 
 // DELETE a friendship
-router.delete("/:id", (req, res) => {
+router.delete("/delete", (req, res) => {
   pool
-    .query('DELETE FROM "friends" WHERE user_id=$1 AND friend=$2', [
+    .query('DELETE FROM "friends" WHERE user_id=$1 AND friend_username=$2', [
       req.user.id,
-      req.params.id,
+      req.body.friendName,
     ])
     .then((result) => {
       res.sendStatus(200);
