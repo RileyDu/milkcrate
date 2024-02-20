@@ -90,12 +90,12 @@ router.get("/", rejectUnauthenticated, (req, res) => {
 });
 
 //PUT the new details of a record into the db
-router.put("/:id", rejectUnauthenticated, (req, res) => {
+router.put("/edit", rejectUnauthenticated, (req, res) => {
   const updatedRecord = req.body;
   console.log("updated record contenets", req.body);
   // req.body should contain the data needed for PUT
   const queryText = `
-      UPDATE "album"
+      UPDATE "albums"
         SET 
           "title"=$1,
           "artist"=$2,
@@ -106,7 +106,7 @@ router.put("/:id", rejectUnauthenticated, (req, res) => {
     `;
   const queryValues = [
     updatedRecord.title,
-    updatedRecord.artists,
+    updatedRecord.artist,
     updatedRecord.mood,
     updatedRecord.details,
     updatedRecord.id,
@@ -123,9 +123,9 @@ router.put("/:id", rejectUnauthenticated, (req, res) => {
 });
 
 // DELETE a selected record
-router.delete("/:id", rejectUnauthenticated, (req, res) => {
+router.delete("/delete", rejectUnauthenticated, (req, res) => {
   pool
-    .query('DELETE FROM "albums" WHERE id=$1', [req.params.id])
+    .query('DELETE FROM "albums" WHERE id=$1', [req.body.id])
     .then((result) => {
       res.sendStatus(200);
     })
