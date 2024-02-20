@@ -2,9 +2,12 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 const LAST_FM_API_KEY = process.env.LAST_FM_API_KEY;
+const {
+    rejectUnauthenticated,
+  } = require('../modules/authentication-middleware');
 
 //GET the user's milkcrate
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
   const query = `
       SELECT * FROM "albums"
       WHERE user_id = $1
@@ -22,7 +25,7 @@ router.get("/", (req, res) => {
 });
 
 //POST the form data & last.fm response [API CALL HERE]
-router.post("/", (req, res) => {
+router.post("/", rejectUnauthenticated, (req, res) => {
   const albumTitle = req.query.albumTitle;
   const albumArtist = req.query.albumArtist;
   const albumMood = req.query.albumMood;
@@ -65,7 +68,7 @@ router.post("/", (req, res) => {
 });
 
 //GET albums from milkcrate W/SEARCH params
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
   const query = `
     SELECT *
     FROM "albums"
@@ -87,7 +90,7 @@ router.get("/", (req, res) => {
 });
 
 //PUT the new details of a record into the db
-router.put("/:id", (req, res) => {
+router.put("/:id", rejectUnauthenticated, (req, res) => {
   const updatedRecord = req.body;
   console.log("updated record contenets", req.body);
   // req.body should contain the data needed for PUT
@@ -120,7 +123,7 @@ router.put("/:id", (req, res) => {
 });
 
 // DELETE a selected record
-router.delete("/:id", (req, res) => {
+router.delete("/:id", rejectUnauthenticated, (req, res) => {
   pool
     .query('DELETE FROM "albums" WHERE id=$1', [req.params.id])
     .then((result) => {

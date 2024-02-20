@@ -1,9 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+    rejectUnauthenticated,
+  } = require('../modules/authentication-middleware');
 
 // GET all of a user's friends
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
     const query = `
       SELECT * FROM "friends"
       WHERE user_id = $1
@@ -21,7 +24,7 @@ router.get("/", (req, res) => {
   });
 
 // GET a friend's collection
-  router.get("/", (req, res) => {
+  router.get("/", rejectUnauthenticated, (req, res) => {
     const query = `
       SELECT * FROM "albums"
       WHERE user_id = $1
@@ -39,7 +42,7 @@ router.get("/", (req, res) => {
   });
 
   //GET albums from friend's milkcrate W/SEARCH params
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated,  (req, res) => {
     const query = `
     SELECT *
     FROM "albums"
@@ -61,7 +64,7 @@ router.get("/", (req, res) => {
   });
 
   // POST a new frienship
-  router.post("/", (req, res) => {
+  router.post("/", rejectUnauthenticated, (req, res) => {
     console.log(req.body);
     const insertFriendQuery = `
   INSERT INTO "friends"

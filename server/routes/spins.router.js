@@ -1,10 +1,13 @@
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
+const {
+    rejectUnauthenticated,
+  } = require('../modules/authentication-middleware');
 
 
 // GET all of a user's spins session from db
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
   const query = `
       SELECT * FROM "spins"
       INNER JOIN "albums" ON spins.album_id = albums.id
@@ -23,7 +26,7 @@ router.get("/", (req, res) => {
 });
 
 // GET a specific spins details
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
   const query = `
       SELECT * FROM "spins"
       WHERE id = $1
@@ -41,7 +44,7 @@ router.get("/", (req, res) => {
 });
 
 // POST a spin session through AddSpinForm
-router.post("/", (req, res) => {
+router.post("/", rejectUnauthenticated, (req, res) => {
   console.log(req.body);
   const insertSpinQuery = `
 INSERT INTO "spins"
