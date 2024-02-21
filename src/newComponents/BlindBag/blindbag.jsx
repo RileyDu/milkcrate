@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import {useSelector} from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
 function Blindbag(props) {
-  // Using hooks we're creating local state for a "heading" variable with
-  // a default value of 'Functional Component'
-//   const store = useSelector((store) => store);
-//   const [heading, setHeading] = useState('Functional Component');
+  const dispatch = useDispatch();
+  const randomRecord = useSelector((store) => store.blindbagReducer)
+
+  function getBlindBag(){
+    dispatch({ type: "FETCH_BLINDBAG" });
+  }
 
   return (
     <div>
       <h2>In blindbag</h2>
+      <button onClick={()=>getBlindBag()}>SHUFFLE</button>
+      <img src={randomRecord.coverart} alt={randomRecord.title} />
     </div>
   );
 }
