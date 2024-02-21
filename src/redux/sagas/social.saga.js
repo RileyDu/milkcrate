@@ -17,13 +17,9 @@ function* fetchFriends() {
   }
 }
 
-function* postFriendship() {
+function* postFriendship(action) {
   try {
-    const config = {
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    };
-    const response = yield axios.post("/api/social/add", config);
+    const response = yield axios.post("/api/social/add", action.payload);
     yield put({ type: "FETCH_FRIENDS" });
   } catch (error) {
     console.error("User get request failed", error);

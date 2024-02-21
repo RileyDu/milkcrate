@@ -8,10 +8,6 @@ function SingleSpin(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  // const spin = useSelector((store) =>
-  //   store.spinsReducer.find((spin) => spin.id.toString() === id)
-  // );
-
   const spin = useSelector((store) => store.spinsReducer[0])
 
   console.log("whats in the single spin?", spin);
@@ -30,6 +26,7 @@ function SingleSpin(props) {
       <p>{spin.details}</p>
     </div>
     // NEED TO ADD CONDITIONAL RENDERING DEPENDING ON HOW MANY ALBUMS IN A LISTENING SESSION STILL
+    //NEED TO USE MOMENT TO TRANSLATE DB TIME TO READABLE FORM
   );
 }
 

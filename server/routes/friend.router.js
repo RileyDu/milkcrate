@@ -74,7 +74,7 @@ router.get("/friends/collection/search", rejectUnauthenticated, (req, res) => {
 
 // POST a new frienship
 router.post("/add", rejectUnauthenticated, (req, res) => {
-  const { friendName } = req.body;
+  const friendName = req.body.friend_username;
     console.log('friendName', friendName);
   // Query to retrieve the friend's ID based on the username
   const findFriendQuery = `
@@ -84,16 +84,16 @@ router.post("/add", rejectUnauthenticated, (req, res) => {
   pool.query(findFriendQuery, [friendName])
     .then(({ rows: friendRows }) => {
       console.log('friendrows:', friendRows);
-      // const friendId = friendRows[0].id;
+      const friendId = friendRows[0].id;
 
-      // const insertFriendQuery = `
-      //   INSERT INTO "friends" ("user_id", "friend_id", "friend_username")
-      //   VALUES ($1, $2, $3)
-      // `;
+      const insertFriendQuery = `
+        INSERT INTO "friends" ("user_id", "friend_id", "friend_username")
+        VALUES ($1, $2, $3)
+      `;
     
-      // const insertFriendValues = [req.user.id, friendId, friendName];
+      const insertFriendValues = [req.user.id, friendId, friendName];
     
-      // return pool.query(insertFriendQuery, insertFriendValues);
+      return pool.query(insertFriendQuery, insertFriendValues);
     })
     .then(() => {
       res.sendStatus(200);

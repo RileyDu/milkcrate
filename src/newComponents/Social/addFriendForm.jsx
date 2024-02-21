@@ -19,9 +19,13 @@ function postFriendship(event) {
     return;
   }
 
+  const addFriendObject = {
+    friend_username: friendUsername
+  }
+
   dispatch({
     type: "POST_FRIENDSHIP",
-    payload: friendUsername
+    payload: addFriendObject
   })
   setFriendUsername('');
 }
