@@ -9,8 +9,11 @@ function RecordDetails() {
   const { recordId, friendId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
+  const activeUser = useSelector((store) => store.user);
   const recordReducer = useSelector((store) => store.recordReducer);
-  const record = recordReducer.find((record) => record.id.toString() === recordId)
+  const record = recordReducer.find(
+    (record) => record.id.toString() === recordId
+  );
   console.log("whats in the record?", record);
   useEffect(() => {
     // if (!record) {
@@ -33,7 +36,7 @@ function RecordDetails() {
   }
 
   if (!record) {
-    return <h2>Loading...</h2>
+    return <h2>Loading...</h2>;
   }
 
   return (
@@ -47,10 +50,15 @@ function RecordDetails() {
       <p>{record.mood}</p>
       <p>{record.tags}</p>
       <p>{record.details}</p>
-      <button onClick={() => deleteRecord()}>delete record</button>
-      <button onClick={() => history.push(`/user/edit/${record.id}`)}>
-        edit record
-      </button>
+
+      {record.user_id === activeUser.id && (
+        <>
+          <button onClick={() => deleteRecord()}>delete record</button>
+          <button onClick={() => history.push(`/user/edit/${record.id}`)}>
+            edit record
+          </button>
+        </>
+      )}
     </div>
   );
 }
