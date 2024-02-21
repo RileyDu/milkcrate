@@ -19,6 +19,15 @@ console.log('whats in the record?', record);
     }
   }, [id, dispatch, record]);
 
+  function deleteRecord() {
+    //delete button triggers this and sends a DELETE request to db w/id
+    dispatch({
+      type: "DELETE_RECORD",
+      payload: record.id,
+    });
+    history.push(`/`); // takes user back to home
+  }
+
   return (
     <div>
       <h2>In recordDetails</h2>
@@ -29,7 +38,7 @@ console.log('whats in the record?', record);
       <p>{record.mood}</p>
       <p>{record.tags}</p>
       <p>{record.details}</p>
-      <button onClick={()=>history.push("/user/delete")}>delete record</button>
+      <button onClick={()=>deleteRecord()}>delete record</button>
       <button onClick={()=>history.push(`/user/edit/${record.id}`)}>edit record</button>
     </div>
   );
