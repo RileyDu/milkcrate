@@ -17,7 +17,7 @@ function MyMilkcrate(props) {
 
   return (
     <div>
-      <h2>In {username}'s milkcrate</h2>
+      <h2>{username}'s milkcrate</h2>
       {records?.length > 0 && (
       <ul>
         {records.map((record, i) => (

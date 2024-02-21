@@ -10,7 +10,10 @@ function FriendCollection(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const records = useSelector((store) => store.recordReducer);
-
+  const friend = useSelector((store) =>
+    store.socialReducer.find((friend) => friend.friend_id.toString() === id)
+  );
+  console.log('what is the friend?', friend);
   useEffect(() => {
     dispatch({ type: "FETCH_FRIENDS_RECORDS", payload: id });
   }, [dispatch]);
@@ -26,7 +29,7 @@ function FriendCollection(props) {
 
   return (
     <div>
-      <h2>In friendCollection</h2>
+      <h2>{friend.friend_username}'s milkcrate</h2>
       <button onClick={()=>deleteFriend()}>delete friend</button>
       <button onClick={()=>history.push("/social")}>back</button>
       {records?.length > 0 && (

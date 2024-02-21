@@ -31,6 +31,7 @@ console.log('whats in the record?', record);
   return (
     <div>
       <h2>In recordDetails</h2>
+      <button onClick={()=>history.push("/user")}>back</button>
       <p>Record ID: {record.id}</p>
       <img src={record.coverart} alt={record.title} />
       <p>{record.title}</p>
