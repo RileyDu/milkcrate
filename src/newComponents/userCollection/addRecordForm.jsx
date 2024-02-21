@@ -82,7 +82,7 @@ function AddRecordForm(props) {
                 {mood.mood}
               </option>
             ))}
-          </select>
+          </select> 
         <input
           type="text"
           value={recordDetails}

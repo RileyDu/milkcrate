@@ -27,10 +27,10 @@ router.get("/", rejectUnauthenticated, (req, res) => {
 
 //POST the form data & last.fm response [API CALL HERE]
 router.post("/add", rejectUnauthenticated, (req, res) => {
-  const albumTitle = req.body.albumTitle;
-  const albumArtist = req.body.albumArtist;
-  const albumMood = req.body.albumMood;
-  const albumDetails = req.body.albumDetails;
+  const albumTitle = req.body.title;
+  const albumArtist = req.body.artist;
+  const albumMood = req.body.mood;
+  const albumDetails = req.body.details;
 
   axios
     .get(
