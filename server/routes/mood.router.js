@@ -8,7 +8,7 @@ const {
 router.get("/", rejectUnauthenticated, (req, res) => {
   const query = `
     SELECT * FROM "moods"
-    ORDER BY id DESC;
+    ORDER BY id ASC;
       `;
   pool
     .query(query)
