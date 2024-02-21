@@ -8,25 +8,28 @@ function SingleSpin(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const spin = useSelector((store) =>
-    store.spinsReducer.find((spin) => spin.id.toString() === id)
-  );
+  // const spin = useSelector((store) =>
+  //   store.spinsReducer.find((spin) => spin.id.toString() === id)
+  // );
+
+  const spin = useSelector((store) => store.spinsReducer[0])
 
   console.log("whats in the single spin?", spin);
 
   useEffect(() => {
-    if (!spin) {
-      dispatch({ type: "FETCH_SPINS" });
-    }
-  }, [id, dispatch, spin]);
+      dispatch({ type: "FETCH_SINGLE_SPIN", payload: id });
+  }, [dispatch]);
 
   return (
     <div>
       <h2>In singleSpin</h2>
       <p>{spin.listened_at}</p>
       <p>{spin.time_spent}</p>
+      <p>{spin.artist}</p>
+      <p>{spin.title}</p>
       <p>{spin.details}</p>
     </div>
+    // NEED TO ADD CONDITIONAL RENDERING DEPENDING ON HOW MANY ALBUMS IN A LISTENING SESSION STILL
   );
 }
 
