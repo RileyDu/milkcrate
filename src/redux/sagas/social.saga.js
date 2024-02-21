@@ -8,7 +8,9 @@ function* fetchFriends() {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
+    console.log("Fetching friends...");
     const response = yield axios.get("/api/social/friends", config);
+    console.log('friends response from backend:', response)
     yield put({ type: "SET_FRIENDS", payload: response.data });
   } catch (error) {
     console.error("User get request failed", error);
@@ -58,6 +60,7 @@ function* deleteFriendship() {
 //   NEED TO IMPLEMENT SEARCH STILL
 
 function* socialSaga() {
+  console.log("Social saga started...");
   yield takeLatest("FETCH_FRIENDS", fetchFriends);
   yield takeLatest("POST_FRIENDSHIP", postFriendship);
   yield takeLatest("DELETE_FRIENDSHIP", deleteFriendship);

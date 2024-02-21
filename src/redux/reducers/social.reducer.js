@@ -1,4 +1,4 @@
-const socialReducer = (state = {}, action) => {
+const socialReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_FRIENDS':
           return action.payload;

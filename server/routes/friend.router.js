@@ -8,21 +8,20 @@ const {
 // GET all of a user's friends
 router.get("/friends", rejectUnauthenticated, (req, res) => {
   const query = `
-    SELECT 
-    friends.id AS friendship_id, 
-    friends.user_id AS user_id, 
-    "user".username AS user_username,
-    friends.friend AS friend_user_id,  
-    friend_user.username AS friend_username
+  SELECT 
+  friends.id AS friendship_id, 
+  friends.user_id AS user_id, 
+  "user".username AS user_username,
+  friends.friend_username AS friend_username
 FROM "friends"
 INNER JOIN "user" ON friends.user_id = "user".id
-INNER JOIN "user" AS friend_user ON friends.friend = friend_user.id
-WHERE friends.user_id = 1
+WHERE friends.user_id = $1
 ORDER BY friends.id DESC;
     `;
   pool
     .query(query, [req.user.id])
     .then((result) => {
+      console.log("Friends result:", result.rows);
       res.send(result.rows);
     })
     .catch((err) => {
