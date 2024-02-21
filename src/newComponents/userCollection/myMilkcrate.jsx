@@ -8,6 +8,7 @@ function MyMilkcrate(props) {
   const dispatch = useDispatch();
   const records = useSelector((store) => store.recordReducer)
   const history = useHistory();
+  const username = useSelector((store) => store.user.username)
 console.log('whats in the crate mate?', records);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ console.log('whats in the crate mate?', records);
 
   return (
     <div>
-      <h2>In myMilkcrate</h2>
+      <h2>In {username}'s milkcrate</h2>
       {records?.length > 0 && (
       <ul>
         {records.map((record, i) => (
