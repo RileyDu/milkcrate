@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function AddFriendForm(props) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [friendUsername, setFriendUsername] = useState("");
 
   const handleInputChangeFriend = (e) => {
@@ -28,6 +30,7 @@ function postFriendship(event) {
     payload: addFriendObject
   })
   setFriendUsername('');
+  history.push(`/social`)
 }
 
   return (

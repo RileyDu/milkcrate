@@ -21,7 +21,7 @@ function FriendCollection(props) {
       type: "DELETE_FRIENDSHIP",
       payload: id,
     });
-    history.push(`/`); // takes user back to home
+    history.push(`/social`); // takes user back to home
   }
 
   return (
