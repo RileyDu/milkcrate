@@ -110,7 +110,7 @@ function App() {
             <AddSpinForm />
           </ProtectedRoute>
           
-          <ProtectedRoute exact path="/spins/details">
+          <ProtectedRoute exact path="/spins/details/:id">
             <SingleSpin />
           </ProtectedRoute>
 
