@@ -27,8 +27,8 @@ console.log('whats in the record?', record);
       <p>{record.mood}</p>
       <p>{record.tags}</p>
       <p>{record.details}</p>
-
-{/* {record?.length > 0 && ()} */}
+      <button onClick={()=>history.push("/user/delete")}>delete record</button>
+      <button onClick={()=>history.push("/user/edit")}>edit record</button>
     </div>
   );
 }

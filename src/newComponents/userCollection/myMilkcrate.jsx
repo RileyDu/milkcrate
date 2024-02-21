@@ -28,7 +28,6 @@ console.log('whats in the crate mate?', records);
       </ul>
       )}
       <button onClick={()=>history.push("/user/add")}>Add record</button>
-      <button onClick={()=>history.push("/user/edit")}>edit record</button>
       {/* THE EDIT NEEDS TO GO IN THE DETAILS PAGE */}
     </div>
   );

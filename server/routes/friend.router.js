@@ -74,22 +74,32 @@ router.get("/friends/collection/search", rejectUnauthenticated, (req, res) => {
 
 // POST a new frienship
 router.post("/add", rejectUnauthenticated, (req, res) => {
-  console.log(req.body);
-  const insertFriendQuery = `
-  INSERT INTO "friends"
-  ("user_id", "friend_username")
-  VALUES
-  ($1, $2)
+  const { friendName } = req.body;
+    console.log('friendName', friendName);
+  // Query to retrieve the friend's ID based on the username
+  const findFriendQuery = `
+    SELECT "id" FROM "user" WHERE "username" = $1
   `;
-  const insertFriendValues = [req.user.id, req.body.friendName];
-  pool
-    .query(insertFriendQuery, insertFriendValues)
-    //   above query param needs a check
-    .then((result) => {
-      res.send(result.rows);
+    
+  pool.query(findFriendQuery, [friendName])
+    .then(({ rows: friendRows }) => {
+      console.log('friendrows:', friendRows);
+      // const friendId = friendRows[0].id;
+
+      // const insertFriendQuery = `
+      //   INSERT INTO "friends" ("user_id", "friend_id", "friend_username")
+      //   VALUES ($1, $2, $3)
+      // `;
+    
+      // const insertFriendValues = [req.user.id, friendId, friendName];
+    
+      // return pool.query(insertFriendQuery, insertFriendValues);
     })
-    .catch((err) => {
-      console.error("ERROR: POSTing a friendship", err);
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.error("ERROR: POSTing a friendship", error);
       res.sendStatus(500);
     });
 });
