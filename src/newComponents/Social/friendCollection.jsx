@@ -15,9 +15,19 @@ function FriendCollection(props) {
     dispatch({ type: "FETCH_FRIENDS_RECORDS", payload: id });
   }, [dispatch]);
 
+  function deleteFriend() {
+    //delete button triggers this and sends a DELETE request to db w/id
+    dispatch({
+      type: "DELETE_FRIENDSHIP",
+      payload: id,
+    });
+    history.push(`/`); // takes user back to home
+  }
+
   return (
     <div>
       <h2>In friendCollection</h2>
+      <button onClick={()=>deleteFriend()}>delete friend</button>
       {records?.length > 0 && (
         <ul>
           {records.map((record, i) => (

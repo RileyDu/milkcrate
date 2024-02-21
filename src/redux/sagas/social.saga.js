@@ -26,13 +26,13 @@ function* postFriendship(action) {
   }
 }
 
-function* deleteFriendship() {
+function* deleteFriendship(action) {
     try {
       const config = {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       };
-      const response = yield axios.delete("/api/social/delete", config);
+      const response = yield axios.delete(`/api/social/${action.payload}`, config);
       yield put({ type: "FETCH_FRIENDS" });
     } catch (error) {
       console.error("User get request failed", error);

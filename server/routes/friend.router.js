@@ -105,11 +105,11 @@ router.post("/add", rejectUnauthenticated, (req, res) => {
 });
 
 // DELETE a friendship
-router.delete("/delete", (req, res) => {
+router.delete("/:id", (req, res) => {
   pool
-    .query('DELETE FROM "friends" WHERE user_id=$1 AND friend_username=$2', [
+    .query('DELETE FROM "friends" WHERE user_id=$1 AND friend_id=$2', [
       req.user.id,
-      req.body.friendName,
+      req.params.id,
     ])
     .then((result) => {
       res.sendStatus(200);
