@@ -38,10 +38,12 @@ CREATE TABLE spin_albums (
 );
 
 CREATE TABLE "friends" (
-	"id" serial NOT NULL,
-	"user_id" integer REFERENCES "user" ("id") NOT NULL,
-	"friend_username" TEXT REFERENCES "user" ("username") NOT NULL,
-	CONSTRAINT "friends_pk" PRIMARY KEY ("id")
+    "id" serial NOT NULL,
+    "user_id" integer REFERENCES "user" ("id") NOT NULL,
+    "friend_id" integer REFERENCES "user" ("id") NOT NULL,
+    "friend_username" TEXT REFERENCES "user" ("username"),
+    "user_username" TEXT REFERENCES "user" ("username"),
+    CONSTRAINT "friends_pk" PRIMARY KEY ("id")
 );
 
 ALTER TABLE "albums" ADD CONSTRAINT "albums_fk0" FOREIGN KEY ("user_id") REFERENCES "Users"("id");
@@ -49,8 +51,6 @@ ALTER TABLE "albums" ADD CONSTRAINT "albums_fk1" FOREIGN KEY ("mood") REFERENCES
 
 ALTER TABLE "spins" ADD CONSTRAINT "spins_fk0" FOREIGN KEY ("album_id") REFERENCES "albums"("id");
 
-ALTER TABLE "friends" ADD CONSTRAINT "friends_fk0" FOREIGN KEY ("user_id") REFERENCES "Users"("id");
-ALTER TABLE "friends" ADD CONSTRAINT "friends_fk1" FOREIGN KEY ("friend") REFERENCES "Users"("id");
 
 INSERT INTO "moods" (mood) VALUES
 ('Ambient'),

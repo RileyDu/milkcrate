@@ -98,7 +98,7 @@ function App() {
             <AddFriendForm />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/social/friend">
+          <ProtectedRoute exact path="/social/friends/:id">
             <FriendCollection />
           </ProtectedRoute>
 

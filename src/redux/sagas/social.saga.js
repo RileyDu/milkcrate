@@ -43,13 +43,13 @@ function* deleteFriendship() {
     }
   }
 
-  function* fetchFriendsRecords() {
+  function* fetchFriendsRecords(action) {
     try {
       const config = {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       };
-      const response = yield axios.get("/api/social/friends/collection", config);
+      const response = yield axios.get(`/api/social/friends/collection?id=${action.payload}`, config);
       yield put({ type: "SET_RECORDS", payload: response.data });
     } catch (error) {
       console.error("User get request failed", error);

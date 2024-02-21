@@ -12,7 +12,8 @@ router.get("/friends", rejectUnauthenticated, (req, res) => {
   friends.id AS friendship_id, 
   friends.user_id AS user_id, 
   "user".username AS user_username,
-  friends.friend_username AS friend_username
+  friends.friend_username AS friend_username,
+  friends.friend_id
 FROM "friends"
 INNER JOIN "user" ON friends.user_id = "user".id
 WHERE friends.user_id = $1
@@ -38,7 +39,7 @@ router.get("/friends/collection", rejectUnauthenticated, (req, res) => {
         ORDER BY "id" DESC;
     `;
   pool
-    .query(query, [req.body.id])
+    .query(query, [req.query.id])
     .then((result) => {
       res.send(result.rows);
     })
