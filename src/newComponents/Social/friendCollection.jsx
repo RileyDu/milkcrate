@@ -10,13 +10,16 @@ function FriendCollection(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const records = useSelector((store) => store.recordReducer);
-  const friend = useSelector((store) =>
-    store.socialReducer.find((friend) => friend.friend_id.toString() === id)
+  const socialReducer = useSelector((store) => store.socialReducer);
+  const friend = socialReducer.find(
+    (friend) => friend.friend_id.toString() === id
   );
-  console.log('what is the friend?', friend);
+  console.log("what is the friend?", friend);
   useEffect(() => {
     dispatch({ type: "FETCH_FRIENDS_RECORDS", payload: id });
-  }, [dispatch]);
+    // return a function to run it when this component unmounts
+    return () => dispatch({type: `CLEAR_RECORDS`});
+  }, [socialReducer]);
 
   function deleteFriend() {
     //delete button triggers this and sends a DELETE request to db w/id
@@ -27,18 +30,24 @@ function FriendCollection(props) {
     history.push(`/social`); // takes user back to home
   }
 
+  if (!friend) {
+    return <h2>Loading...</h2>
+  }
+
   return (
     <div>
       <h2>{friend.friend_username}'s milkcrate</h2>
-      <button onClick={()=>deleteFriend()}>delete friend</button>
-      <button onClick={()=>history.push("/social")}>back</button>
+      <button onClick={() => deleteFriend()}>delete friend</button>
+      <button onClick={() => history.push("/social")}>back</button>
       {records?.length > 0 && (
         <ul>
           {records.map((record, i) => (
             <li key={i}>
               {console.log("whats the record?", record)}
               <img
-                onClick={() => history.push(`/user/details/${record.id}`)}
+                onClick={() =>
+                  history.push(`/social/friends/${id}/${record.id}`)
+                }
                 src={record.coverart}
               />
             </li>

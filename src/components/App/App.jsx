@@ -78,7 +78,7 @@ function App() {
             <EditRecordForm />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/user/details/:id">
+          <ProtectedRoute exact path="/user/details/:recordId">
             <RecordDetails />
           </ProtectedRoute>
 
@@ -98,9 +98,14 @@ function App() {
             <AddFriendForm />
           </ProtectedRoute>
 
+          <ProtectedRoute exact path="/social/friends/:friendId/:recordId">
+            <RecordDetails />
+          </ProtectedRoute>
+          
           <ProtectedRoute exact path="/social/friends/:id">
             <FriendCollection />
           </ProtectedRoute>
+
 
           <ProtectedRoute exact path="/spins">
             <SpinSessions />
