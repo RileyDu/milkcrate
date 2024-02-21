@@ -28,6 +28,7 @@ function FriendCollection(props) {
     <div>
       <h2>In friendCollection</h2>
       <button onClick={()=>deleteFriend()}>delete friend</button>
+      <button onClick={()=>history.push("/social")}>back</button>
       {records?.length > 0 && (
         <ul>
           {records.map((record, i) => (
