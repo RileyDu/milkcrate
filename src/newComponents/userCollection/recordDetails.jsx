@@ -3,10 +3,12 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function RecordDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const record = useSelector((store) =>
     store.recordReducer.find((record) => record.id.toString() === id)
   );
@@ -28,7 +30,7 @@ console.log('whats in the record?', record);
       <p>{record.tags}</p>
       <p>{record.details}</p>
       <button onClick={()=>history.push("/user/delete")}>delete record</button>
-      <button onClick={()=>history.push("/user/edit")}>edit record</button>
+      <button onClick={()=>history.push(`/user/edit/${record.id}`)}>edit record</button>
     </div>
   );
 }

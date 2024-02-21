@@ -74,7 +74,7 @@ function App() {
             <AddRecordForm />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/user/edit">
+          <ProtectedRoute exact path="/user/edit/:id">
             <EditRecordForm />
           </ProtectedRoute>
 
