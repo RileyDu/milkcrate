@@ -9,7 +9,7 @@ function MyMilkcrate(props) {
   const records = useSelector((store) => store.recordReducer)
   const history = useHistory();
   const username = useSelector((store) => store.user.username)
-console.log('whats in the crate mate?', records);
+// console.log('whats in the crate mate?', records);
 
   useEffect(() => {
     dispatch({ type: "FETCH_RECORDS" });
@@ -22,7 +22,7 @@ console.log('whats in the crate mate?', records);
       <ul>
         {records.map((record, i) => (
           <li key={i}>
-            {console.log('whats the record?', record)}
+            {/* {console.log('whats the record?', record)} */}
             <img  onClick={()=>history.push(`/user/details/${record.id}`)} src={record.coverart}/>
           </li>
         ))}
