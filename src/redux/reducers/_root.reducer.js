@@ -5,6 +5,7 @@ import spinsReducer from './spins.reducer';
 import blindbagReducer from './blindbag.reducer';
 import socialReducer from './social.reducer';
 import recordReducer from './record.reducer';
+import moodReducer from './mood.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   blindbagReducer,
   socialReducer,
   recordReducer,
+  moodReducer,
 });
 
 export default rootReducer;

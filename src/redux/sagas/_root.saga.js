@@ -6,6 +6,7 @@ import spinsSaga from './spins.saga';
 import socialSaga from './social.saga';
 import blindbagSaga from './blindbag.saga';
 import recordSaga from './record.saga';
+import moodSaga from './mood.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -22,5 +23,6 @@ export default function* rootSaga() {
     socialSaga(),
     blindbagSaga(),
     recordSaga(),
+    moodSaga()
   ]);
 }

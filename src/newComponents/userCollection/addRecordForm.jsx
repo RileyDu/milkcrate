@@ -9,6 +9,7 @@ function AddRecordForm(props) {
   const [recordMood, setRecordMood] = useState('');
   const [recordDetails, setRecordDetails] = useState('');
 
+const moods = useSelector((store) => store.moodReducer)
 
   const handleInputChangeArtist = (e) => {
     setRecordArtist(e.target.value);
@@ -49,6 +50,10 @@ function AddRecordForm(props) {
     setRecordMood('');
     setRecordDetails('');
   }
+
+  useEffect(() => {
+    dispatch({ type: "FETCH_MOOD" });
+  }, [dispatch]);
 
   return (
     <div>

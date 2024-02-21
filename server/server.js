@@ -13,6 +13,7 @@ const blindbagRouter = require('./routes/blindbag.router');
 const friendRouter = require('./routes/friend.router');
 const recordRouter = require('./routes/record.router');
 const spinsRouter = require('./routes/spins.router');
+const moodRouter = require('./routes/mood.router')
 
 // Express Middleware
 app.use(express.json());
@@ -32,6 +33,8 @@ app.use('/api/blindbag', blindbagRouter);
 app.use('/api/social', friendRouter)
 app.use('/api/record', recordRouter)
 app.use('/api/spins', spinsRouter)
+app.use('/api/mood', moodRouter)
+
 
 // Listen Server & Port
 app.listen(PORT, () => {
