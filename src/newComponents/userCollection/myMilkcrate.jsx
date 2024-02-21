@@ -16,13 +16,15 @@ console.log('whats in the crate mate?', records);
   return (
     <div>
       <h2>In myMilkcrate</h2>
+      {records?.length > 0 && (
       <ul>
-        {records.map((record, i) => (
+        {records?.map((record, i) => (
           <li>
             <p key={i} onClick={()=>history.push("/user/details")}>{record.title}</p>
           </li>
         ))}
       </ul>
+      )}
       <button onClick={()=>history.push("/user/add")}>Add record</button>
       <button onClick={()=>history.push("/user/edit")}>edit record</button>
       {/* THE EDIT NEEDS TO GO IN THE DETAILS PAGE */}
