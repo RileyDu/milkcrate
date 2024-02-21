@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import {useSelector} from 'react-redux';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 function MyMilkcrate(props) {
   const dispatch = useDispatch();
   const records = useSelector((store) => store.recordReducer)
@@ -18,9 +19,10 @@ console.log('whats in the crate mate?', records);
       <h2>In myMilkcrate</h2>
       {records?.length > 0 && (
       <ul>
-        {records?.map((record, i) => (
-          <li>
-            <p key={i} onClick={()=>history.push("/user/details")}>{record.title}</p>
+        {records.map((record, i) => (
+          <li key={i}>
+            {console.log('whats the record?', record)}
+            <img  onClick={()=>history.push(`/user/details/${record.id}`)} src={record.coverart}/>
           </li>
         ))}
       </ul>
@@ -28,10 +30,8 @@ console.log('whats in the crate mate?', records);
       <button onClick={()=>history.push("/user/add")}>Add record</button>
       <button onClick={()=>history.push("/user/edit")}>edit record</button>
       {/* THE EDIT NEEDS TO GO IN THE DETAILS PAGE */}
-      <button onClick={()=>history.push("/user/details")}>record details</button>
-
     </div>
   );
 }
-
+<img />
 export default MyMilkcrate;

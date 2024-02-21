@@ -1,4 +1,4 @@
-const recordReducer = (state = {}, action) => {
+const recordReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_RECORDS':
           return action.payload;

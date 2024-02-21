@@ -78,7 +78,7 @@ function App() {
             <EditRecordForm />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/user/details">
+          <ProtectedRoute exact path="/user/details/:id">
             <RecordDetails />
           </ProtectedRoute>
 
