@@ -36,6 +36,12 @@ CREATE TABLE spin_albums (
     album_id INTEGER REFERENCES albums(id),
     PRIMARY KEY (spin_id, album_id)
 );
+ALTER TABLE spin_albums
+DROP CONSTRAINT spin_albums_spin_id_fkey,
+ADD CONSTRAINT spin_albums_spin_id_fkey
+FOREIGN KEY (spin_id)
+REFERENCES spins(id)
+ON DELETE CASCADE;
 
 CREATE TABLE "friends" (
     "id" serial NOT NULL,

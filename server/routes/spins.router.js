@@ -84,6 +84,20 @@ router.post("/add", rejectUnauthenticated, (req, res) => {
         res.sendStatus(500);
       });
   });
+
+  router.delete("/:id", (req, res) => {
+    pool
+      .query('DELETE FROM "spins" WHERE id=$1', [
+        req.params.id,
+      ])
+      .then((result) => {
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.error("Error in DELETE a friend", err);
+        res.sendStatus(500);
+      });
+  });
   
 
 module.exports = router;
