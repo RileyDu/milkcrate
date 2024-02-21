@@ -18,12 +18,12 @@ const history = useHistory()
       <ul>
         {friends.map((friend, i) => (
           <li>
-            <p key={i}>{friend.friend_username}</p>
+            <p key={i} onClick={()=>history.push("/social/friends")}>{friend.friend_username}</p>
           </li>
         ))}
       </ul>
       <button onClick={()=>history.push("/social/add")}>ADD FRIEND</button>
-      <button onClick={()=>history.push("/social/friend")}>View Friends Collection</button>
+      {/* <button>View Friends Collection</button> */}
 
     </div>
   );
