@@ -13,6 +13,7 @@ function MyMilkcrate(props) {
 
   useEffect(() => {
     dispatch({ type: "FETCH_RECORDS" });
+    return () => dispatch({type: `CLEAR_RECORDS`});
   }, [dispatch]);
 
   return (
