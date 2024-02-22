@@ -42,7 +42,13 @@ function RecordDetails() {
   return (
     <div>
       <h2>In recordDetails</h2>
-      <button onClick={() => history.push("/user")}>back</button>
+      {friendId ? (
+        <button onClick={() => history.push(`/social/friends/${friendId}`)}>
+          back
+        </button>
+      ) : (
+        <button onClick={() => history.push("/user")}>home</button>
+      )}
       <p>Record ID: {record.id}</p>
       <img src={record.coverart} alt={record.title} />
       <p>{record.title}</p>
