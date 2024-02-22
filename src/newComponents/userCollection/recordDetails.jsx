@@ -39,6 +39,8 @@ function RecordDetails() {
     return <h2>Loading...</h2>;
   }
 
+const tagsArray = JSON.parse(record.tags)
+
   return (
     <div>
       <h2>In recordDetails</h2>
@@ -54,7 +56,15 @@ function RecordDetails() {
       <p>{record.title}</p>
       <p>{record.artist}</p>
       <p>{record.mood}</p>
-      <p>{record.tags}</p>
+      <p>TAGS</p>
+      {console.log('what is a tag anyways?',tagsArray )}
+      <ul>
+        {tagsArray.map((tag, i) => (
+          <li key={i}>
+            <p>{tag}</p>
+          </li>
+        ))}
+      </ul>
       <p>{record.details}</p>
 
       {record.user_id === activeUser.id && (
