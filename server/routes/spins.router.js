@@ -25,7 +25,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
 });
 
 // GET a specific spins details
-router.get("/single", rejectUnauthenticated, (req, res) => {
+router.get("/single/:id", rejectUnauthenticated, (req, res) => {
   const query = `
       SELECT * FROM "spins"
       INNER JOIN "spin_albums" on spins.id=spin_albums.spin_id

@@ -19,13 +19,15 @@ function AddSpinForm(props) {
   const handleInputChangeDetails = (e) => {
     setSpinDetails(e.target.value);
   };
-  const handleInputChangeDate = (e) => {
-    setSpinDate(e.target.value);
-  };
+  // const handleInputChangeDate = (e) => {
+  //   setSpinDate(e.target.value);
+  // };
 
-  const handleInputChangeRecords = (e) => {
-    setSpinRecords(e.target.value);
+  const handleInputChangeRecords = (selectedOptions) => {
+    const selectedValues = selectedOptions.map(option => option.value);
+    setSpinRecords(selectedValues);
   };
+  // console.log('whats in the crate mate?', spinRecords);
 
   const handleInputChangeHours = (e) => {
     setSpinHours(e.target.value);
@@ -34,6 +36,8 @@ function AddSpinForm(props) {
   const handleInputChangeMinutes = (e) => {
     setSpinMins(e.target.value);
   };
+
+
 
   const mappedAlbums = usersRecords.map((album) => ({
     value: album.id.toString(), // Ensure the value is a string
@@ -53,9 +57,51 @@ function AddSpinForm(props) {
       }, 1000);
     });
 
-  new AirDatepicker("#datePicker", {
-    locale: localeEn,
-  });
+  // new AirDatepicker("#datePicker", {
+  //   locale: localeEn,
+  //   onSelect: function(formattedDate, date, inst) {
+  //     setSpinDate(formattedDate);
+  //   }
+  // });
+
+  useEffect(() => {
+    const datepicker = new AirDatepicker("#datePicker", {
+      locale: localeEn,
+      onSelect: function(formattedDate) {
+        setSpinDate(formattedDate);
+      }
+    });
+    return () => datepicker.destroy();
+  }, []);
+  console.log('spin date', spinDate);
+  
+  function postSpin(event) {
+    event.preventDefault();
+    if (!spinHours || !spinMins || !spinDetails || !spinRecords || !spinDate) {
+      alert('PLEASE FILL FORM BEFORE SUBMIT')
+      return;
+    }
+
+    const formattedTimeSpent = (spinHours + ":" + spinMins)
+
+
+    const addSpinObject = {
+      timeSpent: formattedTimeSpent,
+      listenedAt: spinDate.formattedDate,
+      details: spinDetails,
+      albums: spinRecords
+    };
+    console.log('checking payload of submit', addSpinObject);
+    dispatch({
+      type: "POST_SPINS",
+      payload: addSpinObject
+    })
+    setSpinDate('');
+    setSpinDetails('');
+    setSpinHours('');
+    setSpinMins('');
+    setSpinRecords('')
+  }
 
   useEffect(() => {
     dispatch({ type: "FETCH_RECORDS" });
@@ -73,17 +119,17 @@ function AddSpinForm(props) {
           defaultOptions={mappedAlbums}
           loadOptions={promiseOptions}
           id="multiSelectRecords"
-          value={spinRecords}
+          value={mappedAlbums.filter(album => spinRecords.includes(album.value))}
           onChange={handleInputChangeRecords}
         />
         <label htmlFor="datePicker">Pick Date:</label>
-        <input
+        <span id="datePicker"/>
+        {/* <input
           type="text"
           id="datePicker"
           placeholder="Pick Date of Session"
           value={spinDate}
-          onChange={handleInputChangeDate}
-        />
+        /> */}
 
         <label htmlFor="hours">Hours:</label>
         <input
