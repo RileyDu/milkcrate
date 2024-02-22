@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-// import DateTimePicker from "react-bootstrap-datetimepicker";
 import AsyncSelect from 'react-select/async';
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css";
+import AirDatepicker from 'air-datepicker';
+import 'air-datepicker/air-datepicker.css';
+import localeEn from 'air-datepicker/locale/en';
 
 function AddSpinForm(props) {
   const dispatch = useDispatch();
@@ -35,6 +35,10 @@ function AddSpinForm(props) {
       }, 1000);
     });
 
+    new AirDatepicker('#datePicker',{
+      locale: localeEn
+  })
+
   useEffect(() => {
     dispatch({ type: "FETCH_RECORDS" });
     return () => dispatch({ type: `CLEAR_RECORDS` });
@@ -51,6 +55,7 @@ function AddSpinForm(props) {
           defaultOptions={mappedAlbums}
           loadOptions={promiseOptions}
         />
+        <input type="text" id="datePicker" placeholder="Pick Date of Session" />
         <label htmlFor="hours">Hours:</label>
         <input type="number" id="hours" min="0" placeholder="Hours Listened" />
         <label htmlFor="minutes">Minutes:</label>
