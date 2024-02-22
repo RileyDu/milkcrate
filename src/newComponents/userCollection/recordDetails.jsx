@@ -53,10 +53,10 @@ const tagsArray = JSON.parse(record.tags)
       )}
       <p>Record ID: {record.id}</p>
       <img src={record.coverart} alt={record.title} />
-      <p>{record.title}</p>
-      <p>{record.artist}</p>
-      <p>MOOD : {record.mood}</p>
-      <p>TAGS</p>
+      <p><strong>ALBUM TITLE:</strong> {record.title}</p>
+      <p><strong>ALBUM ARTIST:</strong> {record.artist}</p>
+      <p><strong>MOOD:</strong> {record.mood}</p>
+      <p><strong>TAGS</strong></p>
       {console.log('what is a tag anyways?',tagsArray )}
       <ul>
         {tagsArray.map((tag, i) => (
@@ -65,7 +65,7 @@ const tagsArray = JSON.parse(record.tags)
           </li>
         ))}
       </ul>
-      <p>{record.details}</p>
+      <p><strong>DETAILS:</strong> {record.details}</p>
 
       {record.user_id === activeUser.id && (
         <>
