@@ -48,14 +48,17 @@ function AddSpinForm(props) {
     <div>
       <h2>In addSpinForm</h2>
       <form onSubmit={(event) => postSpin(event)}>
-        {/* hours and minutes for how long the spin session was */}
+      <label htmlFor="multiSelectRecords">Select Spun Records:</label>
         <AsyncSelect
           isMulti
           cacheOptions
           defaultOptions={mappedAlbums}
           loadOptions={promiseOptions}
+          id="multiSelectRecords"
         />
+        <label htmlFor="datePicker">Pick Date:</label>
         <input type="text" id="datePicker" placeholder="Pick Date of Session" />
+
         <label htmlFor="hours">Hours:</label>
         <input type="number" id="hours" min="0" placeholder="Hours Listened" />
         <label htmlFor="minutes">Minutes:</label>
@@ -66,12 +69,15 @@ function AddSpinForm(props) {
           max="59"
           placeholder="Minutes Listened"
         />
+
         {/* Details about the spin session they are adding */}
+        <label htmlFor="spinDetails"> Spin Details: </label>
         <input
           type="text"
           value={spinDetails}
           onChange={handleInputChangeDetails}
           placeholder="Enter Spin Details"
+          id="spinDetails"
         />
         <button type="submit">ADD SPIN</button>
       </form>
