@@ -43,6 +43,13 @@ FOREIGN KEY (spin_id)
 REFERENCES spins(id)
 ON DELETE CASCADE;
 
+ALTER TABLE spin_albums
+DROP CONSTRAINT spin_albums_album_id_fkey,
+ADD CONSTRAINT spin_albums_album_id_fkey
+FOREIGN KEY (album_id)
+REFERENCES albums(id)
+ON DELETE CASCADE;
+
 CREATE TABLE "friends" (
     "id" serial NOT NULL,
     "user_id" integer REFERENCES "user" ("id") NOT NULL,

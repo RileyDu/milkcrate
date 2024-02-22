@@ -57,7 +57,7 @@ router.post("/add", rejectUnauthenticated, (req, res) => {
         finalAlbumTitle,
         finalArtist,
         finalCoverArt,
-        finalTags,
+        JSON.stringify(finalTags),
         finalMood,
         finalDetails,
         req.user.id,
