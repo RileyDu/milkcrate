@@ -8,10 +8,10 @@ import { useDispatch } from "react-redux";
 
 function AddSpinForm(props) {
   const dispatch = useDispatch();
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [spinDetails, setSpinDetails] = useState('')
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  const handleInputChangeDetails = (e) => {
+    setSpinDetails(e.target.value);
   };
 
   return (
@@ -19,9 +19,9 @@ function AddSpinForm(props) {
       <h2>In addSpinForm</h2>
       <form onSubmit={(event) => postSpin(event)}>
         {/* hours and minutes for how long the spin session was */}
-        <label for="hours">Hours:</label>
+        <label htmlFor="hours">Hours:</label>
         <input type="number" id="hours" min="0" placeholder="Hours Listened" />
-        <label for="minutes">Minutes:</label>
+        <label htmlFor="minutes">Minutes:</label>
         <input
           type="number"
           id="minutes"
@@ -29,15 +29,6 @@ function AddSpinForm(props) {
           max="59"
           placeholder="Minutes Listened"
         />
-        <div>
-          {/* Let's user pick time and date when the spin occured */}
-          {/* <DateTimePicker
-            onChange={handleDateChange}
-            format="YYYY-MM-DD HH:mm"
-            inputProps={{ placeholder: "Select Date and Time" }}
-            sideBySide
-          /> */}
-        </div>
         {/* Details about the spin session they are adding */}
         <input
           type="text"

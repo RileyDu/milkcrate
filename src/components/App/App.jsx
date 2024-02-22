@@ -31,6 +31,7 @@ import SingleSpin from "../../newComponents/SpinSessions/singleSpin";
 import AddRecordForm from "../../newComponents/userCollection/addRecordForm";
 import EditRecordForm from "../../newComponents/userCollection/editRecordForm";
 import RecordDetails from "../../newComponents/userCollection/recordDetails";
+import TestSite from "../../newComponents/SpinSessions/selectTester";
 
 function App() {
   const dispatch = useDispatch();
@@ -121,6 +122,10 @@ function App() {
 
           <ProtectedRoute exact path="/blindbag">
             <Blindbag />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/test">
+            <TestSite />
           </ProtectedRoute>
 
           <Route exact path="/login">
