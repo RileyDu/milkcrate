@@ -10,12 +10,12 @@ function SingleSpin(props) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const spin = useSelector((store) => store.spinsReducer)
+  const spins = useSelector((store) => store.spinsReducer);
 
-  console.log("whats in the single spin?", spin);
+  // console.log("whats in the single spin?", spin);
 
   useEffect(() => {
-      dispatch({ type: "FETCH_SINGLE_SPIN", payload: id });
+    dispatch({ type: "FETCH_SINGLE_SPIN", payload: id });
   }, [dispatch]);
 
   function deleteSpin() {
@@ -30,12 +30,20 @@ function SingleSpin(props) {
   return (
     <div>
       <h2>In singleSpin</h2>
-      <button onClick={()=>deleteSpin()}>delete spin</button>
-      {/* <p>{spin.listened_at}</p>
-      <p>{spin.time_spent}</p>
-      <p>{spin.artist}</p>
-      <p>{spin.title}</p>
-      <p>{spin.details}</p> */}
+      <button onClick={() => history.push("/spins")}>back</button>
+      <button onClick={() => deleteSpin()}>delete spin</button>
+      <p>{spins[0].listened_at}</p>
+      <p>{spins[0].time_spent}</p>
+      <p>{spins[0].spin_details}</p>
+      <ul>
+        {spins.map((spin, i) => (
+          <li key={i}>
+            <p>
+              {spin.title} by {spin.artist}
+            </p>
+          </li>
+        ))}
+      </ul>
     </div>
     // NEED TO ADD CONDITIONAL RENDERING DEPENDING ON HOW MANY ALBUMS IN A LISTENING SESSION STILL
     //NEED TO USE MOMENT TO TRANSLATE DB TIME TO READABLE FORM
