@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function EditRecordForm(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const moods = useSelector((store) => store.moodReducer);
   const record = useSelector((store) =>
     store.recordReducer.find((record) => record.id.toString() === id)
@@ -60,6 +62,7 @@ function EditRecordForm(props) {
     setRecordTitle("");
     setRecordMood("");
     setRecordDetails("");
+    history.push(`/user/details/${id}`)
   }
 
   // console.log("whats in the record?", record);
@@ -73,6 +76,7 @@ function EditRecordForm(props) {
   return (
     <div>
       <h2>In editRecordForm</h2>
+      <button onClick={() => history.push(`/user/details/${id}`)}>back</button>
       <form onSubmit={(event) => editRecord(event)}>
         <input
           type="text"

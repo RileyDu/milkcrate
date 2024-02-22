@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import AsyncSelect from "react-select/async";
 import AirDatepicker from "air-datepicker";
 import "air-datepicker/air-datepicker.css";
@@ -9,6 +10,7 @@ import localeEn from "air-datepicker/locale/en";
 
 function AddSpinForm(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [spinDetails, setSpinDetails] = useState("");
   const [spinDate, setSpinDate] = useState("");
   const [spinRecords, setSpinRecords] = useState("");
@@ -110,6 +112,7 @@ function AddSpinForm(props) {
   return (
     <div>
       <h2>In addSpinForm</h2>
+      <button onClick={() => history.push("/spins")}>back</button>
       <form onSubmit={(event) => postSpin(event)}>
         <label htmlFor="multiSelectRecords">Select Spun Records:</label>
         <AsyncSelect

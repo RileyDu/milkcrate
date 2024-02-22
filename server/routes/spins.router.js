@@ -50,7 +50,7 @@ router.post("/add", rejectUnauthenticated, (req, res) => {
   
     const insertSpinQuery = `
       INSERT INTO "spins"
-        ("time_spent", "details", "listened_at", "user_id")
+        ("time_spent", "spin_details", "listened_at", "user_id")
       VALUES
         ($1, $2, $3, $4)
       RETURNING id

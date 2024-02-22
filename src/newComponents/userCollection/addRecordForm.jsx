@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 function AddRecordForm(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [recordArtist, setRecordArtist] = useState('');
   const [recordTitle, setRecordTitle] = useState('');
   const [recordMood, setRecordMood] = useState('');
@@ -59,6 +61,7 @@ const moods = useSelector((store) => store.moodReducer)
   return (
     <div>
       <h2>In addRecordForm</h2>
+      <button onClick={() => history.push("/user")}>home</button>
       <form onSubmit={(event) => postRecord(event)}>
         <input
           type="text"
