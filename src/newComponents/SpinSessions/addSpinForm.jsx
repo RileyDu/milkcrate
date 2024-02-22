@@ -2,20 +2,38 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import AsyncSelect from 'react-select/async';
-import AirDatepicker from 'air-datepicker';
-import 'air-datepicker/air-datepicker.css';
-import localeEn from 'air-datepicker/locale/en';
+import AsyncSelect from "react-select/async";
+import AirDatepicker from "air-datepicker";
+import "air-datepicker/air-datepicker.css";
+import localeEn from "air-datepicker/locale/en";
 
 function AddSpinForm(props) {
   const dispatch = useDispatch();
   const [spinDetails, setSpinDetails] = useState("");
+  const [spinDate, setSpinDate] = useState("");
+  const [spinRecords, setSpinRecords] = useState("");
+  const [spinHours, setSpinHours] = useState("");
+  const [spinMins, setSpinMins] = useState("");
+  const usersRecords = useSelector((store) => store.recordReducer);
 
   const handleInputChangeDetails = (e) => {
     setSpinDetails(e.target.value);
   };
+  const handleInputChangeDate = (e) => {
+    setSpinDate(e.target.value);
+  };
 
-  const usersRecords = useSelector((store) => store.recordReducer);
+  const handleInputChangeRecords = (e) => {
+    setSpinRecords(e.target.value);
+  };
+
+  const handleInputChangeHours = (e) => {
+    setSpinHours(e.target.value);
+  };
+
+  const handleInputChangeMinutes = (e) => {
+    setSpinMins(e.target.value);
+  };
 
   const mappedAlbums = usersRecords.map((album) => ({
     value: album.id.toString(), // Ensure the value is a string
@@ -35,9 +53,9 @@ function AddSpinForm(props) {
       }, 1000);
     });
 
-    new AirDatepicker('#datePicker',{
-      locale: localeEn
-  })
+  new AirDatepicker("#datePicker", {
+    locale: localeEn,
+  });
 
   useEffect(() => {
     dispatch({ type: "FETCH_RECORDS" });
@@ -48,26 +66,41 @@ function AddSpinForm(props) {
     <div>
       <h2>In addSpinForm</h2>
       <form onSubmit={(event) => postSpin(event)}>
-      <label htmlFor="multiSelectRecords">Select Spun Records:</label>
+        <label htmlFor="multiSelectRecords">Select Spun Records:</label>
         <AsyncSelect
           isMulti
           cacheOptions
           defaultOptions={mappedAlbums}
           loadOptions={promiseOptions}
           id="multiSelectRecords"
+          value={spinRecords}
+          onChange={handleInputChangeRecords}
         />
         <label htmlFor="datePicker">Pick Date:</label>
-        <input type="text" id="datePicker" placeholder="Pick Date of Session" />
+        <input
+          type="text"
+          id="datePicker"
+          placeholder="Pick Date of Session"
+          value={spinDate}
+          onChange={handleInputChangeDate}
+        />
 
         <label htmlFor="hours">Hours:</label>
-        <input type="number" id="hours" min="0" placeholder="Hours Listened" />
+        <input
+          type="number"
+          id="hours"
+          min="0"
+          value={spinHours}
+          onChange={handleInputChangeHours}
+        />
         <label htmlFor="minutes">Minutes:</label>
         <input
           type="number"
           id="minutes"
           min="0"
           max="59"
-          placeholder="Minutes Listened"
+          value={spinMins}
+          onChange={handleInputChangeMinutes}
         />
 
         {/* Details about the spin session they are adding */}
