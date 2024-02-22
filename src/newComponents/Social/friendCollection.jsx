@@ -37,8 +37,9 @@ function FriendCollection(props) {
   return (
     <div>
       <h2>{friend.friend_username}'s milkcrate</h2>
-      <button onClick={() => deleteFriend()}>delete friend</button>
       <button onClick={() => history.push("/social")}>back</button>
+      <hr/>
+      <button onClick={() => deleteFriend()}>delete friend</button>
       {records?.length > 0 && (
         <ul>
           {records.map((record, i) => (

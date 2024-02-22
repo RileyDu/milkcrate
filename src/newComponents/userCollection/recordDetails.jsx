@@ -55,7 +55,7 @@ const tagsArray = JSON.parse(record.tags)
       <img src={record.coverart} alt={record.title} />
       <p>{record.title}</p>
       <p>{record.artist}</p>
-      <p>{record.mood}</p>
+      <p>MOOD : {record.mood}</p>
       <p>TAGS</p>
       {console.log('what is a tag anyways?',tagsArray )}
       <ul>

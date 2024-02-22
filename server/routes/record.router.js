@@ -10,10 +10,12 @@ const axios = require("axios");
 //GET the user's milkcrate
 router.get("/", rejectUnauthenticated, (req, res) => {
   const query = `
-      SELECT * FROM "albums"
-      WHERE user_id = $1
-        ORDER BY "id" DESC;
-    `;
+  SELECT albums.*, moods.mood AS mood
+  FROM "albums"
+  JOIN "moods" ON albums.mood = moods.id
+  WHERE albums.user_id = $1
+  ORDER BY albums.id DESC;
+`;
   pool
     .query(query, [req.user.id])
     .then((result) => {
