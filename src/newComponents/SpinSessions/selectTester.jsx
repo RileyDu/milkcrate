@@ -1,13 +1,15 @@
 import AsyncSelect from "react-select/async";
 import { useSelector } from "react-redux";
-// import { ColourOption, colourOptions } from '../data';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import AirDatepicker from 'air-datepicker';
+import 'air-datepicker/air-datepicker.css';
+import localeEn from 'air-datepicker/locale/en';
 
 function TestSite() {
   const dispatch = useDispatch();
   const usersRecords = useSelector((store) => store.recordReducer);
-
+  const [date, setDate] = useState(new Date())
   const mappedAlbums = usersRecords.map(album => ({
     value: album.id.toString(), // Ensure the value is a string
     label: album.title // Use the album title for the label
@@ -31,27 +33,23 @@ function TestSite() {
     return () => dispatch({ type: `CLEAR_RECORDS` });
   }, [dispatch]);
 
+  new AirDatepicker('#input',{
+    locale: localeEn
+})
+
   return (
+    <>
     <AsyncSelect
       isMulti
       cacheOptions
       defaultOptions={mappedAlbums}
       loadOptions={promiseOptions}
     />
+  <form action="">
+    <input type="text" id="input" placeholder="test"/>
+  </form>
+  </>
   );
 }
 export default TestSite;
 
-/* Let's user pick time and date when the spin occured */
-/* <DateTimePicker
-  onChange={handleDateChange}
-  format="YYYY-MM-DD HH:mm"
-  inputProps={{ placeholder: "Select Date and Time" }}
-  sideBySide
-/> */
-
-// const [selectedDate, setSelectedDate] = useState(null);
-
-// const handleDateChange = (date) => {
-//   setSelectedDate(date);
-// };

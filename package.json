@@ -6,10 +6,12 @@
     "node": "18.x"
   },
   "dependencies": {
+    "air-datepicker": "^3.4.0",
     "axios": "^1.6.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
     "cookie-session": "^2.0.0",
+    "dayjs": "^1.11.10",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "moment": "^2.30.1",
