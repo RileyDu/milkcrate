@@ -32,9 +32,9 @@ router.get("/single/:id", rejectUnauthenticated, (req, res) => {
       INNER JOIN "albums" on spin_albums.album_id=albums.id
       WHERE spins.id = $1
     `;
-    console.log(req.query.id);
+    // console.log(req.query.id);
   pool
-    .query(query, [req.query.id])
+    .query(query, [req.params.id])
     .then((result) => {
       res.send(result.rows);
     })

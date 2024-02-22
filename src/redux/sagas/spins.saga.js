@@ -20,7 +20,7 @@ function* fetchSpins() {
 function* fetchSingleSpin(action) {
   try {
     const response = yield axios.get(
-      `/api/spins/single?id=${action.payload}`,
+      `/api/spins/single/${action.payload}`,
     );
 console.log('response from single spin get:', response.data);
     yield put({ type: "SET_SPINS", payload: response.data });

@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 function SpinSessions(props) {
   const dispatch = useDispatch();
   const spins = useSelector((store) => store.spinsReducer)
-console.log('what is in the spins?', spins);
+// console.log('what is in the spins?', spins);
   useEffect(() => {
     dispatch({ type: "FETCH_SPINS" });
   }, [dispatch]);
@@ -20,9 +20,8 @@ const history = useHistory();
       <ul>
         {spins.map((spin, i) => (
           <li key={i}>
-            {console.log('whats the spin?', spin)}
+            {/* {console.log('whats the spin?', spin)} */}
             <p onClick={()=>history.push(`/spins/details/${spin.id}`)}>{spin.details}{spin.listened_at}</p>
-            {/* <img  onClick={()=>history.push(`/user/details/${record.id}`)} src={record.coverart}/> */}
           </li>
         ))}
       </ul>

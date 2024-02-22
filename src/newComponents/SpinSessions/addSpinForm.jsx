@@ -84,7 +84,6 @@ function AddSpinForm(props) {
 
     const formattedTimeSpent = (spinHours + ":" + spinMins)
 
-
     const addSpinObject = {
       timeSpent: formattedTimeSpent,
       listenedAt: spinDate.formattedDate,
