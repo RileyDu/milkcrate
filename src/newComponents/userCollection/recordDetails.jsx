@@ -39,7 +39,7 @@ function RecordDetails() {
     return <h2>Loading...</h2>;
   }
 
-const tagsArray = JSON.parse(record.tags)
+  const tagsArray = JSON.parse(record.tags);
 
   return (
     <div>
@@ -53,19 +53,32 @@ const tagsArray = JSON.parse(record.tags)
       )}
       <p>Record ID: {record.id}</p>
       <img src={record.coverart} alt={record.title} />
-      <p><strong>ALBUM TITLE:</strong> {record.title}</p>
-      <p><strong>ALBUM ARTIST:</strong> {record.artist}</p>
-      <p><strong>MOOD:</strong> {record.mood}</p>
-      <p><strong>TAGS</strong></p>
-      {console.log('what is a tag anyways?',tagsArray )}
-      <ul>
-        {tagsArray.map((tag, i) => (
-          <li key={i}>
-            <p>{tag}</p>
-          </li>
-        ))}
-      </ul>
-      <p><strong>DETAILS:</strong> {record.details}</p>
+      <p>
+        <strong>ALBUM TITLE:</strong> {record.title}
+      </p>
+      <p>
+        <strong>ALBUM ARTIST:</strong> {record.artist}
+      </p>
+      <p>
+        <strong>MOOD:</strong> {record.mood}
+      </p>
+      <p>
+        <strong>TAGS</strong>
+      </p>
+      {console.log("what is a tag anyways?", tagsArray)}
+
+      {tagsArray.length > 0 ? (
+        <ul>
+          {tagsArray.map((tag, i) => (
+            <li key={i}>
+              <p>{tag}</p>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      <p>
+        <strong>DETAILS:</strong> {record.details}
+      </p>
 
       {record.user_id === activeUser.id && (
         <>
