@@ -40,6 +40,14 @@ function MyMilkcrate(props) {
     })
   }
 
+  function clearSearch(){
+    dispatch({
+      type: "FETCH_RECORDS"
+    })
+    setSearchQuery('');
+  }
+
+
   return (
     <div>
       <h2>{username}'s milkcrate</h2>
@@ -53,7 +61,7 @@ function MyMilkcrate(props) {
         />
         <button type="submit">SEARCH</button>
       </form>
-
+      <button onClick={clearSearch}>CLEAR</button>
       {records?.length > 0 && (
         <ul>
           {records.map((record, i) => (
