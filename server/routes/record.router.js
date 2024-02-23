@@ -83,17 +83,18 @@ router.post("/add", rejectUnauthenticated, (req, res) => {
 
 //GET albums from milkcrate W/SEARCH params
 router.get("/search", rejectUnauthenticated, (req, res) => {
+  const searchTerm = `%${req.query.search}%`;
   const query = `
-    SELECT *
-    FROM "albums"
-    WHERE
-        "title" % $1
-        OR "artist" % $1
-        OR "tags" % $1
-        OR CAST("mood" AS TEXT) % $1;
+      SELECT *
+      FROM "albums"
+      WHERE
+      ("title" ILIKE $1
+      OR "artist" ILIKE $1
+      OR "tags" ILIKE $1)
+      AND "user_id" = $2
     `;
   pool
-    .query(query, [req.params])
+    .query(query, [searchTerm, req.user.id])
     .then((result) => {
       res.send(result.rows);
     })

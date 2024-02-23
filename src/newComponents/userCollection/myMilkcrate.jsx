@@ -29,9 +29,14 @@ function MyMilkcrate(props) {
       alert('PLEASE SUBMIT A SEARCH')
       return;
     }
+
+    const searchObject = {
+      search: searchQuery
+    }
+
     dispatch({
       type: "SEARCH_RECORDS",
-      payload: searchQuery
+      payload: searchObject
     })
   }
 

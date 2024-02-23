@@ -10,6 +10,7 @@ function FriendCollection(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const records = useSelector((store) => store.recordReducer);
+  const [searchQuery, setSearchQuery] = useState("");
   const socialReducer = useSelector((store) => store.socialReducer);
   const friend = socialReducer.find(
     (friend) => friend.friend_id.toString() === id
@@ -30,6 +31,24 @@ function FriendCollection(props) {
     history.push(`/social`); // takes user back to home
   }
 
+  const handleInputChangeSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  function searchRecords(event) {
+    event.preventDefault()
+    console.log('checking payload of submit', searchQuery);
+    
+    if (!searchQuery) {
+      alert('PLEASE SUBMIT A SEARCH')
+      return;
+    }
+    dispatch({
+      type: "SEARCH_FRIENDS_RECORDS",
+      payload: searchQuery
+    })
+  }
+
   if (!friend) {
     return <h2>Loading...</h2>
   }
@@ -37,6 +56,15 @@ function FriendCollection(props) {
   return (
     <div>
       <h2>{friend.friend_username}'s milkcrate</h2>
+      <form onSubmit={(event) => searchRecords(event)}>
+        <input
+          type="text"
+          placeholder="Search milkcrate"
+          value={searchQuery}
+          onChange={handleInputChangeSearch}
+        />
+        <button type="submit">SEARCH</button>
+      </form>
       <button onClick={() => history.push("/social")}>back</button>
       <hr/>
       <button onClick={() => deleteFriend()}>delete friend</button>
