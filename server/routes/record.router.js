@@ -43,7 +43,10 @@ router.post("/add", rejectUnauthenticated, (req, res) => {
       const finalArtist = response.data.album.artist;
       const finalCoverArt = response.data.album.image[4]["#text"];
       const tagsObject = response.data.album.tags.tag;
-      const finalTags = tagsObject.map((tag) => tag.name);
+      const finalTags =
+        tagsObject && tagsObject.length > 0
+          ? tagsObject.map((tag) => tag.name)
+          : [];
       const finalMood = albumMood;
       const finalDetails = albumDetails;
 

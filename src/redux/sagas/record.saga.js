@@ -13,6 +13,7 @@ function* fetchRecords() {
 
 function* postRecord(action) {
   try {
+    
     const response = yield axios.post("/api/record/add", action.payload);
     yield put({ type: "FETCH_RECORDS" });
   } catch (error) {
