@@ -28,7 +28,7 @@ function SingleSpin(props) {
     history.push(`/spins`); // takes user back to home
   }
 
-  const formattedDate = dayjs(spins[0].listened_at).format('MM//DD/YYYY')
+  const formattedDate = dayjs(spins[0].listened_at).format('MM/DD/YYYY')
   const takeOffSeconds = spins[0].time_spent.split(":")
   const formattedTime = takeOffSeconds[0] + ":" + takeOffSeconds[1]
 

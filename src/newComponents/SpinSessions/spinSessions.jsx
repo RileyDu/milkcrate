@@ -13,7 +13,7 @@ function SpinSessions(props) {
     dispatch({ type: "FETCH_SPINS" });
   }, [dispatch]);
 
-const formattedDate = dayjs(spins.listened_at).format('MM//DD/YYYY')
+const formattedDate = dayjs(spins.listened_at).format('MM/DD/YYYY')
 
 const history = useHistory();
   return (
