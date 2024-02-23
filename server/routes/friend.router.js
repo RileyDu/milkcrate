@@ -51,18 +51,18 @@ router.get("/friends/collection", rejectUnauthenticated, (req, res) => {
 
 //GET albums from friend's milkcrate W/SEARCH params
 router.get("/friends/collection/search", rejectUnauthenticated, (req, res) => {
+  const searchTerm = `%${req.query.search}%`;
   const query = `
-    SELECT *
-    FROM "albums"
-    WHERE user_id = $1
-    WHERE
-        "title" % $1
-        OR "artist" % $1
-        OR "tags" % $1
-        OR CAST("mood" AS TEXT) % $1;
+  SELECT *
+  FROM "albums"
+  WHERE
+  ("title" ILIKE $1
+  OR "artist" ILIKE $1
+  OR "tags" ILIKE $1)
+  AND "user_id" = $2
     `;
   pool
-    .query(query, [req.body.id, req.params])
+    .query(query, [searchTerm, req.query.id])
     .then((result) => {
       res.send(result.rows);
     })
@@ -75,24 +75,25 @@ router.get("/friends/collection/search", rejectUnauthenticated, (req, res) => {
 // POST a new frienship
 router.post("/add", rejectUnauthenticated, (req, res) => {
   const friendName = req.body.friend_username;
-    console.log('friendName', friendName);
+  console.log("friendName", friendName);
   // Query to retrieve the friend's ID based on the username
   const findFriendQuery = `
     SELECT "id" FROM "user" WHERE "username" = $1
   `;
-    
-  pool.query(findFriendQuery, [friendName])
+
+  pool
+    .query(findFriendQuery, [friendName])
     .then(({ rows: friendRows }) => {
-      console.log('friendrows:', friendRows);
+      console.log("friendrows:", friendRows);
       const friendId = friendRows[0].id;
 
       const insertFriendQuery = `
         INSERT INTO "friends" ("user_id", "friend_id", "friend_username")
         VALUES ($1, $2, $3)
       `;
-    
+
       const insertFriendValues = [req.user.id, friendId, friendName];
-    
+
       return pool.query(insertFriendQuery, insertFriendValues);
     })
     .then(() => {

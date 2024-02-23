@@ -50,7 +50,8 @@ function* deleteFriendship(action) {
   
   function* searchFriendsRecords(action) {
     try {
-      const response = yield axios.get('/api/social/friends/collection/search', action.payload );
+      const searchTerm = encodeURIComponent(action.payload.search);
+      const response = yield axios.get(`/api/social/friends/collection/search?search=${searchTerm}&id=${action.payload.friend_id}`);
       yield put({ type: 'SET_RECORDS', payload: response.data });
     } catch (error) {
       console.log('User get request failed', error);

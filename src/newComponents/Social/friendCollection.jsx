@@ -52,6 +52,33 @@ function FriendCollection(props) {
   if (!friend) {
     return <h2>Loading...</h2>
   }
+  function searchRecords(event) {
+    event.preventDefault()
+    console.log('checking payload of submit', searchQuery);
+    
+    if (!searchQuery) {
+      alert('PLEASE SUBMIT A SEARCH')
+      return;
+    }
+
+    const searchObject = {
+      search: searchQuery,
+      friend_id: id
+    }
+
+    dispatch({
+      type: "SEARCH_FRIENDS_RECORDS",
+      payload: searchObject
+    })
+  }
+
+  function clearSearch(){
+    dispatch({
+      type: "FETCH_FRIENDS_RECORDS",
+      payload: id
+    })
+    setSearchQuery('');
+  }
 
   return (
     <div>
@@ -65,8 +92,10 @@ function FriendCollection(props) {
         />
         <button type="submit">SEARCH</button>
       </form>
-      <button onClick={() => history.push("/social")}>back</button>
+      <button onClick={clearSearch}>CLEAR</button>
+
       <hr/>
+      <button onClick={() => history.push("/social")}>back</button>
       <button onClick={() => deleteFriend()}>delete friend</button>
       {records?.length > 0 && (
         <ul>
