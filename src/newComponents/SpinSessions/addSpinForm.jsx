@@ -102,6 +102,7 @@ function AddSpinForm(props) {
     setSpinHours('');
     setSpinMins('');
     setSpinRecords('')
+    history.push("/spins")
   }
 
   useEffect(() => {

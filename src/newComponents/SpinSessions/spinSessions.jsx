@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import dayjs from 'dayjs'
 
 function SpinSessions(props) {
   const dispatch = useDispatch();
@@ -11,6 +12,8 @@ function SpinSessions(props) {
   useEffect(() => {
     dispatch({ type: "FETCH_SPINS" });
   }, [dispatch]);
+
+const formattedDate = dayjs(spins.listened_at).format('MM//DD/YYYY')
 
 const history = useHistory();
   return (
@@ -21,7 +24,7 @@ const history = useHistory();
         {spins.map((spin, i) => (
           <li key={i}>
             {/* {console.log('whats the spin?', spin)} */}
-            <p onClick={()=>history.push(`/spins/details/${spin.id}`)}>{spin.spin_details}{spin.listened_at}</p>
+            <p onClick={()=>history.push(`/spins/details/${spin.id}`)}>{spin.spin_details} {formattedDate}</p>
           </li>
         ))}
       </ul>
