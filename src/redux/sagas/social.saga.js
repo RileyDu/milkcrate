@@ -41,14 +41,19 @@ function* deleteFriendship(action) {
 
   function* fetchFriendsRecords(action) {
     try {
-      const config = {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      };
-      const response = yield axios.get(`/api/social/friends/collection?id=${action.payload}`, config);
+      const response = yield axios.get(`/api/social/friends/collection?id=${action.payload}`);
       yield put({ type: "SET_RECORDS", payload: response.data });
     } catch (error) {
       console.error("User get request failed", error);
+    }
+  }
+  
+  function* searchFriendsRecords(action) {
+    try {
+      const response = yield axios.get('/api/social/friends/collection/search', action.payload );
+      yield put({ type: 'SET_RECORDS', payload: response.data });
+    } catch (error) {
+      console.log('User get request failed', error);
     }
   }
 
@@ -61,6 +66,7 @@ function* socialSaga() {
   yield takeLatest("POST_FRIENDSHIP", postFriendship);
   yield takeLatest("DELETE_FRIENDSHIP", deleteFriendship);
   yield takeLatest("FETCH_FRIENDS_RECORDS", fetchFriendsRecords);
+  yield takeLatest("SEARCH_FRIENDS_RECORDS", searchFriendsRecords);
 
 }
 
