@@ -52,6 +52,7 @@ function MyMilkcrate(props) {
     <div>
       <h2>{username}'s milkcrate</h2>
 
+        <button onClick={() => history.push("/user/add")}>Add record</button>
       <form onSubmit={(event) => searchRecords(event)}>
         <input
           type="text"
@@ -75,7 +76,6 @@ function MyMilkcrate(props) {
           ))}
         </ul>
       )}
-      <button onClick={() => history.push("/user/add")}>Add record</button>
       {/* THE EDIT NEEDS TO GO IN THE DETAILS PAGE */}
     </div>
   );
