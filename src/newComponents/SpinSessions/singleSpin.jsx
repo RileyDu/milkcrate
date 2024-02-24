@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import dayjs from "dayjs";
+import Swal from 'sweetalert2'
+
 
 function SingleSpin(props) {
   const { id } = useParams();
@@ -20,12 +22,33 @@ function SingleSpin(props) {
   }, [dispatch]);
 
   function deleteSpin() {
-    //delete button triggers this and sends a DELETE request to db w/id
-    dispatch({
-      type: "DELETE_SPIN",
-      payload: id,
+    // Show SweetAlert confirmation dialog
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "This will permanently delete the spin. You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User confirmed deletion, proceed with the delete operation
+        dispatch({
+          type: "DELETE_SPIN",
+          payload: id,
+        });
+        history.push(`/spins`); // Redirects user back to the spins page
+  
+        // Show deletion success message
+        Swal.fire(
+          'Deleted!',
+          'Your spin has been deleted.',
+          'success'
+        );
+      }
+      // If result.isConfirmed is false, user canceled, do nothing
     });
-    history.push(`/spins`); // takes user back to home
   }
 
   const formattedDate = dayjs(spins[0].listened_at).format('MM/DD/YYYY')
