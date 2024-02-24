@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 function AddRecordForm(props) {
   const dispatch = useDispatch();
@@ -33,7 +34,12 @@ const moods = useSelector((store) => store.moodReducer)
     console.log('checking payload of submit', recordArtist, recordTitle, recordDetails, recordMood,);
     
     if (!recordArtist || !recordTitle || !recordMood || !recordDetails) {
-      alert('PLEASE FILL FORM BEFORE SUBMIT')
+      Swal.fire({
+        title: "Attention!",
+        text: "Please fill form before submit",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
       return;
     }
   

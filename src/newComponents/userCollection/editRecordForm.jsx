@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function EditRecordForm(props) {
   const { id } = useParams();
@@ -42,7 +43,12 @@ function EditRecordForm(props) {
     );
 
     if (!recordArtist || !recordTitle || !recordMood || !recordDetails) {
-      alert("PLEASE FILL FORM BEFORE SUBMIT");
+      Swal.fire({
+        title: "Attention!",
+        text: "Please fill form before submit",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
       return;
     }
 
@@ -51,7 +57,7 @@ function EditRecordForm(props) {
       title: recordTitle,
       mood: recordMood,
       details: recordDetails,
-      id: id
+      id: id,
     };
 
     dispatch({
@@ -62,7 +68,7 @@ function EditRecordForm(props) {
     setRecordTitle("");
     setRecordMood("");
     setRecordDetails("");
-    history.push(`/user/details/${id}`)
+    history.push(`/user/details/${id}`);
   }
 
   // console.log("whats in the record?", record);

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function FriendCollection(props) {
   const { id } = useParams();
@@ -20,52 +20,47 @@ function FriendCollection(props) {
   useEffect(() => {
     dispatch({ type: "FETCH_FRIENDS_RECORDS", payload: id });
     // return a function to run it when this component unmounts
-    return () => dispatch({type: `CLEAR_RECORDS`});
+    return () => dispatch({ type: `CLEAR_RECORDS` });
   }, [socialReducer]);
 
-function deleteFriend() {
-  // Show SweetAlert confirmation dialog
-  Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      // User confirmed deletion, proceed with the delete operation
-      dispatch({
-        type: "DELETE_FRIENDSHIP",
-        payload: id,
-      });
-      history.push(`/social`); // takes user back to home
+  function deleteFriend() {
+    // Show SweetAlert confirmation dialog
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User confirmed deletion, proceed with the delete operation
+        dispatch({
+          type: "DELETE_FRIENDSHIP",
+          payload: id,
+        });
+        history.push(`/social`); // takes user back to home
 
-      // Show deletion success message
-      Swal.fire(
-        'Deleted!',
-        'The friendship has been ended.',
-        'success'
-      );
-    }
-    // If result.isConfirmed is false, user canceled, do nothing
-  });
-}
-
+        // Show deletion success message
+        Swal.fire("Deleted!", "The friendship has been ended.", "success");
+      }
+      // If result.isConfirmed is false, user canceled, do nothing
+    });
+  }
 
   const handleInputChangeSearch = (e) => {
     setSearchQuery(e.target.value);
   };
 
   if (!friend) {
-    return <h2>Loading...</h2>
+    return <h2>Loading...</h2>;
   }
 
   function searchRecords(event) {
-    event.preventDefault()
-    console.log('checking payload of submit', searchQuery);
-    
+    event.preventDefault();
+    console.log("checking payload of submit", searchQuery);
+
     if (!searchQuery) {
       Swal.fire({
         title: "Attention!",
@@ -78,21 +73,21 @@ function deleteFriend() {
 
     const searchObject = {
       search: searchQuery,
-      friend_id: id
-    }
+      friend_id: id,
+    };
 
     dispatch({
       type: "SEARCH_FRIENDS_RECORDS",
-      payload: searchObject
-    })
+      payload: searchObject,
+    });
   }
 
-  function clearSearch(){
+  function clearSearch() {
     dispatch({
       type: "FETCH_FRIENDS_RECORDS",
-      payload: id
-    })
-    setSearchQuery('');
+      payload: id,
+    });
+    setSearchQuery("");
   }
 
   return (
@@ -109,7 +104,7 @@ function deleteFriend() {
       </form>
       <button onClick={clearSearch}>CLEAR</button>
 
-      <hr/>
+      <hr />
       <button onClick={() => history.push("/social")}>back</button>
       <button onClick={() => deleteFriend()}>delete friend</button>
       {records?.length > 0 && (
