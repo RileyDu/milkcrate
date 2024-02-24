@@ -58,6 +58,14 @@ const moods = useSelector((store) => store.moodReducer)
     setRecordTitle('');
     setRecordMood('');
     setRecordDetails('');
+
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "The record has been added to your milkcrate",
+      showConfirmButton: false,
+      timer: 750
+    });
   }
 
   useEffect(() => {
