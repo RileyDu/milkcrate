@@ -119,26 +119,8 @@ function AddSpinForm(props) {
       <h2>In addSpinForm</h2>
       <button onClick={() => history.push("/spins")}>back</button>
       <form onSubmit={(event) => postSpin(event)}>
-        <label htmlFor="multiSelectRecords">Select Spun Records:</label>
-        <AsyncSelect
-          isMulti
-          cacheOptions
-          defaultOptions={mappedAlbums}
-          loadOptions={promiseOptions}
-          id="multiSelectRecords"
-          value={mappedAlbums.filter((album) =>
-            spinRecords.includes(album.value)
-          )}
-          onChange={handleInputChangeRecords}
-        />
         <label htmlFor="datePicker">Pick Date:</label>
         <span id="datePicker" />
-        {/* <input
-          type="text"
-          id="datePicker"
-          placeholder="Pick Date of Session"
-          value={spinDate}
-        /> */}
 
         <label htmlFor="hours">Hours:</label>
         <input
@@ -166,6 +148,18 @@ function AddSpinForm(props) {
           onChange={handleInputChangeDetails}
           placeholder="Enter Spin Details"
           id="spinDetails"
+        />
+        <label htmlFor="multiSelectRecords">Select Spun Records:</label>
+        <AsyncSelect
+          isMulti
+          cacheOptions
+          defaultOptions={mappedAlbums}
+          loadOptions={promiseOptions}
+          id="multiSelectRecords"
+          value={mappedAlbums.filter((album) =>
+            spinRecords.includes(album.value)
+          )}
+          onChange={handleInputChangeRecords}
         />
         <button type="submit">ADD SPIN</button>
       </form>
