@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import Swal from 'sweetalert2'
 
 function MyMilkcrate(props) {
   const dispatch = useDispatch();
@@ -22,37 +23,41 @@ function MyMilkcrate(props) {
   };
 
   function searchRecords(event) {
-    event.preventDefault()
-    console.log('checking payload of submit', searchQuery);
-    
+    event.preventDefault();
+    console.log("checking payload of submit", searchQuery);
+
     if (!searchQuery) {
-      alert('PLEASE SUBMIT A SEARCH')
+      Swal.fire({
+        title: "Attention!",
+        text: "Please submit something to search",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
       return;
     }
 
     const searchObject = {
-      search: searchQuery
-    }
+      search: searchQuery,
+    };
 
     dispatch({
       type: "SEARCH_RECORDS",
-      payload: searchObject
-    })
+      payload: searchObject,
+    });
   }
 
-  function clearSearch(){
+  function clearSearch() {
     dispatch({
-      type: "FETCH_RECORDS"
-    })
-    setSearchQuery('');
+      type: "FETCH_RECORDS",
+    });
+    setSearchQuery("");
   }
-
 
   return (
     <div>
       <h2>{username}'s milkcrate</h2>
 
-        <button onClick={() => history.push("/user/add")}>Add record</button>
+      <button onClick={() => history.push("/user/add")}>Add record</button>
       <form onSubmit={(event) => searchRecords(event)}>
         <input
           type="text"

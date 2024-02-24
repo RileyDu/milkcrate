@@ -58,29 +58,21 @@ function deleteFriend() {
     setSearchQuery(e.target.value);
   };
 
-  function searchRecords(event) {
-    event.preventDefault()
-    console.log('checking payload of submit', searchQuery);
-    
-    if (!searchQuery) {
-      alert('PLEASE SUBMIT A SEARCH')
-      return;
-    }
-    dispatch({
-      type: "SEARCH_FRIENDS_RECORDS",
-      payload: searchQuery
-    })
-  }
-
   if (!friend) {
     return <h2>Loading...</h2>
   }
+
   function searchRecords(event) {
     event.preventDefault()
     console.log('checking payload of submit', searchQuery);
     
     if (!searchQuery) {
-      alert('PLEASE SUBMIT A SEARCH')
+      Swal.fire({
+        title: "Attention!",
+        text: "Please submit something to search",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
       return;
     }
 
