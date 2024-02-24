@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 function FriendCollection(props) {
   const { id } = useParams();
@@ -22,14 +23,36 @@ function FriendCollection(props) {
     return () => dispatch({type: `CLEAR_RECORDS`});
   }, [socialReducer]);
 
-  function deleteFriend() {
-    //delete button triggers this and sends a DELETE request to db w/id
-    dispatch({
-      type: "DELETE_FRIENDSHIP",
-      payload: id,
-    });
-    history.push(`/social`); // takes user back to home
-  }
+function deleteFriend() {
+  // Show SweetAlert confirmation dialog
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // User confirmed deletion, proceed with the delete operation
+      dispatch({
+        type: "DELETE_FRIENDSHIP",
+        payload: id,
+      });
+      history.push(`/social`); // takes user back to home
+
+      // Show deletion success message
+      Swal.fire(
+        'Deleted!',
+        'The friendship has been ended.',
+        'success'
+      );
+    }
+    // If result.isConfirmed is false, user canceled, do nothing
+  });
+}
+
 
   const handleInputChangeSearch = (e) => {
     setSearchQuery(e.target.value);
