@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Row, Col } from "react-bootstrap";
+
 
 function FriendCollection(props) {
   const { id } = useParams();
@@ -92,7 +94,7 @@ function FriendCollection(props) {
 
   return (
     <div>
-      <h2>{friend.friend_username}'s milkcrate</h2>
+      <h2 className="milkcrate-header">{friend.friend_username}'s milkcrate</h2>
       <form onSubmit={(event) => searchRecords(event)}>
         <input
           type="text"
@@ -107,20 +109,20 @@ function FriendCollection(props) {
       <hr />
       <button onClick={() => history.push("/social")}>back</button>
       <button onClick={() => deleteFriend()}>delete friend</button>
-      {records?.length > 0 && (
-        <ul>
-          {records.map((record, i) => (
-            <li key={i}>
-              {console.log("whats the record?", record)}
-              <img
-                onClick={() =>
-                  history.push(`/social/friends/${id}/${record.id}`)
-                }
-                src={record.coverart}
-              />
-            </li>
-          ))}
-        </ul>
+            {records?.length > 0 && (
+        <div className="container-gallery">
+          <Row xs={1} sm={3} md={6} className="g-4">
+            {/* responsive bootstrap grid to adjust columns on width */}
+            {records.map((record, i) => (
+              <Col key={i}>
+                <img
+                  onClick={() => history.push(`/social/friends/${id}/${record.id}`)}
+                  src={record.coverart}
+                />
+              </Col>
+            ))}
+          </Row>
+        </div>
       )}
     </div>
   );

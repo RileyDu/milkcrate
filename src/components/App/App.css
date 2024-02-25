@@ -110,3 +110,13 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+.container-gallery {
+  margin: auto 4em;
+}
+
+.milkcrate-header {
+  text-align: center;
+  margin-top: 1em;
+  font-size: 2.5em;
+}

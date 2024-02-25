@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import { Row, Col } from "react-bootstrap";
 
 function MyMilkcrate(props) {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ function MyMilkcrate(props) {
 
   return (
     <div>
-      <h2>{username}'s milkcrate</h2>
+      <h2 className="milkcrate-header">{username}'s milkcrate</h2>
 
       <button onClick={() => history.push("/user/add")}>Add record</button>
       <form onSubmit={(event) => searchRecords(event)}>
@@ -69,17 +70,19 @@ function MyMilkcrate(props) {
       </form>
       <button onClick={clearSearch}>CLEAR</button>
       {records?.length > 0 && (
-        <ul>
-          {records.map((record, i) => (
-            <li key={i}>
-              {/* {console.log('whats the record?', record)} */}
-              <img
-                onClick={() => history.push(`/user/details/${record.id}`)}
-                src={record.coverart}
-              />
-            </li>
-          ))}
-        </ul>
+        <div className="container-gallery">
+          <Row xs={1} sm={3} md={6} className="g-4">
+            {/* responsive bootstrap grid to adjust columns on width */}
+            {records.map((record, i) => (
+              <Col key={i}>
+                <img
+                  onClick={() => history.push(`/user/details/${record.id}`)}
+                  src={record.coverart}
+                />
+              </Col>
+            ))}
+          </Row>
+        </div>
       )}
       {/* THE EDIT NEEDS TO GO IN THE DETAILS PAGE */}
     </div>
