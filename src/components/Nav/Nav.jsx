@@ -24,6 +24,14 @@ function Nav() {
             Add record
           </button>
         )}
+        {location.pathname === "/user/add" && (
+          <button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/user")}
+          >
+            home
+          </button>
+        )}
         {location.pathname === "/social" && (
           <button
             className="btn btn-outline-secondary btn-sm"

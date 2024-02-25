@@ -23,7 +23,6 @@ const history = useHistory();
       <ul>
         {spins.map((spin, i) => (
           <li key={i}>
-            {/* {console.log('whats the spin?', spin)} */}
             <p onClick={()=>history.push(`/spins/details/${spin.id}`)}>{spin.spin_details} {formattedDate}</p>
           </li>
         ))}
