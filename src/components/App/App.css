@@ -136,3 +136,9 @@ input {
 .btn {
   border-radius: 0% !important;
 }
+
+.blindbag-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
