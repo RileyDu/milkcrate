@@ -21,7 +21,7 @@ function Blindbag(props) {
     </div>
     </div>
     <div className="blindbag-img">
-      <img src={randomRecord.coverart} alt={randomRecord.title} />
+      <img id="shuffle-img" src={randomRecord.coverart} alt={randomRecord.title} />
   </div>
   </div>
   );
