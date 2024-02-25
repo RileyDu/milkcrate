@@ -42,15 +42,24 @@ function AddFriendForm(props) {
   return (
     <div>
       <h2 className="header-tabs"> add a friend</h2>
+        <div className="container">
       <form onSubmit={(event) => postFriendship(event)}>
+      <div class="form-floating mb-3">
         <input
           type="text"
           value={friendUsername}
           onChange={handleInputChangeFriend}
-          placeholder="ENTER FRIENDS USERNAME"
+          placeholder=""
+          className="form-control"
+          id="addFriendInput"
         />
-        <button type="submit">ADD FRIEND</button>
+        <label htmlFor="addFriendInput"> Enter Friend's Username</label>
+        </div>
+        <div className="d-grid gap-2">
+          <button className="btn btn-lg btn-primary" type="submit">ADD FRIEND</button>
+        </div>
       </form>
+      </div>
     </div>
   );
 }
