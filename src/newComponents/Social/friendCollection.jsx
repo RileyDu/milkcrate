@@ -120,10 +120,8 @@ function FriendCollection(props) {
       </div>
       </form>
       </div>
-      <button onClick={() => history.push("/social")}>back</button>
-      <button onClick={() => deleteFriend()}>delete friend</button>
             {records?.length > 0 && (
-        <div className="container-gallery">
+              <div className="container-gallery">
           <Row xs={1} sm={3} md={6} className="g-4">
             {/* responsive bootstrap grid to adjust columns on width */}
             {records.map((record, i) => (
@@ -135,6 +133,9 @@ function FriendCollection(props) {
               </Col>
             ))}
           </Row>
+      <div class="d-grid gap-2">
+      <button className="btn btn-lg btn-primary dlt-btn" onClick={() => deleteFriend()}>delete friend</button>
+      </div>
         </div>
       )}
     </div>

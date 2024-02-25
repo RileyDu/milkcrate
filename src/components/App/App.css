@@ -129,6 +129,10 @@ input {
   margin-bottom: 2em;
 }
 
+.dlt-btn {
+  margin-top: 2em;
+}
+
 .btn {
   border-radius: 0% !important;
 }

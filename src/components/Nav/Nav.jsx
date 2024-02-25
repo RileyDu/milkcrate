@@ -9,6 +9,10 @@ function Nav() {
   const location = useLocation();
   const history = useHistory();
 
+  const isFriendDetailPage =
+    location.pathname.startsWith("/social/friends/") &&
+    location.pathname.split("/").length >= 1;
+
   return (
     <div className="nav">
       <div className="nav-section left">
@@ -20,7 +24,14 @@ function Nav() {
             Add record
           </button>
         )}
-        
+        {isFriendDetailPage && (
+          <button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/social")}
+          >
+            back
+          </button>
+        )}
       </div>
       <div className="nav-section center">
         <Link to="/home">
