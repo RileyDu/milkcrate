@@ -3,36 +3,40 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function AddRecordForm(props) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [recordArtist, setRecordArtist] = useState('');
-  const [recordTitle, setRecordTitle] = useState('');
-  const [recordMood, setRecordMood] = useState('');
-  const [recordDetails, setRecordDetails] = useState('');
+  const [recordArtist, setRecordArtist] = useState("");
+  const [recordTitle, setRecordTitle] = useState("");
+  const [recordMood, setRecordMood] = useState("");
+  const [recordDetails, setRecordDetails] = useState("");
 
-const moods = useSelector((store) => store.moodReducer)
+  const moods = useSelector((store) => store.moodReducer);
 
   const handleInputChangeArtist = (e) => {
     setRecordArtist(e.target.value);
   };
 
-
   const handleInputChangeTitle = (e) => {
     setRecordTitle(e.target.value);
   };
-
 
   const handleInputChangeDetails = (e) => {
     setRecordDetails(e.target.value);
   };
 
   function postRecord(event) {
-    event.preventDefault()
-    console.log('checking payload of submit', recordArtist, recordTitle, recordDetails, recordMood,);
-    
+    event.preventDefault();
+    console.log(
+      "checking payload of submit",
+      recordArtist,
+      recordTitle,
+      recordDetails,
+      recordMood
+    );
+
     if (!recordArtist || !recordTitle || !recordMood || !recordDetails) {
       Swal.fire({
         title: "Attention!",
@@ -42,29 +46,29 @@ const moods = useSelector((store) => store.moodReducer)
       });
       return;
     }
-  
+
     const newRecord = {
       artist: recordArtist,
       title: recordTitle,
       mood: recordMood,
-      details: recordDetails
-    }
+      details: recordDetails,
+    };
 
     dispatch({
       type: "POST_RECORD",
-      payload: newRecord
-    })
-    setRecordArtist('');
-    setRecordTitle('');
-    setRecordMood('');
-    setRecordDetails('');
+      payload: newRecord,
+    });
+    setRecordArtist("");
+    setRecordTitle("");
+    setRecordMood("");
+    setRecordDetails("");
 
     Swal.fire({
       position: "top-end",
       icon: "success",
       title: "The record has been added to your milkcrate",
       showConfirmButton: false,
-      timer: 750
+      timer: 750,
     });
   }
 
@@ -76,56 +80,69 @@ const moods = useSelector((store) => store.moodReducer)
     <div>
       <h2 className="header-tabs"> Add to milkcrate </h2>
       <div className="container">
-      <form onSubmit={(event) => postRecord(event)}>
-      <div class="form-floating mb-3">
-        <input
-          type="text"
-          value={recordArtist}
-          onChange={handleInputChangeArtist}
-          placeholder=""
-          id="artistFormInput"
-          className="form-control"
-        />
-        <label for="artistFormInput">Enter Record Artist</label>
-        </div>
+        <form onSubmit={(event) => postRecord(event)}>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              value={recordArtist}
+              onChange={handleInputChangeArtist}
+              placeholder=""
+              id="artistFormInput"
+              className="form-control"
+            />
+            <label for="artistFormInput">Enter Record Artist</label>
+          </div>
 
-        <div class="form-floating mb-3">
-        <input
-          type="text"
-          value={recordTitle}
-          onChange={handleInputChangeTitle}
-          placeholder=""
-          id="titleFormInput"
-          className="form-control"
-        />
-        <label for='titleFormInput'>Enter Record Title</label>
-        </div>
-        
-          <select
-            value={recordMood}
-            onChange={(e) => {
-              const selectedMood = e.target.value;
-              console.log("Selected Mood from user:", selectedMood);
-              setRecordMood(selectedMood);
-            }}
-          >
-            {/* onChange assigns the selected value to local state */}
-            <option value=""> Select Record Mood </option>
-            {/* make shift placeholder above */}
-            {moods.map((mood) => (
-              <option key={mood.id} value={mood.id}>
-                {mood.mood}
-              </option>
-            ))}
-          </select> 
-        <input
-          type="text"
-          value={recordDetails}
-          onChange={handleInputChangeDetails}
-          placeholder="Enter Record Details"
-        />
-        <button type='submit'>ADD RECORD</button>
-      </form>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              value={recordTitle}
+              onChange={handleInputChangeTitle}
+              placeholder=""
+              id="titleFormInput"
+              className="form-control"
+            />
+            <label for="titleFormInput">Enter Record Title</label>
+          </div>
+
+            <select
+              value={recordMood}
+              id="moodDropDown"
+              className="form-select mb-3"
+              onChange={(e) => {
+                const selectedMood = e.target.value;
+                console.log("Selected Mood from user:", selectedMood);
+                setRecordMood(selectedMood);
+              }}
+            >
+              {/* onChange assigns the selected value to local state */}
+              <option value=""> Select Record Mood </option>
+              {/* make shift placeholder above */}
+              {moods.map((mood) => (
+                <option key={mood.id} value={mood.id}>
+                  {mood.mood}
+                </option>
+              ))}
+            </select>
+
+
+          <div class="form-floating mb-3">
+            <textarea
+              className="form-control"
+              type="text"
+              value={recordDetails}
+              onChange={handleInputChangeDetails}
+              placeholder=""
+              rows={3}
+              id="detailsFormInput"
+              style={{height: '10em'}}
+            />
+            <label for="detailsFormInput">Enter Record Details </label>
+          </div>
+          <div className="d-grid gap-2">
+          <button className="btn btn-lg btn-primary" type="submit">ADD RECORD</button>
+          </div>
+        </form>
       </div>
     </div>
   );
