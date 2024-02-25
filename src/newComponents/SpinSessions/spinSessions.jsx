@@ -29,8 +29,6 @@ const history = useHistory();
         ))}
       </ul>
       )}
-      <button onClick={()=>history.push("/spins/add")}>Add Spins</button>
-      {/* <button onClick={()=>history.push("/spins/details")}>Single Spins Details</button> */}
     </div>
   );
 }
