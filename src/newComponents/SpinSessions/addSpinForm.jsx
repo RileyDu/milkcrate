@@ -117,7 +117,6 @@ function AddSpinForm(props) {
   return (
     <div>
       <h2 className="header-tabs"> add a spin</h2>
-      <button onClick={() => history.push("/spins")}>back</button>
       <form onSubmit={(event) => postSpin(event)}>
         <label htmlFor="datePicker">Pick Date:</label>
         <span id="datePicker" />

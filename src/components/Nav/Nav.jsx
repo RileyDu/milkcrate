@@ -56,6 +56,14 @@ function Nav() {
             Add spin
           </button>
         )}
+        {location.pathname === "/spins/add" && (
+          <button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/spins")}
+          >
+            back
+          </button>
+        )}
       </div>
       <div className="nav-section center">
         <Link to="/home">
