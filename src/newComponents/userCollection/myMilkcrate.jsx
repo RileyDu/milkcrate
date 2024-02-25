@@ -59,12 +59,12 @@ function MyMilkcrate(props) {
       <h2 className="milkcrate-header">{username}'s milkcrate</h2>
 
 
-        <button
+        {/* <button
           className="btn btn-outline-secondary btn-sm"
           onClick={() => history.push("/user/add")}
         >
           Add record
-        </button>
+        </button> */}
 
 
       <form onSubmit={(event) => searchRecords(event)}>

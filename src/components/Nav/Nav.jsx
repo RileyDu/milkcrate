@@ -1,16 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Nav.css";
 import { useSelector } from "react-redux";
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  const location = useLocation();
+  const history = useHistory();
 
   return (
     <div className="nav">
       <div className="nav-section left">
-        {/* cond render certain buttons depending on view */}
+        {location.pathname === "/user" && (
+          <button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/user/add")}
+          >
+            Add record
+          </button>
+        )}
+        
       </div>
       <div className="nav-section center">
         <Link to="/home">
