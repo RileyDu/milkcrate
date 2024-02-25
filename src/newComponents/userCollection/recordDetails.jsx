@@ -66,7 +66,7 @@ function RecordDetails() {
 
   return (
     <div>
-      <h2>In recordDetails</h2>
+      <h2 className="header-tabs"> {record.title} Details</h2>
       {friendId ? (
         <button onClick={() => history.push(`/social/friends/${friendId}`)}>
           back

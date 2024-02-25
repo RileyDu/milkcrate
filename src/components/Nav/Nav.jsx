@@ -37,13 +37,13 @@ function Nav() {
         {user.id && (
           <>
             <Link className="navLink" to="/user">
-              Home
+              home
             </Link>
             <Link className="navLink" to="/social">
               social
             </Link>
             <Link className="navLink" to="/spins">
-              spin session
+              spins
             </Link>
             <Link className="navLink" to="/blindbag">
               blind bag

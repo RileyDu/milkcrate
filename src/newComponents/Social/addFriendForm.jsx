@@ -41,7 +41,7 @@ function AddFriendForm(props) {
 
   return (
     <div>
-      <h2>In addFriendForm</h2>
+      <h2 className="header-tabs"> add a friend</h2>
       <form onSubmit={(event) => postFriendship(event)}>
         <input
           type="text"

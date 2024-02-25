@@ -57,7 +57,7 @@ function SingleSpin(props) {
 
   return (
     <div>
-      <h2>In singleSpin</h2>
+      <h2 className="header-tabs">spin details</h2>
       <button onClick={() => history.push("/spins")}>back</button>
       <button onClick={() => deleteSpin()}>delete spin</button>
       <p>listened on {formattedDate} </p>

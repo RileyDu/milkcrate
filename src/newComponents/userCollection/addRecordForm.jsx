@@ -74,7 +74,7 @@ const moods = useSelector((store) => store.moodReducer)
 
   return (
     <div>
-      <h2>In addRecordForm</h2>
+      <h2 className="header-tabs"> Add to milkcrate </h2>
       <button onClick={() => history.push("/user")}>home</button>
       <form onSubmit={(event) => postRecord(event)}>
         <input

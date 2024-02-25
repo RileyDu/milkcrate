@@ -81,7 +81,7 @@ function EditRecordForm(props) {
 
   return (
     <div>
-      <h2>In editRecordForm</h2>
+      <h2 className="header-tabs"> edit record details </h2>
       <button onClick={() => history.push(`/user/details/${id}`)}>back</button>
       <form onSubmit={(event) => editRecord(event)}>
         <input
