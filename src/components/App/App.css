@@ -120,3 +120,7 @@ input {
   margin-top: 1em;
   font-size: 2.5em;
 }
+
+.form-group {
+  margin: auto 4em;
+}

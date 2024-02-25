@@ -12,6 +12,8 @@ function MyMilkcrate(props) {
   const history = useHistory();
   const username = useSelector((store) => store.user.username);
   const [searchQuery, setSearchQuery] = useState("");
+  const [hasSearched, setHasSearched] = useState(false);
+
   // console.log('whats in the crate mate?', records);
 
   useEffect(() => {
@@ -21,6 +23,7 @@ function MyMilkcrate(props) {
 
   const handleInputChangeSearch = (e) => {
     setSearchQuery(e.target.value);
+    if (hasSearched) setHasSearched(false);
   };
 
   function searchRecords(event) {
@@ -45,6 +48,7 @@ function MyMilkcrate(props) {
       type: "SEARCH_RECORDS",
       payload: searchObject,
     });
+    setHasSearched(true);
   }
 
   function clearSearch() {
@@ -52,23 +56,30 @@ function MyMilkcrate(props) {
       type: "FETCH_RECORDS",
     });
     setSearchQuery("");
+    setHasSearched(false);
   }
 
   return (
     <div>
       <h2 className="header-tabs">{username}'s milkcrate</h2>
 
+<div className="form-group">
       <form onSubmit={(event) => searchRecords(event)}>
+      <div className="form-floating mb-3">
         <input
           type="text"
-          placeholder="Search milkcrate"
+          placeholder=""
           value={searchQuery}
           onChange={handleInputChangeSearch}
+          id="searchInput"
+          className="form-control"
         />
-        <button type="submit">SEARCH</button>
+        <label htmlFor="searchInput"> Search by Album, Artist, or Tags</label>
+        </div>
+        {searchQuery && !hasSearched && <button type="submit">SEARCH</button>}
+      {hasSearched && <button onClick={clearSearch}>CLEAR</button>}
       </form>
-
-      <button onClick={clearSearch}>CLEAR</button>
+      </div>
 
       {records?.length > 0 && (
       <div className="container-gallery">
