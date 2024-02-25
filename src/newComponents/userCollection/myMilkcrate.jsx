@@ -58,7 +58,15 @@ function MyMilkcrate(props) {
     <div>
       <h2 className="milkcrate-header">{username}'s milkcrate</h2>
 
-      <button onClick={() => history.push("/user/add")}>Add record</button>
+
+        <button
+          className="btn btn-outline-secondary btn-sm"
+          onClick={() => history.push("/user/add")}
+        >
+          Add record
+        </button>
+
+
       <form onSubmit={(event) => searchRecords(event)}>
         <input
           type="text"
@@ -68,9 +76,11 @@ function MyMilkcrate(props) {
         />
         <button type="submit">SEARCH</button>
       </form>
+
       <button onClick={clearSearch}>CLEAR</button>
+
       {records?.length > 0 && (
-        <div className="container-gallery">
+      <div className="container-gallery">
           <Row xs={1} sm={3} md={6} className="g-4">
             {/* responsive bootstrap grid to adjust columns on width */}
             {records.map((record, i) => (
