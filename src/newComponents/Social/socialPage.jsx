@@ -22,9 +22,6 @@ const history = useHistory()
           </li>
         ))}
       </ul>
-      <button onClick={()=>history.push("/social/add")}>ADD FRIEND</button>
-      {/* <button>View Friends Collection</button> */}
-
     </div>
   );
 }

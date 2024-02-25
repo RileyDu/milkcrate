@@ -134,7 +134,7 @@ function FriendCollection(props) {
             ))}
           </Row>
       <div class="d-grid gap-2">
-      <button className="btn btn-lg btn-primary dlt-btn" onClick={() => deleteFriend()}>delete friend</button>
+      <button className="btn btn-lg btn-dark dlt-btn" onClick={() => deleteFriend()}>delete friend</button>
       </div>
         </div>
       )}
