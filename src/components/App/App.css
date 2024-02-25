@@ -124,3 +124,11 @@ input {
 .form-group {
   margin: auto 4em;
 }
+
+.search-btns {
+  margin-bottom: 2em;
+}
+
+.btn {
+  border-radius: 0% !important;
+}

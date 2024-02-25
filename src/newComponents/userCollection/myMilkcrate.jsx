@@ -76,8 +76,10 @@ function MyMilkcrate(props) {
         />
         <label htmlFor="searchInput"> Search by Album, Artist, or Tags</label>
         </div>
-        {searchQuery && !hasSearched && <button type="submit">SEARCH</button>}
-      {hasSearched && <button onClick={clearSearch}>CLEAR</button>}
+        <div class="d-grid gap-2">
+        {searchQuery && !hasSearched && <button className="btn btn-lg btn-primary search-btns" type="submit">SEARCH</button>}
+      {hasSearched && <button className="btn btn-lg btn-primary search-btns" onClick={clearSearch}>CLEAR</button>}
+      </div>
       </form>
       </div>
 
