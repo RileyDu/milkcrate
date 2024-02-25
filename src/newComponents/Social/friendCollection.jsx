@@ -94,7 +94,7 @@ function FriendCollection(props) {
 
   return (
     <div>
-      <h2 className="milkcrate-header">{friend.friend_username}'s milkcrate</h2>
+      <h2 className="header-tabs">{friend.friend_username}'s milkcrate</h2>
       <form onSubmit={(event) => searchRecords(event)}>
         <input
           type="text"

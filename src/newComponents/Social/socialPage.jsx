@@ -14,7 +14,7 @@ function SocialPage(props) {
 const history = useHistory()
   return (
     <div>
-      <h2>In socialPage</h2>
+      <h2 className='header-tabs'> social </h2>
       <ul>
         {friends.map((friend, i) => (
           <li>

@@ -18,7 +18,7 @@ const formattedDate = dayjs(spins.listened_at).format('MM/DD/YYYY')
 const history = useHistory();
   return (
     <div>
-      <h2>In spin session</h2>
+      <h2 className='header-tabs'> spins </h2>
       {spins?.length > 0 && (
       <ul>
         {spins.map((spin, i) => (

@@ -13,7 +13,7 @@ function Blindbag(props) {
 
   return (
     <div>
-      <h2>In blindbag</h2>
+      <h2 className='header-tabs'>blindbag</h2>
       <button onClick={()=>getBlindBag()}>SHUFFLE</button>
       <img src={randomRecord.coverart} alt={randomRecord.title} />
     </div>
