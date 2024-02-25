@@ -13,9 +13,15 @@
   align-items: center;
 }
 
-.nav-section.left, .nav-section.right {
-  justify-content: flex-start; 
+.nav-section.left {
+  justify-content: flex-start;
+  padding-left: 4em; 
 }
+
+.nav-section.right {
+  justify-content: flex-start;
+}
+
 
 .nav-title {
   margin: 0;
@@ -40,5 +46,5 @@
 }
 
 .navLink:hover {
-  background-color: #008183;
+  background-color: #afa1a1;
 }

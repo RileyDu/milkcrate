@@ -13,8 +13,9 @@ function FriendCollection(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const records = useSelector((store) => store.recordReducer);
-  const [searchQuery, setSearchQuery] = useState("");
   const socialReducer = useSelector((store) => store.socialReducer);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [hasSearched, setHasSearched] = useState(false);
   const friend = socialReducer.find(
     (friend) => friend.friend_id.toString() === id
   );
@@ -53,6 +54,7 @@ function FriendCollection(props) {
 
   const handleInputChangeSearch = (e) => {
     setSearchQuery(e.target.value);
+    if (hasSearched) setHasSearched(false);
   };
 
   if (!friend) {
@@ -82,6 +84,8 @@ function FriendCollection(props) {
       type: "SEARCH_FRIENDS_RECORDS",
       payload: searchObject,
     });
+    setHasSearched(true);
+
   }
 
   function clearSearch() {
@@ -90,23 +94,32 @@ function FriendCollection(props) {
       payload: id,
     });
     setSearchQuery("");
+    setHasSearched(false);
+
   }
 
   return (
     <div>
       <h2 className="header-tabs">{friend.friend_username}'s milkcrate</h2>
+      <div className="form-group">
       <form onSubmit={(event) => searchRecords(event)}>
+      <div className="form-floating mb-3">
         <input
           type="text"
-          placeholder="Search milkcrate"
+          placeholder=""
           value={searchQuery}
           onChange={handleInputChangeSearch}
+          id="searchInput"
+          className="form-control"
         />
-        <button type="submit">SEARCH</button>
+        <label htmlFor="searchInput"> Search by Album, Artist, or Tags</label>
+        </div>
+        <div class="d-grid gap-2">
+        {searchQuery && !hasSearched && <button className="btn btn-lg btn-primary search-btns" type="submit">SEARCH</button>}
+      {hasSearched && <button className="btn btn-lg btn-primary search-btns" onClick={clearSearch}>CLEAR</button>}
+      </div>
       </form>
-      <button onClick={clearSearch}>CLEAR</button>
-
-      <hr />
+      </div>
       <button onClick={() => history.push("/social")}>back</button>
       <button onClick={() => deleteFriend()}>delete friend</button>
             {records?.length > 0 && (
