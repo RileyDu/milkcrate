@@ -75,19 +75,32 @@ const moods = useSelector((store) => store.moodReducer)
   return (
     <div>
       <h2 className="header-tabs"> Add to milkcrate </h2>
+      <div className="container">
       <form onSubmit={(event) => postRecord(event)}>
+      <div class="form-floating mb-3">
         <input
           type="text"
           value={recordArtist}
           onChange={handleInputChangeArtist}
-          placeholder="Enter Record Artist"
+          placeholder=""
+          id="artistFormInput"
+          className="form-control"
         />
+        <label for="artistFormInput">Enter Record Artist</label>
+        </div>
+
+        <div class="form-floating mb-3">
         <input
           type="text"
           value={recordTitle}
           onChange={handleInputChangeTitle}
-          placeholder="Enter Record Title"
+          placeholder=""
+          id="titleFormInput"
+          className="form-control"
         />
+        <label for='titleFormInput'>Enter Record Title</label>
+        </div>
+        
           <select
             value={recordMood}
             onChange={(e) => {
@@ -113,6 +126,7 @@ const moods = useSelector((store) => store.moodReducer)
         />
         <button type='submit'>ADD RECORD</button>
       </form>
+      </div>
     </div>
   );
 }
