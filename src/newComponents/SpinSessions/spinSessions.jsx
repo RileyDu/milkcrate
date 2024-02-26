@@ -32,6 +32,7 @@ function SpinSessions(props) {
           })}
         </ul>
       )}
+      <img src="TheRecord.svg" alt="" />
     </div>
   );
 }
