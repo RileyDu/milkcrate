@@ -100,7 +100,7 @@ function FriendCollection(props) {
 
   return (
     <div>
-      <h2 className="header-tabs">{friend.friend_username}'s milkcrate</h2>
+      <h2 className="header-tabs">{friend.friend_username}'s milkcrate.</h2>
       <div className="form-group">
       <form onSubmit={(event) => searchRecords(event)}>
       <div className="form-floating mb-3">

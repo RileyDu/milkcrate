@@ -61,7 +61,7 @@ function MyMilkcrate(props) {
 
   return (
     <div>
-      <h2 className="header-tabs">{username}'s milkcrate</h2>
+      <h2 className="header-tabs">{username}'s milkcrate.</h2>
 
 <div className="form-group">
       <form onSubmit={(event) => searchRecords(event)}>

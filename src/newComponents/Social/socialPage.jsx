@@ -15,13 +15,14 @@ const history = useHistory()
   return (
     <div>
       <h2 className='header-tabs'> social </h2>
-      <ul>
+      <div className='socialPageContainer'>
         {friends.map((friend, i) => (
-          <li>
-            <p key={i} onClick={()=>history.push(`/social/friends/${friend.friend_id}`)}>{friend.friend_username}</p>
-          </li>
+          <div className='socialPageItems'>
+                  <img src="milkcrateLogo.svg" className="social-crate" onClick={()=>history.push(`/social/friends/${friend.friend_id}`)}/>
+            <p key={i} className='socialPageText'>{friend.friend_username}'s milkcrate.</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

@@ -198,3 +198,27 @@ margin-right: .5em;
 .spinsListItem {
   list-style:circle
 }
+
+.social-crate {
+  max-width: 450px;
+  margin-top: -4em;
+  margin-bottom: -8em;
+}
+
+.socialPageContainer {
+display: flex;
+justify-content: space-around;
+margin-top: 4em;
+}
+.socialPageItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin-bottom: 2em; 
+}
+
+.socialPageText{
+  font-size: xx-large;
+  font-weight: bolder;
+  margin-top: 1em;
+}
