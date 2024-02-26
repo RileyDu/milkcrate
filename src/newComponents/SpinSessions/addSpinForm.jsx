@@ -7,7 +7,7 @@ import AsyncSelect from "react-select/async";
 import AirDatepicker from "air-datepicker";
 import "air-datepicker/air-datepicker.css";
 import localeEn from "air-datepicker/locale/en";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function AddSpinForm(props) {
   const dispatch = useDispatch();
@@ -121,6 +121,7 @@ function AddSpinForm(props) {
         <label htmlFor="datePicker">Pick Date:</label>
         <span id="datePicker" />
 
+
         <label htmlFor="hours">Hours:</label>
         <input
           type="number"
@@ -139,28 +140,41 @@ function AddSpinForm(props) {
           onChange={handleInputChangeMinutes}
         />
 
+        <div className="container">
         {/* Details about the spin session they are adding */}
-        <label htmlFor="spinDetails"> Spin Details: </label>
-        <input
+                  <div class="form-floating mb-3">
+        <textarea
           type="text"
           value={spinDetails}
           onChange={handleInputChangeDetails}
-          placeholder="Enter Spin Details"
+          placeholder=""
           id="spinDetails"
+          className="form-control"
+          style={{height: '10em'}}
         />
-        <label htmlFor="multiSelectRecords">Select Spun Records:</label>
-        <AsyncSelect
-          isMulti
-          cacheOptions
-          defaultOptions={mappedAlbums}
-          loadOptions={promiseOptions}
-          id="multiSelectRecords"
-          value={mappedAlbums.filter((album) =>
-            spinRecords.includes(album.value)
-          )}
-          onChange={handleInputChangeRecords}
-        />
-        <button type="submit">ADD SPIN</button>
+        <label htmlFor="spinDetails"> Spin Details: </label>
+        </div>
+
+          <label htmlFor="multiSelectRecords">Select Spun Records:</label>
+          <AsyncSelect
+            isMulti
+            cacheOptions
+            defaultOptions={mappedAlbums}
+            loadOptions={promiseOptions}
+            id="multiSelectRecords"
+            value={mappedAlbums.filter((album) =>
+              spinRecords.includes(album.value)
+            )}
+            onChange={handleInputChangeRecords}
+            className="unstyled form-control mb-3"
+          />
+
+        <div className="d-grid gap-2">
+          <button className="btn btn-lg btn-primary" type="submit">
+            ADD SPIN
+          </button>
+        </div>
+        </div>
       </form>
     </div>
   );

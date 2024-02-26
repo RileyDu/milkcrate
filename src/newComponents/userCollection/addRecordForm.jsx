@@ -137,7 +137,7 @@ function AddRecordForm(props) {
               id="detailsFormInput"
               style={{height: '10em'}}
             />
-            <label for="detailsFormInput">Enter Record Details </label>
+            <label htmlFor="detailsFormInput">Enter Record Details </label>
           </div>
           <div className="d-grid gap-2">
           <button className="btn btn-lg btn-primary" type="submit">ADD RECORD</button>
