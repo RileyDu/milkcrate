@@ -184,7 +184,20 @@ function AddSpinForm(props) {
               styles={{
                 menu: (base) => ({
                   ...base,
-                  backgroundColor: 'white',
+                  backgroundColor: 'darkgrey',
+                }),
+                option: (base, state) => ({
+                  ...base,
+                  color: 'white',
+                  padding: '8px 12px', 
+                }),
+                control: (base) => ({
+                  ...base,
+                  padding: '10px',
+                }),
+                multiValue: (base) => ({
+                  ...base,
+                  marginRight: '8px',
                 }),
               }}
             />
