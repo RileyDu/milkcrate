@@ -147,3 +147,7 @@ input {
   height: 450px;
   width: 450px;
 }
+
+#datePicker {
+  text-align: center;
+}

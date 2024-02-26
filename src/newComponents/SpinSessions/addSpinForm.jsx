@@ -67,6 +67,8 @@ function AddSpinForm(props) {
 
   useEffect(() => {
     const datepicker = new AirDatepicker("#datePicker", {
+      isMobile: true,
+      autoClose: true,
       locale: localeEn,
       onSelect: function (formattedDate) {
         setSpinDate(formattedDate);
@@ -118,42 +120,52 @@ function AddSpinForm(props) {
     <div>
       <h2 className="header-tabs"> add a spin</h2>
       <form onSubmit={(event) => postSpin(event)}>
-        <label htmlFor="datePicker">Pick Date:</label>
-        <span id="datePicker" />
-
-
-        <label htmlFor="hours">Hours:</label>
-        <input
-          type="number"
-          id="hours"
-          min="0"
-          value={spinHours}
-          onChange={handleInputChangeHours}
-        />
-        <label htmlFor="minutes">Minutes:</label>
-        <input
-          type="number"
-          id="minutes"
-          min="0"
-          max="59"
-          value={spinMins}
-          onChange={handleInputChangeMinutes}
-        />
-
         <div className="container">
-        {/* Details about the spin session they are adding */}
-                  <div class="form-floating mb-3">
-        <textarea
-          type="text"
-          value={spinDetails}
-          onChange={handleInputChangeDetails}
-          placeholder=""
-          id="spinDetails"
-          className="form-control"
-          style={{height: '10em'}}
-        />
-        <label htmlFor="spinDetails"> Spin Details: </label>
-        </div>
+          <div class="form-floating mb-3">
+            <input id="datePicker" className="form-control" placeholder="" />
+            <label htmlFor="datePicker">Pick Date:</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+              id="hours"
+              min="0"
+              value={spinHours}
+              onChange={handleInputChangeHours}
+              className="form-control"
+              placeholder=""
+            />
+            <label htmlFor="hours">Hours:</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+              id="minutes"
+              min="0"
+              max="59"
+              value={spinMins}
+              onChange={handleInputChangeMinutes}
+              className="form-control"
+              placeholder=""
+            />
+            <label htmlFor="minutes">Minutes:</label>
+          </div>
+
+          {/* Details about the spin session they are adding */}
+          <div class="form-floating mb-3">
+            <textarea
+              type="text"
+              value={spinDetails}
+              onChange={handleInputChangeDetails}
+              placeholder=""
+              id="spinDetails"
+              className="form-control"
+              style={{ height: "10em" }}
+            />
+            <label htmlFor="spinDetails"> Spin Details: </label>
+          </div>
 
           <label htmlFor="multiSelectRecords">Select Spun Records:</label>
           <AsyncSelect
@@ -169,11 +181,11 @@ function AddSpinForm(props) {
             className="unstyled form-control mb-3"
           />
 
-        <div className="d-grid gap-2">
-          <button className="btn btn-lg btn-primary" type="submit">
-            ADD SPIN
-          </button>
-        </div>
+          <div className="d-grid gap-2">
+            <button className="btn btn-lg btn-primary" type="submit">
+              ADD SPIN
+            </button>
+          </div>
         </div>
       </form>
     </div>
