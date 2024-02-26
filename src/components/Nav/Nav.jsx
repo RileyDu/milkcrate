@@ -40,6 +40,14 @@ function Nav() {
             Add friend
           </button>
         )}
+        {location.pathname === "/social/add" && (
+          <button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/social")}
+          >
+            back
+          </button>
+        )}
         {isFriendDetailPage && (
           <button
             className="btn btn-outline-secondary btn-sm"
