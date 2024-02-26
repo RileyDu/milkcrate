@@ -151,3 +151,44 @@ input {
 #datePicker {
   text-align: center;
 }
+
+.recordDetailsContainer {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  /* gap: 10em;  */
+}
+
+.coverArtContainer {
+  margin-left: 20em;
+  margin-top: 4em;
+  flex: 50%;
+}
+
+.coverArt {
+  width: 100%; 
+  max-width: 600px; 
+}
+
+.textContent {
+  flex: 50%;
+  margin-top: 1em;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.bg-primary{
+margin-right: .5em;
+}
+
+.buttonBar{
+  margin-left: 4em;
+}
+
+.btn-outline-danger{
+  margin-right:1em ;
+}
+
+.btn-outline-warning{
+  margin-left:1em ;
+}

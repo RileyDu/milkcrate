@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function RecordDetails() {
   const { recordId, friendId } = useParams();
@@ -30,13 +30,13 @@ function RecordDetails() {
   function deleteRecord() {
     // Show SweetAlert confirmation dialog
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         // User confirmed deletion, proceed with the delete operation
@@ -45,18 +45,13 @@ function RecordDetails() {
           payload: record.id,
         });
         history.push(`/`); // takes user back to home
-        
+
         // Show deletion success message
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        );
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
       }
       // If result.isConfirmed is false, user canceled, do nothing
     });
   }
-  
 
   if (!record) {
     return <h2>Loading...</h2>;
@@ -70,45 +65,54 @@ function RecordDetails() {
       {friendId && (
         <button onClick={() => history.push(`/social/friends/${friendId}`)}>
           back
-        </button>)}
-      
-      <p>Record ID: {record.id}</p>
-      <img src={record.coverart} alt={record.title} />
-      <p>
-        <strong>ALBUM TITLE:</strong> {record.title}
-      </p>
-      <p>
-        <strong>ALBUM ARTIST:</strong> {record.artist}
-      </p>
-      <p>
-        <strong>MOOD:</strong> {record.mood}
-      </p>
-      <p>
-        <strong>TAGS</strong>
-      </p>
-      {console.log("what is a tag anyways?", tagsArray)}
-
-      {tagsArray.length > 0 ? (
-        <ul>
-          {tagsArray.map((tag, i) => (
-            <li key={i}>
-              <p>{tag}</p>
-            </li>
-          ))}
-        </ul>
-      ) : null}
-      <p>
-        <strong>DETAILS:</strong> {record.details}
-      </p>
-
-      {record.user_id === activeUser.id && (
-        <>
-          <button onClick={() => deleteRecord()}>delete record</button>
-          <button onClick={() => history.push(`/user/edit/${record.id}`)}>
-            edit record
-          </button>
-        </>
+        </button>
       )}
+
+      <div className="recordDetailsContainer">
+        <div className="coverArtContainer">
+          <img src={record.coverart} alt={record.title} className="coverArt" />
+        </div>
+        <div className="textContent">
+          <p>
+            <strong>TITLE:</strong> {record.title}
+          </p>
+          <p>
+            <strong> ARTIST:</strong> {record.artist}
+          </p>
+          <p>
+            <strong>MOOD:</strong> {record.mood}
+          </p>
+          {console.log("what is a tag anyways?", tagsArray)}
+          <p>
+            <strong>DETAILS:</strong> {record.details}
+          </p>
+
+          {tagsArray.length > 0 ? (
+            <div className="container">
+              {tagsArray.map((tag, i) => (
+                <div key={i} className="badge bg-primary rounded-pill">{tag}</div>
+              ))}
+            </div>
+          ) : null}
+
+          {record.user_id === activeUser.id && (
+            <div className="buttonBar">
+              <button
+                onClick={() => deleteRecord()}
+                className="btn btn-outline-danger"
+              >
+                delete record
+              </button>
+              <button
+                onClick={() => history.push(`/user/edit/${record.id}`)}
+                className="btn btn-outline-warning"
+              >
+                edit record
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
