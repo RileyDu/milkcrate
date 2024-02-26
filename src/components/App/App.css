@@ -194,3 +194,7 @@ margin-right: .5em;
 .editRecordBtn{
   margin-right:1em ;
 }
+
+.spinsListItem {
+  list-style:circle
+}

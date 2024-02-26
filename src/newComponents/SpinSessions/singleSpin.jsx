@@ -93,7 +93,7 @@ function SingleSpin(props) {
               </p>
               <ul>
                 {spins.map((spin, i) => (
-                  <li key={i}>
+                  <li className="spinsListItem" key={i}>
                     <p>
                     <em>{spin.title}</em> by {spin.artist}
                     </p>
