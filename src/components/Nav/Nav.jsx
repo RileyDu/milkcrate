@@ -13,6 +13,10 @@ function Nav() {
     location.pathname.startsWith("/social/friends/") &&
     location.pathname.split("/").length >= 1;
 
+  const isSpinDetailPage =
+    location.pathname.startsWith("/spins/details/") &&
+    location.pathname.split("/").length >= 1;
+
   return (
     <div className="nav">
       <div className="nav-section left">
@@ -62,6 +66,14 @@ function Nav() {
             onClick={() => history.push("/spins/add")}
           >
             Add spin
+          </button>
+        )}
+        {isSpinDetailPage && (
+          <button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/spins")}
+          >
+            back
           </button>
         )}
         {location.pathname === "/spins/add" && (
