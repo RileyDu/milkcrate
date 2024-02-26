@@ -9,13 +9,21 @@ function Nav() {
   const location = useLocation();
   const history = useHistory();
 
-  const isFriendDetailPage =
-    location.pathname.startsWith("/social/friends/") &&
-    location.pathname.split("/").length >= 1;
+  const isFriendDetailPage = 
+    location.pathname.startsWith("/social/friends/") && 
+    location.pathname.split("/").filter(Boolean).length === 3;
 
-  const isSpinDetailPage =
-    location.pathname.startsWith("/spins/details/") &&
-    location.pathname.split("/").length >= 1;
+  const isSpinDetailPage = 
+    location.pathname.startsWith("/spins/details/") && 
+    location.pathname.split("/").filter(Boolean).length === 3;
+
+  const isRecordDetailPage = 
+    location.pathname.startsWith("/user/details/") && 
+    location.pathname.split("/").filter(Boolean).length === 3;
+
+  const isFriendsRecordDetailPage =
+  location.pathname.startsWith("/user/details/") && 
+  location.pathname.split("/").filter(Boolean).length > 3;
 
   return (
     <div className="nav">
@@ -26,6 +34,14 @@ function Nav() {
             onClick={() => history.push("/user/add")}
           >
             Add record
+          </button>
+        )}
+        {isRecordDetailPage && (
+          <button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/user")}
+          >
+            home
           </button>
         )}
         {location.pathname === "/user/add" && (
