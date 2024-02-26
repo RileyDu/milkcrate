@@ -152,25 +152,25 @@ input {
   text-align: center;
 }
 
-.recordDetailsContainer {
+.recordDetailsContainer, .spinDetailsContainer {
   display: flex;
   /* flex-direction: column; */
   align-items: center;
   /* gap: 10em;  */
 }
 
-.coverArtContainer {
+.coverArtContainer, .spinCarouselContainer {
   margin-left: 20em;
   margin-top: 4em;
   flex: 50%;
 }
 
-.coverArt {
+.coverArt, .spinCoverArt {
   width: 100%; 
   max-width: 600px; 
 }
 
-.textContent {
+.textContent, .spinTextContainer {
   flex: 50%;
   margin-top: 1em;
   font-size: xx-large;
@@ -187,10 +187,10 @@ margin-right: .5em;
   margin-right: 6em;
 }
 
-.btn-outline-danger{
+.deleteRecordBtn{
   margin-left:1em ;
 }
 
-.btn-outline-warning{
+.editRecordBtn{
   margin-right:1em ;
 }

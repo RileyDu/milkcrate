@@ -59,25 +59,53 @@ function SingleSpin(props) {
   return (
     <div>
       <h2 className="header-tabs">spin details</h2>
-      <button onClick={() => deleteSpin()}>delete spin</button>
       {spinExists ? (
         <>
-          <p>listened on {formattedDate}</p>
-          <p>{formattedTime} spent listening</p>
-          <p>
-            <strong> DETAILS</strong>
-          </p>
-          <p>{spins[0].spin_details}</p>
-          <p>
-            <strong> albums listened to</strong>
-          </p>
-          <Carousel interval={750} fade={true} controls={false} indicators={false}>
-            {spins.map((spin, i) => (
-              <Carousel.Item >
-                <img src={spin.coverart} />
-              </Carousel.Item>
-            ))}
-          </Carousel>
+          <div className="spinDetailsContainer">
+            <div className="spinCarouselContainer">
+              <Carousel
+                interval={1000}
+                fade={true}
+                controls={false}
+                indicators={false}
+              >
+                {spins.map((spin, i) => (
+                  <Carousel.Item>
+                    <img className="spinCoverArt" src={spin.coverart} />
+                  </Carousel.Item>
+                ))}
+              </Carousel>
+            </div>
+
+            <div className="spinTextContainer">
+              <p>
+                <strong> LISTENED on: </strong>
+                {formattedDate}
+              </p>
+              <p>
+                <strong> LENGTH of SPIN:</strong> {formattedTime}
+              </p>
+              <p>
+                <strong> DETAILS:</strong> {spins[0].spin_details}
+              </p>
+              <p>
+                <strong> ALBUMS:</strong>
+              </p>
+              <ul>
+                {spins.map((spin, i) => (
+                  <li key={i}>
+                    <p>
+                    <em>{spin.title}</em> by {spin.artist}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+              <hr/>
+              <div class="d-grid gap-2">
+              <button onClick={() => deleteSpin()} className="btn btn-outline-danger">delete spin</button>
+              </div>
+            </div>
+          </div>
         </>
       ) : (
         <p>Loading spin details...</p>

@@ -96,13 +96,13 @@ function RecordDetails() {
             <div className="buttonBar">
               <button
                 onClick={() => history.push(`/user/edit/${record.id}`)}
-                className="btn btn-outline-warning"
+                className="btn btn-outline-warning editRecordBtn"
               >
                 edit record
               </button>
               <button
                 onClick={() => deleteRecord()}
-                className="btn btn-outline-danger"
+                className="btn btn-outline-danger deleteRecordBtn"
               >
                 delete record
               </button>

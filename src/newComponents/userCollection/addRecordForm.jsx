@@ -68,7 +68,7 @@ function AddRecordForm(props) {
       icon: "success",
       title: "The record has been added to your milkcrate",
       showConfirmButton: false,
-      timer: 750,
+      timer: 1000,
     });
   }
 
