@@ -167,19 +167,29 @@ function AddSpinForm(props) {
             <label htmlFor="spinDetails"> Spin Details: </label>
           </div>
 
-          <label htmlFor="multiSelectRecords">Select Spun Records:</label>
-          <AsyncSelect
-            isMulti
-            cacheOptions
-            defaultOptions={mappedAlbums}
-            loadOptions={promiseOptions}
-            id="multiSelectRecords"
-            value={mappedAlbums.filter((album) =>
-              spinRecords.includes(album.value)
-            )}
-            onChange={handleInputChangeRecords}
-            className="unstyled form-control mb-3"
-          />
+          <div class="form-floating mb-3">
+            <AsyncSelect
+              unstyled
+              isMulti
+              cacheOptions
+              defaultOptions={mappedAlbums}
+              loadOptions={promiseOptions}
+              id="multiSelectRecords"
+              value={mappedAlbums.filter((album) =>
+                spinRecords.includes(album.value)
+              )}
+              onChange={handleInputChangeRecords}
+              className="form-control mb-3"
+              placeholder=''
+              styles={{
+                menu: (base) => ({
+                  ...base,
+                  backgroundColor: 'white',
+                }),
+              }}
+            />
+            <label htmlFor="multiSelectRecords">Select Spun Records:</label>
+          </div>
 
           <div className="d-grid gap-2">
             <button className="btn btn-lg btn-primary" type="submit">
