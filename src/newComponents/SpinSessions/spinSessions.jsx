@@ -19,20 +19,21 @@ function SpinSessions(props) {
     <div>
       <h2 className='header-tabs'>spins</h2>
       {spins?.length > 0 && (
-        <ul>
+        <div className='spinPageContainer'>
           {spins.map((spin, i) => {
             const formattedDate = spin.listened_at ? dayjs(spin.listened_at).format('MM/DD/YYYY') : 'Unknown date';
             return (
-              <li key={i}>
-                <p onClick={() => history.push(`/spins/details/${spin.id}`)}>
-                  {spin.spin_details} {formattedDate}
+              <div className='spinPageItems' key={i}>
+                <img className='record-clipart' src="TheRecord.svg" onClick={() => history.push(`/spins/details/${spin.id}`)}/>
+                <p className='spinPageText' >
+                   {formattedDate}
                 </p>
-              </li>
+                <p className='spinDetailsText'>{spin.spin_details}</p>
+              </div>
             );
           })}
-        </ul>
+        </div>
       )}
-      <img src="TheRecord.svg" alt="" />
     </div>
   );
 }

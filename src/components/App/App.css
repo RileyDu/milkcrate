@@ -199,26 +199,32 @@ margin-right: .5em;
   list-style:circle
 }
 
-.social-crate {
+.social-crate, .record-clipart {
   max-width: 450px;
   margin-top: -4em;
   margin-bottom: -8em;
 }
 
-.socialPageContainer {
+.socialPageContainer, .spinPageContainer {
 display: flex;
 justify-content: space-around;
 margin-top: 4em;
+flex-wrap: wrap;
 }
-.socialPageItems {
+
+.socialPageItems, .spinPageItems {
   display: flex;
   flex-direction: column;
   align-items: center; 
   margin-bottom: 2em; 
 }
 
-.socialPageText{
+.socialPageText, .spinPageText{
   font-size: xx-large;
   font-weight: bolder;
   margin-top: 1em;
+}
+
+.spinDetailsText {
+  font-size: 1.25em;
 }
