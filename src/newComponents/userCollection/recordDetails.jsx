@@ -62,11 +62,6 @@ function RecordDetails() {
   return (
     <div>
       <h2 className="header-tabs"> {record.title} Details</h2>
-      {friendId && (
-        <button onClick={() => history.push(`/social/friends/${friendId}`)}>
-          back
-        </button>
-      )}
 
       <div className="recordDetailsContainer">
         <div className="coverArtContainer">
@@ -90,25 +85,34 @@ function RecordDetails() {
           {tagsArray.length > 0 ? (
             <div className="container">
               {tagsArray.map((tag, i) => (
-                <div key={i} className="badge bg-primary rounded-pill">{tag}</div>
+                <div key={i} className="badge bg-primary rounded-pill">
+                  {tag}
+                </div>
               ))}
             </div>
           ) : null}
-
+<hr/>
           {record.user_id === activeUser.id && (
             <div className="buttonBar">
-              <button
-                onClick={() => deleteRecord()}
-                className="btn btn-outline-danger"
-              >
-                delete record
-              </button>
               <button
                 onClick={() => history.push(`/user/edit/${record.id}`)}
                 className="btn btn-outline-warning"
               >
                 edit record
               </button>
+              <button
+                onClick={() => deleteRecord()}
+                className="btn btn-outline-danger"
+              >
+                delete record
+              </button>
+            </div>
+          )}
+          {friendId && (
+            <div class="d-grid gap-2">
+            <button onClick={() => history.push(`/social/friends/${friendId}`)} className="btn btn-primary btn-lg">
+              back to milkcrate
+            </button>
             </div>
           )}
         </div>

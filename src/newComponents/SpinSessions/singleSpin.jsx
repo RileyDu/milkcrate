@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import dayjs from "dayjs";
 import Swal from "sweetalert2";
+import Carousel from "react-bootstrap/Carousel";
 
 function SingleSpin(props) {
   const { id } = useParams();
@@ -47,8 +48,12 @@ function SingleSpin(props) {
   }
 
   const spinExists = spins && spins.length > 0;
-  const formattedDate = spinExists ? dayjs(spins[0].listened_at).format('MM/DD/YYYY') : '';
-  const takeOffSeconds = spinExists ? spins[0].time_spent.split(":") : ['00', '00'];
+  const formattedDate = spinExists
+    ? dayjs(spins[0].listened_at).format("MM/DD/YYYY")
+    : "";
+  const takeOffSeconds = spinExists
+    ? spins[0].time_spent.split(":")
+    : ["00", "00"];
   const formattedTime = `${takeOffSeconds[0]}:${takeOffSeconds[1]}`;
 
   return (
@@ -59,16 +64,20 @@ function SingleSpin(props) {
         <>
           <p>listened on {formattedDate}</p>
           <p>{formattedTime} spent listening</p>
-          <p><strong> DETAILS</strong></p>
+          <p>
+            <strong> DETAILS</strong>
+          </p>
           <p>{spins[0].spin_details}</p>
-          <p><strong> albums listened to</strong></p>
-          <ul>
+          <p>
+            <strong> albums listened to</strong>
+          </p>
+          <Carousel interval={750} fade={true} controls={false} indicators={false}>
             {spins.map((spin, i) => (
-              <li key={i}>
-                <p>{spin.title} by {spin.artist}</p>
-              </li>
+              <Carousel.Item >
+                <img src={spin.coverart} />
+              </Carousel.Item>
             ))}
-          </ul>
+          </Carousel>
         </>
       ) : (
         <p>Loading spin details...</p>
