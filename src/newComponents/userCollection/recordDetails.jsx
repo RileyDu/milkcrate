@@ -67,13 +67,11 @@ function RecordDetails() {
   return (
     <div>
       <h2 className="header-tabs"> {record.title} Details</h2>
-      {friendId ? (
+      {friendId && (
         <button onClick={() => history.push(`/social/friends/${friendId}`)}>
           back
-        </button>
-      ) : (
-        <button onClick={() => history.push("/user")}>home</button>
-      )}
+        </button>)}
+      
       <p>Record ID: {record.id}</p>
       <img src={record.coverart} alt={record.title} />
       <p>
