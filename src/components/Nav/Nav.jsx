@@ -127,16 +127,9 @@ function Nav() {
             <Link className="navLink" to="/blindbag">
               blind bag
             </Link>
-            <LogOutButton className="navLink" />
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
+            <LogOutButton className="btn btn-outline-secondary btn-sm" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );

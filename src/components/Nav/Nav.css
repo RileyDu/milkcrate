@@ -19,7 +19,8 @@
 }
 
 .nav-section.right {
-  justify-content: flex-start;
+  justify-content: flex-end;
+  padding-right: 4em;
 }
 
 
