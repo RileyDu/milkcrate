@@ -42,6 +42,8 @@ function App() {
     dispatch({ type: "FETCH_USER" });
   }, [dispatch]);
 
+  
+
   return (
     <Router>
       <div>
@@ -128,16 +130,16 @@ function App() {
             <TestSite />
           </ProtectedRoute>
 
-          <Route exact path="/login">
+          {/* <Route exact path="/login">
             {user.id ? (
               // If the user is already logged in,
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/home" />
             ) : (
               // Otherwise, show the login page
-              <LoginPage />
+              <LandingPage />
             )}
-          </Route>
+          </Route> */}
 
           <Route exact path="/registration">
             {user.id ? (
@@ -151,16 +153,8 @@ function App() {
           </Route>
 
           <Route exact path="/home">
-            {user.id ? (
-              // If the user is already logged in,
-              // redirect them to the /user page
-              <Redirect to="/user" />
-            ) : (
-              // Otherwise, show the Landing page
-              <LandingPage />
-            )}
+            <LandingPage />
           </Route>
-
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>

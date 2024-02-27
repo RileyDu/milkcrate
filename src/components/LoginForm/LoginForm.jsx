@@ -21,6 +21,7 @@ function LoginForm() {
           password: password,
         },
       });
+      history.push('/user')
     } else {
       dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
@@ -63,7 +64,7 @@ function LoginForm() {
         </label>
       </div>
       <div className="d-grid gap-2">
-      <button className="btn btn-primary" type="submit">login</button>
+      <button className="btn btn-primary" type="submit" >login</button>
 
       </div>
       </div>

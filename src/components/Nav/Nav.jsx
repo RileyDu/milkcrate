@@ -9,21 +9,21 @@ function Nav() {
   const location = useLocation();
   const history = useHistory();
 
-  const isFriendDetailPage = 
-    location.pathname.startsWith("/social/friends/") && 
+  const isFriendDetailPage =
+    location.pathname.startsWith("/social/friends/") &&
     location.pathname.split("/").filter(Boolean).length === 3;
 
-  const isSpinDetailPage = 
-    location.pathname.startsWith("/spins/details/") && 
+  const isSpinDetailPage =
+    location.pathname.startsWith("/spins/details/") &&
     location.pathname.split("/").filter(Boolean).length === 3;
 
-  const isRecordDetailPage = 
-    location.pathname.startsWith("/user/details/") && 
+  const isRecordDetailPage =
+    location.pathname.startsWith("/user/details/") &&
     location.pathname.split("/").filter(Boolean).length === 3;
 
   const isFriendsRecordDetailPage =
-  location.pathname.startsWith("/user/details/") && 
-  location.pathname.split("/").filter(Boolean).length > 3;
+    location.pathname.startsWith("/user/details/") &&
+    location.pathname.split("/").filter(Boolean).length > 3;
 
   return (
     <div className="nav">
@@ -102,14 +102,20 @@ function Nav() {
         )}
       </div>
       <div className="nav-section center">
-        <Link to="/home">
-          <h2 className="nav-title">milkcrate.</h2>
-        </Link>
+        {user.id ? (
+          <Link to="/user">
+            <h2 className="nav-title">milkcrate.</h2>
+          </Link>
+        ) : (
+          <Link to="/home">
+            <h2 className="nav-title">milkcrate.</h2>
+          </Link>
+        )}
       </div>
       <div className="nav-section right">
         {!user.id && (
           <Link className="navLink" to="/">
-            ‎ 
+            ‎
           </Link>
         )}
 
