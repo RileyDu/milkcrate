@@ -7,7 +7,6 @@ function InfoPage() {
 
       <div className="infoPageContainer">
         <div className="infoLogoContainer">
-          {/* Self-closing tag for the image */}
           <img
             src="milkcrateLogo.svg"
             alt="Milkcrate Logo"

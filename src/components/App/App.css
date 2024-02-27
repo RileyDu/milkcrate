@@ -267,6 +267,7 @@ input {
   flex-direction: column;
   gap: 10px; 
   padding-top: 3em;
+  padding-right: 1em;
 }
 
 .infoHeaders {
@@ -281,6 +282,11 @@ ol > li {
 #infoPills {
   font-size: 1.25em;
   cursor: pointer;
+}
+
+ul > li {
+  list-style: circle;
+  font-size: 1.25em;
 }
 
 #editRecordBackBtn,
