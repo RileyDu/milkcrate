@@ -158,7 +158,7 @@ input {
   display: flex;
   /* flex-direction: column; */
   align-items: center;
-  /* gap: 10em;  */
+  gap: 5em; 
 }
 
 .coverArtContainer,

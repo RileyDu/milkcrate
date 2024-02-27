@@ -21,10 +21,10 @@ function SocialPage(props) {
           icon: "info",
           title: "New to MILKCRATE.? Need a friend? Add the creator, RileyDu!",
           showConfirmButton: false,
-          timer: 3000,
+          timer: 2750,
         });
       }
-    }, 2000); 
+    }, 1000); 
 
 
     return () => clearTimeout(timer);
