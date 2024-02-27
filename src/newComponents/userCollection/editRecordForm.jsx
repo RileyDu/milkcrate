@@ -84,42 +84,67 @@ function EditRecordForm(props) {
       <h2 className="header-tabs"> edit {recordTitle} details </h2>
       <button onClick={() => history.push(`/user/details/${id}`)}>back</button>
       <form onSubmit={(event) => editRecord(event)}>
-        <input
-          type="text"
-          value={recordArtist}
-          onChange={handleInputChangeArtist}
-          placeholder="Enter Record Artist"
-        />
-        <input
-          type="text"
-          value={recordTitle}
-          onChange={handleInputChangeTitle}
-          placeholder="Enter Record Title"
-        />
-        <select
-          value={recordMood}
-          onChange={(e) => {
-            const selectedMood = e.target.value;
-            console.log("Selected Mood from user:", selectedMood);
-            setRecordMood(selectedMood);
-          }}
-        >
-          {/* onChange assigns the selected value to local state */}
-          <option value=""> Select Record Mood </option>
-          {/* make shift placeholder above */}
-          {moods.map((mood) => (
-            <option key={mood.id} value={mood.id}>
-              {mood.mood}
-            </option>
-          ))}
-        </select>
-        <input
-          type="text"
-          value={recordDetails}
-          onChange={handleInputChangeDetails}
-          placeholder="Enter Record Details"
-        />
-        <button type="submit">EDIT RECORD</button>
+        <div className="container">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            value={recordArtist}
+            onChange={handleInputChangeArtist}
+            placeholder=""
+            id="editArtist"
+            className="form-control"
+          />
+          <label for="editArtist">Edit Record Artist</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            value={recordTitle}
+            onChange={handleInputChangeTitle}
+            placeholder=""
+            className="form-control"
+          />
+          <label for="editTitle">Edit Record Title</label>
+        </div>
+
+
+          <select
+            value={recordMood}
+            className="form-select mb-3"
+            onChange={(e) => {
+              const selectedMood = e.target.value;
+              console.log("Selected Mood from user:", selectedMood);
+              setRecordMood(selectedMood);
+            }}
+          >
+            {/* onChange assigns the selected value to local state */}
+            <option value=""> Select Record Mood </option>
+            {/* make shift placeholder above */}
+            {moods.map((mood) => (
+              <option key={mood.id} value={mood.id}>
+                {mood.mood}
+              </option>
+            ))}
+          </select>
+
+
+        <div class="form-floating mb-3">
+          <textarea
+            type="text"
+            value={recordDetails}
+            onChange={handleInputChangeDetails}
+            placeholder=""
+            className="form-control"
+            id="editDetails"
+            rows={3}
+            style={{height: '10em'}}
+          />
+          <label for="editDetails">Edit Record Details</label>
+        </div>
+        <div className="d-grid gap-2">
+        <button className="btn btn-lg btn-primary" type="submit">EDIT RECORD</button>
+      </div>
+      </div>
       </form>
     </div>
   );
