@@ -8,7 +8,6 @@ import App from './components/App/App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootswatch/dist/lux/bootstrap.min.css';
-// import '@sweetalert2/theme-dark/dark.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('react-root'));

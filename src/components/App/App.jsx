@@ -33,7 +33,7 @@ import AddRecordForm from "../../newComponents/userCollection/addRecordForm";
 import EditRecordForm from "../../newComponents/userCollection/editRecordForm";
 import RecordDetails from "../../newComponents/userCollection/recordDetails";
 import TestSite from "../../newComponents/SpinSessions/selectTester";
-import '@sweetalert2/theme-dark/dark.css';
+// import '@sweetalert2/themes/dark/dark.css';
 
 
 

@@ -7,7 +7,8 @@ import AsyncSelect from "react-select/async";
 import AirDatepicker from "air-datepicker";
 import "air-datepicker/air-datepicker.css";
 import localeEn from "air-datepicker/locale/en";
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import '@sweetalert2/theme-dark/dark.css';
 
 function AddSpinForm(props) {
   const dispatch = useDispatch();

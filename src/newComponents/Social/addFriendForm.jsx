@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import '@sweetalert2/theme-dark/dark.css';
 
 function AddFriendForm(props) {
   const dispatch = useDispatch();

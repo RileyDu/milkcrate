@@ -5,7 +5,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import dayjs from "dayjs";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "@sweetalert2/theme-dark/dark.css";
 import Carousel from "react-bootstrap/Carousel";
 
 function SingleSpin(props) {
@@ -95,14 +96,19 @@ function SingleSpin(props) {
                 {spins.map((spin, i) => (
                   <li className="spinsListItem" key={i}>
                     <p>
-                    <em>{spin.title}</em> by {spin.artist}
+                      <em>{spin.title}</em> by {spin.artist}
                     </p>
                   </li>
                 ))}
               </ul>
-              <hr/>
+              <hr />
               <div class="d-grid gap-2">
-              <button onClick={() => deleteSpin()} className="btn btn-outline-danger">delete spin</button>
+                <button
+                  onClick={() => deleteSpin()}
+                  className="btn btn-outline-danger"
+                >
+                  delete spin
+                </button>
               </div>
             </div>
           </div>

@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import '@sweetalert2/theme-dark/dark.css';
 
 function SocialPage(props) {
   const friends = useSelector((store) => store.socialReducer);

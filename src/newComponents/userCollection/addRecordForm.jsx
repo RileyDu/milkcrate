@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import '@sweetalert2/theme-dark/dark.css';
 
 function AddRecordForm(props) {
   const dispatch = useDispatch();

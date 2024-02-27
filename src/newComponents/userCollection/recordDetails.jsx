@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import '@sweetalert2/theme-dark/dark.css';
 
 function RecordDetails() {
   const { recordId, friendId } = useParams();
