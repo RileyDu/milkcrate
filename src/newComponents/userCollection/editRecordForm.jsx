@@ -82,31 +82,36 @@ function EditRecordForm(props) {
   return (
     <div>
       <h2 className="header-tabs"> edit {recordTitle} details </h2>
-      <button onClick={() => history.push(`/user/details/${id}`)}>back</button>
+      <button
+        onClick={() => history.push(`/user/details/${id}`)}
+        className="btn btn-outline-secondary btn-sm"
+        id="editRecordBackBtn"
+      >
+        back
+      </button>
       <form onSubmit={(event) => editRecord(event)}>
         <div className="container">
-        <div class="form-floating mb-3">
-          <input
-            type="text"
-            value={recordArtist}
-            onChange={handleInputChangeArtist}
-            placeholder=""
-            id="editArtist"
-            className="form-control"
-          />
-          <label for="editArtist">Edit Record Artist</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input
-            type="text"
-            value={recordTitle}
-            onChange={handleInputChangeTitle}
-            placeholder=""
-            className="form-control"
-          />
-          <label for="editTitle">Edit Record Title</label>
-        </div>
-
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              value={recordArtist}
+              onChange={handleInputChangeArtist}
+              placeholder=""
+              id="editArtist"
+              className="form-control"
+            />
+            <label for="editArtist">Edit Record Artist</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              value={recordTitle}
+              onChange={handleInputChangeTitle}
+              placeholder=""
+              className="form-control"
+            />
+            <label for="editTitle">Edit Record Title</label>
+          </div>
 
           <select
             value={recordMood}
@@ -127,24 +132,25 @@ function EditRecordForm(props) {
             ))}
           </select>
 
-
-        <div class="form-floating mb-3">
-          <textarea
-            type="text"
-            value={recordDetails}
-            onChange={handleInputChangeDetails}
-            placeholder=""
-            className="form-control"
-            id="editDetails"
-            rows={3}
-            style={{height: '10em'}}
-          />
-          <label for="editDetails">Edit Record Details</label>
+          <div class="form-floating mb-3">
+            <textarea
+              type="text"
+              value={recordDetails}
+              onChange={handleInputChangeDetails}
+              placeholder=""
+              className="form-control"
+              id="editDetails"
+              rows={3}
+              style={{ height: "10em" }}
+            />
+            <label for="editDetails">Edit Record Details</label>
+          </div>
+          <div className="d-grid gap-2">
+            <button className="btn btn-lg btn-primary" type="submit">
+              EDIT RECORD
+            </button>
+          </div>
         </div>
-        <div className="d-grid gap-2">
-        <button className="btn btn-lg btn-primary" type="submit">EDIT RECORD</button>
-      </div>
-      </div>
       </form>
     </div>
   );
