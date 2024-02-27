@@ -93,7 +93,7 @@ function AddRecordForm(props) {
             <label for="artistFormInput">Enter Record Artist</label>
           </div>
 
-          <div class="form-floating mb-3">
+          <div className="form-floating mb-3">
             <input
               type="text"
               value={recordTitle}

@@ -5,7 +5,7 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
 }
 
@@ -152,25 +152,29 @@ input {
   text-align: center;
 }
 
-.recordDetailsContainer, .spinDetailsContainer {
+.recordDetailsContainer,
+.spinDetailsContainer {
   display: flex;
   /* flex-direction: column; */
   align-items: center;
   /* gap: 10em;  */
 }
 
-.coverArtContainer, .spinCarouselContainer {
+.coverArtContainer,
+.spinCarouselContainer {
   margin-left: 20em;
   margin-top: 4em;
   flex: 50%;
 }
 
-.coverArt, .spinCoverArt {
-  width: 100%; 
-  max-width: 600px; 
+.coverArt,
+.spinCoverArt {
+  width: 100%;
+  max-width: 600px;
 }
 
-.textContent, .spinTextContainer {
+.textContent,
+.spinTextContainer {
   flex: 50%;
   margin-top: 1em;
   font-size: xx-large;
@@ -178,48 +182,54 @@ input {
   margin-right: 4em;
 }
 
-.bg-primary{
-margin-right: .5em;
+.bg-primary {
+  margin-right: 0.5em;
 }
 
-.buttonBar{
+.buttonBar {
   margin-left: 5em;
   margin-right: 3em;
 }
 
-.deleteRecordBtn{
-  margin-left:1em ;
+.deleteRecordBtn {
+  margin-left: 1em;
 }
 
-.editRecordBtn{
-  margin-right:1em ;
+.editRecordBtn {
+  margin-right: 1em;
 }
 
 .spinsListItem {
-  list-style:circle
+  list-style: circle;
 }
 
-.social-crate, .record-clipart {
+.social-crate,
+.record-clipart {
   max-width: 450px;
   margin-top: -4em;
   margin-bottom: -8em;
 }
 
-.socialPageContainer, .spinPageContainer {
-display: flex;
-justify-content: space-around;
-margin-top: 4em;
-flex-wrap: wrap;
+.socialPageContainer,
+.spinPageContainer,
+.landingContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4em;
+  flex-wrap: wrap;
 }
 
-.socialPageItems, .spinPageItems {
+.socialPageItems,
+.spinPageItems,
+.landingLogoContainer {
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  margin-bottom: 2em; 
+  align-items: center;
+  margin-bottom: 2em;
 }
 
-.socialPageText, .spinPageText{
+.socialPageText,
+.spinPageText {
   font-size: xx-large;
   font-weight: bolder;
   margin-top: 1em;
@@ -229,10 +239,16 @@ flex-wrap: wrap;
   font-size: 1em;
 }
 
-#editRecordBackBtn, #friendBackBtn{
-  position: fixed; 
+#editRecordBackBtn,
+#friendBackBtn {
+  position: fixed;
   top: 0;
   left: 0;
   margin-top: 1.4em;
-  margin-left: 6.5em; 
+  margin-left: 6.5em;
 }
+
+.landingLoginContainer {
+  margin-top: 4em;
+}
+

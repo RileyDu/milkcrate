@@ -108,8 +108,8 @@ function Nav() {
       </div>
       <div className="nav-section right">
         {!user.id && (
-          <Link className="navLink" to="/login">
-            Login / Register
+          <Link className="navLink" to="/">
+            ‎ 
           </Link>
         )}
 
