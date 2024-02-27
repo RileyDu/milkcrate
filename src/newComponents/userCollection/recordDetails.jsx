@@ -91,7 +91,7 @@ function RecordDetails() {
               ))}
             </div>
           ) : null}
-<hr/>
+          <hr />
           {record.user_id === activeUser.id && (
             <div className="buttonBar">
               <button
@@ -109,11 +109,13 @@ function RecordDetails() {
             </div>
           )}
           {friendId && (
-            <div class="d-grid gap-2">
-            <button onClick={() => history.push(`/social/friends/${friendId}`)} className="btn btn-primary btn-lg">
-              back to milkcrate
+            <button
+              onClick={() => history.push(`/social/friends/${friendId}`)}
+              className="btn btn-outline-secondary btn-sm"
+              id="friendBackBtn"
+            >
+              back
             </button>
-            </div>
           )}
         </div>
       </div>

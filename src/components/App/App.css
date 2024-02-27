@@ -229,7 +229,7 @@ flex-wrap: wrap;
   font-size: 1em;
 }
 
-#editRecordBackBtn{
+#editRecordBackBtn, #friendBackBtn{
   position: fixed; 
   top: 0;
   left: 0;
