@@ -6,6 +6,7 @@
     "node": "18.x"
   },
   "dependencies": {
+    "@sweetalert2/theme-dark": "^5.0.16",
     "air-datepicker": "^3.4.0",
     "axios": "^1.6.2",
     "bcryptjs": "^2.4.3",

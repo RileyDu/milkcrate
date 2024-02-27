@@ -14,6 +14,7 @@ import "./App.css";
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
+
 import AboutPage from "../AboutPage/AboutPage";
 // import UserPage from "../UserPage/UserPage";
 import InfoPage from "../InfoPage/InfoPage";
@@ -32,6 +33,9 @@ import AddRecordForm from "../../newComponents/userCollection/addRecordForm";
 import EditRecordForm from "../../newComponents/userCollection/editRecordForm";
 import RecordDetails from "../../newComponents/userCollection/recordDetails";
 import TestSite from "../../newComponents/SpinSessions/selectTester";
+import '@sweetalert2/theme-dark/dark.css';
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +49,7 @@ function App() {
   
 
   return (
+    
     <Router>
       <div>
         <Nav />
