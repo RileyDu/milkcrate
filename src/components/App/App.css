@@ -236,8 +236,51 @@ input {
   margin-top: 1em;
 }
 
+
 .spinDetailsText {
   font-size: 1em;
+}
+
+.infoPageContainer {
+  display: flex;
+  align-items: start;
+  gap: 4em; /* Adjust the gap between the image and the text as needed */
+  padding: 20px; 
+  
+}
+
+/* Logo Container */
+.infoLogoContainer {
+  flex-basis: 50%; 
+  text-align: center; 
+}
+
+.infoLogo {
+  max-width: 450px;
+  margin-top: -4em;
+  margin-bottom: -8em; 
+}
+
+.infoTextContainer {
+  flex-basis: 50%; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+  padding-top: 3em;
+}
+
+.infoHeaders {
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+
+ol > li {
+  font-size: 1.25em;
+}
+
+#infoPills {
+  font-size: 1.25em;
+  cursor: pointer;
 }
 
 #editRecordBackBtn,
@@ -252,4 +295,3 @@ input {
 .landingLoginContainer {
   margin-top: 4em;
 }
-
