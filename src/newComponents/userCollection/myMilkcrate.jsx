@@ -17,7 +17,7 @@ function MyMilkcrate(props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [hasSearched, setHasSearched] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [filterParam, setFilterParam] = useState("date_added");
+  const [filterParam, setFilterParam] = useState("date_addedNewest");
 
   // console.log('whats in the crate mate?', records);
 
