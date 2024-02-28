@@ -50,7 +50,7 @@ function Nav() {
         )}
         {location.pathname === "/social" && (
           <button
-            className="btn btn-outline-secondary btn-sm"
+            className="btn btn-outline-secondary btn-sm me-3"
             onClick={() => history.push("/social/add")}
           >
             Add friend
@@ -58,7 +58,7 @@ function Nav() {
         )}
         {location.pathname === "/social" && (
           <button
-            className="btn btn-outline-secondary btn-sm"
+            className="btn btn-outline-secondary btn-sm me-3"
             onClick={() => history.push("/social/recentlySpun")}
           >
             Recently Spun
