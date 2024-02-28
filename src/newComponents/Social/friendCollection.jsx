@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "@sweetalert2/theme-dark/dark.css";
 import { Row, Col } from "react-bootstrap";
+import LoadingSpinner from "../LoadingSpinner";
 
 function FriendCollection(props) {
   const { id } = useParams();
@@ -16,14 +17,21 @@ function FriendCollection(props) {
   const socialReducer = useSelector((store) => store.socialReducer);
   const [searchQuery, setSearchQuery] = useState("");
   const [hasSearched, setHasSearched] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   const friend = socialReducer.find(
     (friend) => friend.friend_id.toString() === id
   );
   console.log("what is the friend?", friend);
+
   useEffect(() => {
     dispatch({ type: "FETCH_FRIENDS_RECORDS", payload: id });
+    setTimeout(() => setIsLoading(false), 1000);
     // return a function to run it when this component unmounts
-    return () => dispatch({ type: `CLEAR_RECORDS` });
+    return () => {
+      dispatch({ type: `CLEAR_RECORDS` });
+      setIsLoading(true);
+    };
   }, [socialReducer]);
 
   function deleteFriend() {
@@ -96,6 +104,10 @@ function FriendCollection(props) {
     setHasSearched(false);
   }
 
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div>
       <h2 className="header-tabs">{friend.friend_username}'s milkcrate.</h2>
@@ -111,7 +123,6 @@ function FriendCollection(props) {
               className="form-control"
             />
             <label htmlFor="searchInput">
-              {" "}
               Search by Album, Artist, or Tags
             </label>
           </div>
