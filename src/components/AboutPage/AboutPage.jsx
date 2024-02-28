@@ -20,7 +20,7 @@ function AboutPage() {
             <strong>milkcrate. features</strong>
           </div>
           <ul>
-            <li>digitzes your record collection</li>
+            <li>digitizes your record collection</li>
             <li>lets you see your friends' collections</li>
             <li>keep a log of records you have played</li>
             <li>lets you easily search through hundres of records</li>

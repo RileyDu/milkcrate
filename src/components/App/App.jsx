@@ -90,13 +90,13 @@ function App() {
             <RecordDetails />
           </ProtectedRoute>
 
-          <ProtectedRoute
+          <Route
             // logged in shows InfoPage else shows LoginPage
             exact
             path="/info"
           >
             <InfoPage />
-          </ProtectedRoute>
+          </Route>
 
           <ProtectedRoute exact path="/social">
             <SocialPage />
