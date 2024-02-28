@@ -14,7 +14,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
   FROM "albums"
   JOIN "moods" ON albums.mood = moods.id
   WHERE albums.user_id = $1
-  ORDER BY albums.id DESC;
+  ORDER BY albums.date_added DESC;
 `;
   pool
     .query(query, [req.user.id])
