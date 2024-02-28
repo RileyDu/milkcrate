@@ -29,8 +29,8 @@ router.get("/", rejectUnauthenticated, (req, res) => {
 
 //POST the form data & last.fm response [API CALL HERE]
 router.post("/add", rejectUnauthenticated, (req, res) => {
-  const albumTitle = req.body.title;
-  const albumArtist = req.body.artist;
+  const albumTitle = encodeURIComponent(req.body.title);
+  const albumArtist = encodeURIComponent(req.body.artist);
   const albumMood = req.body.mood;
   const albumDetails = req.body.details;
 
