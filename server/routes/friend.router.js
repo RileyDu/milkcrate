@@ -49,6 +49,25 @@ router.get("/friends/collection", rejectUnauthenticated, (req, res) => {
     });
 });
 
+//GET ALL FRIENDS RECORDS AND SORT BY DATE_ADDED
+router.get("/hotp", rejectUnauthenticated, (req, res) => {
+  const query = `
+      SELECT * FROM "albums"
+      WHERE user_id = $1
+        ORDER BY "date_added" DESC
+        LIMIT 50;
+    `;
+  pool
+    .query(query, [req.user.id])
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.error("ERROR: Get HOTP", err);
+      res.sendStatus(500);
+    });
+});
+
 //GET albums from friend's milkcrate W/SEARCH params
 router.get("/friends/collection/search", rejectUnauthenticated, (req, res) => {
   const searchTerm = `%${req.query.search}%`;

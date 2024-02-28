@@ -6,6 +6,7 @@ import blindbagReducer from './blindbag.reducer';
 import socialReducer from './social.reducer';
 import recordReducer from './record.reducer';
 import moodReducer from './mood.reducer';
+import hotpReducer from './hotp.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   socialReducer,
   recordReducer,
   moodReducer,
+  hotpReducer
 });
 
 export default rootReducer;

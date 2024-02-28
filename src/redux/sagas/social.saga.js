@@ -59,7 +59,14 @@ function* deleteFriendship(action) {
   }
 
 
-//   NEED TO IMPLEMENT SEARCH STILL
+  function* fetchHOTP(action) {
+    try {
+      const response = yield axios.get(`/api/social/hotp`);
+      yield put({ type: "SET_HOTP", payload: response.data });
+    } catch (error) {
+      console.error("HOTP GET failed", error);
+    }
+  }
 
 function* socialSaga() {
   console.log("Social saga started...");
@@ -68,7 +75,7 @@ function* socialSaga() {
   yield takeLatest("DELETE_FRIENDSHIP", deleteFriendship);
   yield takeLatest("FETCH_FRIENDS_RECORDS", fetchFriendsRecords);
   yield takeLatest("SEARCH_FRIENDS_RECORDS", searchFriendsRecords);
-
+  yield takeLatest("FETCH_HOTP", fetchHOTP)
 }
 
 export default socialSaga;
