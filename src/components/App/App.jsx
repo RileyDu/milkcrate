@@ -14,7 +14,6 @@ import "./App.css";
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
-
 import AboutPage from "../AboutPage/AboutPage";
 // import UserPage from "../UserPage/UserPage";
 import InfoPage from "../InfoPage/InfoPage";
@@ -37,8 +36,6 @@ import HotOffThePress from "../../newComponents/Social/HotOffThePress";
 import RecentlySpun from "../../newComponents/Social/RecentlySpun";
 // import '@sweetalert2/themes/dark/dark.css';
 
-
-
 function App() {
   const dispatch = useDispatch();
 
@@ -48,10 +45,7 @@ function App() {
     dispatch({ type: "FETCH_USER" });
   }, [dispatch]);
 
-  
-
   return (
-    
     <Router>
       <div>
         <Nav />
@@ -119,11 +113,10 @@ function App() {
           <ProtectedRoute exact path="/social/friends/:friendId/:recordId">
             <RecordDetails />
           </ProtectedRoute>
-          
+
           <ProtectedRoute exact path="/social/friends/:id">
             <FriendCollection />
           </ProtectedRoute>
-
 
           <ProtectedRoute exact path="/spins">
             <SpinSessions />
@@ -132,7 +125,7 @@ function App() {
           <ProtectedRoute exact path="/spins/add">
             <AddSpinForm />
           </ProtectedRoute>
-          
+
           <ProtectedRoute exact path="/spins/details/:id">
             <SingleSpin />
           </ProtectedRoute>

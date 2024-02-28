@@ -64,12 +64,28 @@ function Nav() {
             Recently Spun
           </button>
         )}
+        {location.pathname === "/social/recentlySpun" && (
+          <button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/social")}
+          >
+            back
+          </button>
+        )}
         {location.pathname === "/social" && (
           <button
             className="btn btn-outline-secondary btn-sm"
             onClick={() => history.push("/social/hotp")}
           >
             Hot Off The Press
+          </button>
+        )}
+        {location.pathname === "/social/hotp" && (
+          <button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/social")}
+          >
+            back
           </button>
         )}
         {location.pathname === "/social/add" && (
