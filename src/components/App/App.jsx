@@ -33,6 +33,8 @@ import AddRecordForm from "../../newComponents/userCollection/addRecordForm";
 import EditRecordForm from "../../newComponents/userCollection/editRecordForm";
 import RecordDetails from "../../newComponents/userCollection/recordDetails";
 import TestSite from "../../newComponents/SpinSessions/selectTester";
+import HotOffThePress from "../../newComponents/Social/HotOffThePress";
+import RecentlySpun from "../../newComponents/Social/RecentlySpun";
 // import '@sweetalert2/themes/dark/dark.css';
 
 
@@ -100,6 +102,14 @@ function App() {
 
           <ProtectedRoute exact path="/social">
             <SocialPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/social/hotp">
+            <HotOffThePress />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/social/recentlySpun">
+            <RecentlySpun />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/social/add">

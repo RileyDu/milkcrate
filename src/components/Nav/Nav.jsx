@@ -21,10 +21,6 @@ function Nav() {
     location.pathname.startsWith("/user/details/") &&
     location.pathname.split("/").filter(Boolean).length === 3;
 
-  const isFriendsRecordDetailPage =
-    location.pathname.startsWith("/user/details/") &&
-    location.pathname.split("/").filter(Boolean).length > 3;
-
   return (
     <div className="nav">
       <div className="nav-section left">
@@ -58,6 +54,22 @@ function Nav() {
             onClick={() => history.push("/social/add")}
           >
             Add friend
+          </button>
+        )}
+        {location.pathname === "/social" && (
+          <button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/social/recentlySpun")}
+          >
+            Recently Spun
+          </button>
+        )}
+        {location.pathname === "/social" && (
+          <button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/social/hotp")}
+          >
+            Hot Off The Press
           </button>
         )}
         {location.pathname === "/social/add" && (
