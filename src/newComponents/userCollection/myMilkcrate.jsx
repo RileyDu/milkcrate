@@ -88,9 +88,9 @@ function MyMilkcrate(props) {
         case "artistZA":
           return b.artist.localeCompare(a.artist);
         case "albumAZ":
-          return a.title.localeCompare(b.album);
+          return a.title.localeCompare(b.title);
         case "albumZA":
-          return b.title.localeCompare(a.album);
+          return b.title.localeCompare(a.title);
         case "date_addedNewest":
           // Convert dates to timestamps for comparison
           return new Date(b.date_added) - new Date(a.date_added);
