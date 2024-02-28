@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "@sweetalert2/theme-dark/dark.css";
 import { Row, Col } from "react-bootstrap";
+import LoadingSpinner from "../LoadingSpinner";
 
 function MyMilkcrate(props) {
   const dispatch = useDispatch();
@@ -14,10 +15,22 @@ function MyMilkcrate(props) {
   const username = useSelector((store) => store.user.username);
   const [searchQuery, setSearchQuery] = useState("");
   const [hasSearched, setHasSearched] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // console.log('whats in the crate mate?', records);
 
   useEffect(() => {
+    const isFirstVisitSession =
+      sessionStorage.getItem("isFirstVisitSession") === null;
+
+    if (isFirstVisitSession) {
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        sessionStorage.setItem("isFirstVisitSession", "false");
+      }, 1000);
+    }
+
     dispatch({ type: "FETCH_RECORDS" });
     return () => dispatch({ type: `CLEAR_RECORDS` });
   }, [dispatch]);
@@ -60,9 +73,14 @@ function MyMilkcrate(props) {
     setHasSearched(false);
   }
 
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div>
       <h2 className="header-tabs">{username}'s milkcrate.</h2>
+      {/* <LoadingSpinner /> */}
 
       <div className="form-group">
         <form onSubmit={(event) => searchRecords(event)}>
