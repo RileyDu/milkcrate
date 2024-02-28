@@ -17,8 +17,8 @@ function HotOffThePress(props) {
       {records.length > 0 ? (
             <div className="container">
               {records.map((record, i) => (
-                <div key={i} className="badge bg-primary rounded-pill">
-                  {record.title}
+                <div key={i} className="">
+                  {record.username} bought {record.title} on {record.date_added}
                 </div>
               ))}
             </div>

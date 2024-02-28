@@ -75,9 +75,7 @@ function MyMilkcrate(props) {
     setHasSearched(false);
   }
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
+
 
   const sortedRecords = useMemo(() => {
     // Using slice to create a shallow copy of records before sorting to avoid mutating the original state
@@ -103,6 +101,10 @@ function MyMilkcrate(props) {
       }
     });
   }, [records, filterParam]);
+  
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div>
