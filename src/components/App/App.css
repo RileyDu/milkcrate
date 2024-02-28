@@ -314,3 +314,11 @@ ul > li {
   margin-top: -4em;
   margin-bottom: -8em;
 }
+
+#filterBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em
+}

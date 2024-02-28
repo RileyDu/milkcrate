@@ -109,21 +109,97 @@ function MyMilkcrate(props) {
       <h2 className="header-tabs">{username}'s milkcrate.</h2>
 
       <div className="form-group">
-        <div className="form-floating">
-          <select
-            value={filterParam}
+        <div className="form-floating mb-3" id="filterBtns">
+          <div
             id="filterLabel"
-            className="form-select mb-3 "
-            onChange={(e) => setFilterParam(e.target.value)}
+            className="btn-group"
+            role="group"
+            aria-label="Filter options"
           >
-            <option value="date_addedNewest">Newest Records</option>
-            <option value="date_addedOldest">Oldest Records</option>
-            <option value="artistAZ">Artist [A-Z]</option>
-            <option value="artistZA">Artist [Z-A]</option>
-            <option value="albumAZ">Album [A-Z]</option>
-            <option value="albumZA">Album [Z-A]</option>
-          </select>
-          <label htmlFor="filterLabel">Filter your milkcrate.</label>
+            <input
+              type="radio"
+              className="btn-check"
+              name="filterParam"
+              id="date_addedNewest"
+              value="date_addedNewest"
+              onChange={(e) => setFilterParam(e.target.value)}
+              checked={filterParam === "date_addedNewest"}
+            />
+            <label
+              className="btn btn-outline-primary"
+              htmlFor="date_addedNewest"
+            >
+              Newest Records
+            </label>
+
+            <input
+              type="radio"
+              className="btn-check"
+              name="filterParam"
+              id="date_addedOldest"
+              value="date_addedOldest"
+              onChange={(e) => setFilterParam(e.target.value)}
+              checked={filterParam === "date_addedOldest"}
+            />
+            <label
+              className="btn btn-outline-primary"
+              htmlFor="date_addedOldest"
+            >
+              Oldest Records
+            </label>
+
+            <input
+              type="radio"
+              className="btn-check"
+              name="filterParam"
+              id="artistAZ"
+              value="artistAZ"
+              onChange={(e) => setFilterParam(e.target.value)}
+              checked={filterParam === "artistAZ"}
+            />
+            <label className="btn btn-outline-primary" htmlFor="artistAZ">
+              Artist [A-Z]
+            </label>
+
+            <input
+              type="radio"
+              className="btn-check"
+              name="filterParam"
+              id="artistZA"
+              value="artistZA"
+              onChange={(e) => setFilterParam(e.target.value)}
+              checked={filterParam === "artistZA"}
+            />
+            <label className="btn btn-outline-primary" htmlFor="artistZA">
+              Artist [Z-A]
+            </label>
+
+            <input
+              type="radio"
+              className="btn-check"
+              name="filterParam"
+              id="albumAZ"
+              value="albumAZ"
+              onChange={(e) => setFilterParam(e.target.value)}
+              checked={filterParam === "albumAZ"}
+            />
+            <label className="btn btn-outline-primary" htmlFor="albumAZ">
+              Album [A-Z]
+            </label>
+
+            <input
+              type="radio"
+              className="btn-check"
+              name="filterParam"
+              id="albumZA"
+              value="albumZA"
+              onChange={(e) => setFilterParam(e.target.value)}
+              checked={filterParam === "albumZA"}
+            />
+            <label className="btn btn-outline-primary" htmlFor="albumZA">
+              Album [Z-A]
+            </label>
+          </div>
         </div>
 
         {/* search bar */}
