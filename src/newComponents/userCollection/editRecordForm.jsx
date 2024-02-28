@@ -18,7 +18,7 @@ function EditRecordForm(props) {
   // console.log("whats in the record?", record);
   const [recordArtist, setRecordArtist] = useState(record.artist);
   const [recordTitle, setRecordTitle] = useState(record.title);
-  const [recordMood, setRecordMood] = useState(record.mood);
+  const [recordMood, setRecordMood] = useState('');
   const [recordDetails, setRecordDetails] = useState(record.details);
 
   const handleInputChangeArtist = (e) => {
@@ -101,7 +101,7 @@ function EditRecordForm(props) {
               id="editArtist"
               className="form-control"
             />
-            <label for="editArtist">Edit Record Artist</label>
+            <label htmlFor="editArtist">Edit Record Artist</label>
           </div>
           <div class="form-floating mb-3">
             <input
@@ -111,7 +111,7 @@ function EditRecordForm(props) {
               placeholder=""
               className="form-control"
             />
-            <label for="editTitle">Edit Record Title</label>
+            <label htmlFor="editTitle">Edit Record Title</label>
           </div>
 
           <select
@@ -144,7 +144,7 @@ function EditRecordForm(props) {
               rows={3}
               style={{ height: "10em" }}
             />
-            <label for="editDetails">Edit Record Details</label>
+            <label htmlFor="editDetails">Edit Record Details</label>
           </div>
           <div className="d-grid gap-2">
             <button className="btn btn-lg btn-primary" type="submit">
