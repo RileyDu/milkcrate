@@ -28,20 +28,21 @@ function HotOffThePress(props) {
                 : "Unknown date";
               return (
                     <Col key={i}>
-                <div class="flip-card">
-                  <div class="flip-card-inner">
-                    <div class="flip-card-front">
+                <div className="flip-card" tabIndex="0">
+                  <div className="flip-card-inner">
+                    <div className="flip-card-front">
                       <img
                         src={record.coverart}
                         alt={record.title}
                         className="HOTPImg"
                         />
                     </div>
-                    <div class="flip-card-back">
-                      <h1 style={{ color: "white", paddingTop: "1em" }}>{record.title}</h1>
+                    <div className="flip-card-back" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${record.coverart})` }}>
+                      <h1 style={{ color: "white", paddingTop: "2em" }}>{record.title}</h1>
                       <p><em>{record.artist}</em></p>
                       <p>{record.username}'s milkcrate</p>
                       <p>{formattedDate}</p>
+                      
                     </div>
                   </div>
                 </div>

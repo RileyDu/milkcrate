@@ -18,7 +18,7 @@ function FriendCollection(props) {
   const socialReducer = useSelector((store) => store.socialReducer);
   const [searchQuery, setSearchQuery] = useState("");
   const [hasSearched, setHasSearched] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [filterParam, setFilterParam] = useState("date_addedNewest");
 
   const friend = socialReducer.find(
@@ -28,11 +28,11 @@ function FriendCollection(props) {
 
   useEffect(() => {
     dispatch({ type: "FETCH_FRIENDS_RECORDS", payload: id });
-    setTimeout(() => setIsLoading(false), 1000);
+    // setTimeout(() => setIsLoading(false), 1000);
     // return a function to run it when this component unmounts
     return () => {
       dispatch({ type: `CLEAR_RECORDS` });
-      setIsLoading(true);
+      // setIsLoading(true);
     };
   }, [socialReducer]);
 
@@ -133,9 +133,9 @@ function FriendCollection(props) {
     });
   }, [records, filterParam]);
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
+  // if (isLoading) {
+  //   return <LoadingSpinner />;
+  // }
 
   return (
     <div>
