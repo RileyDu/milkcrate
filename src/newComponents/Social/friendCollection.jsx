@@ -24,7 +24,6 @@ function FriendCollection(props) {
   const friend = socialReducer.find(
     (friend) => friend.friend_id.toString() === id
   );
-  console.log("what is the friend?", friend);
 
   useEffect(() => {
     dispatch({ type: "FETCH_FRIENDS_RECORDS", payload: id });

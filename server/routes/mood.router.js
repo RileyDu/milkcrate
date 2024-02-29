@@ -13,7 +13,6 @@ router.get("/", rejectUnauthenticated, (req, res) => {
   pool
     .query(query)
     .then((result) => {
-      console.log("moods result:", result.rows);
       res.send(result.rows);
     })
     .catch((err) => {

@@ -22,7 +22,6 @@ ORDER BY friends.id DESC;
   pool
     .query(query, [req.user.id])
     .then((result) => {
-      console.log("Friends result:", result.rows);
       res.send(result.rows);
     })
     .catch((err) => {
@@ -139,7 +138,6 @@ router.get("/friends/collection/search", rejectUnauthenticated, (req, res) => {
 // POST a new frienship
 router.post("/add", rejectUnauthenticated, (req, res) => {
   const friendName = req.body.friend_username;
-  console.log("friendName", friendName);
   // Query to retrieve the friend's ID based on the username
   const findFriendQuery = `
     SELECT "id" FROM "user" WHERE "username" = $1
@@ -148,7 +146,6 @@ router.post("/add", rejectUnauthenticated, (req, res) => {
   pool
     .query(findFriendQuery, [friendName])
     .then(({ rows: friendRows }) => {
-      console.log("friendrows:", friendRows);
       const friendId = friendRows[0].id;
 
       const insertFriendQuery = `

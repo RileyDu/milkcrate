@@ -69,7 +69,6 @@ function AddSpinForm(props) {
     });
     return () => datepicker.destroy();
   }, []);
-  console.log("spin date", spinDate);
 
   function postSpin(event) {
     event.preventDefault();

@@ -16,7 +16,6 @@ function AddFriendForm(props) {
 
   function postFriendship(event) {
     event.preventDefault();
-    console.log("checking payload of submit", friendUsername);
 
     if (!friendUsername) {
       Swal.fire({

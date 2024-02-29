@@ -110,7 +110,6 @@ router.get("/search", rejectUnauthenticated, (req, res) => {
 //PUT the new details of a record into the db
 router.put("/edit", rejectUnauthenticated, (req, res) => {
   const updatedRecord = req.body;
-  console.log("updated record contenets", req.body);
   // req.body should contain the data needed for PUT
   const queryText = `
       UPDATE "albums"
