@@ -66,7 +66,7 @@ router.get("/hotp", rejectUnauthenticated, (req, res) => {
   ) AS user_friends ON albums.user_id = user_friends.friend_id
   JOIN "user" usr ON albums.user_id = usr.id
   ORDER BY albums.date_added DESC
-  LIMIT 50;
+  LIMIT 48;
     `;
   pool
     .query(query, [req.user.id])
