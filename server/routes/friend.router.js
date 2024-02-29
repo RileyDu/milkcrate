@@ -80,21 +80,25 @@ router.get("/hotp", rejectUnauthenticated, (req, res) => {
 
 router.get("/latestListens", rejectUnauthenticated, (req, res) => {
   const query = `
-  SELECT albums.*, usr.username
-  FROM albums
-  JOIN (
-      SELECT user_id AS friend_id
-      FROM friends
-      WHERE user_id = $1
-      UNION
-      SELECT friend_id
-      FROM friends
-      WHERE user_id = $1
-      UNION SELECT $1 AS friend_id -- Include the user's own id to fetch their records as well
-  ) AS user_friends ON albums.user_id = user_friends.friend_id
-  JOIN "user" usr ON albums.user_id = usr.id
-  ORDER BY albums.date_added DESC
-  LIMIT 48;
+  SELECT
+  a.id AS album_id,
+  a.title,
+  a.artist,
+  a.coverart,
+  a.tags,
+  a.mood,
+  a.details,
+  a.date_added,
+  u.username AS friend_username
+FROM
+  "user" u
+INNER JOIN "friends" f ON u.id = f.user_id
+INNER JOIN "albums" a ON f.friend_id = a.user_id
+INNER JOIN "spin_albums" sa ON a.id = sa.album_id
+WHERE
+  u.id = $1
+GROUP BY
+  a.id, u.username;
     `;
   pool
     .query(query, [req.user.id])

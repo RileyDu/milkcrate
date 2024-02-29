@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 function RecentlySpun(props) {
   const dispatch = useDispatch();
-  const records = useSelector((store) => store.recentlySpunReducer);
+  const records = useSelector((store) => store.latestListensReducer);
 
   useEffect(() => {
     dispatch({ type: "FETCH_LATEST_LISTENS" });
