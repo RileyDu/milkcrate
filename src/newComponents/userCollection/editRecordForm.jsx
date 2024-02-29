@@ -15,7 +15,6 @@ function EditRecordForm(props) {
   const record = useSelector((store) =>
     store.recordReducer.find((record) => record.id.toString() === id)
   );
-  // console.log("whats in the record?", record);
   const [recordArtist, setRecordArtist] = useState(record.artist);
   const [recordTitle, setRecordTitle] = useState(record.title);
   const [recordMood, setRecordMood] = useState('');
@@ -72,7 +71,6 @@ function EditRecordForm(props) {
     history.push(`/user/details/${id}`);
   }
 
-  // console.log("whats in the record?", record);
   useEffect(() => {
     if (!record) {
       dispatch({ type: "FETCH_RECORDS" });

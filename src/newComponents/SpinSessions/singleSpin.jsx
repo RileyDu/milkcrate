@@ -16,7 +16,6 @@ function SingleSpin(props) {
 
   const spins = useSelector((store) => store.spinsReducer);
 
-  // console.log("whats in the single spin?", spin);
 
   useEffect(() => {
     dispatch({ type: "FETCH_SINGLE_SPIN", payload: id });
@@ -117,7 +116,6 @@ function SingleSpin(props) {
         <p>Loading spin details...</p>
       )}
     </div>
-    // NEED TO ADD CONDITIONAL RENDERING DEPENDING ON HOW MANY ALBUMS IN A LISTENING SESSION STILL
   );
 }
 

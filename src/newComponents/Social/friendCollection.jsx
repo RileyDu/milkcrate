@@ -28,11 +28,9 @@ function FriendCollection(props) {
 
   useEffect(() => {
     dispatch({ type: "FETCH_FRIENDS_RECORDS", payload: id });
-    // setTimeout(() => setIsLoading(false), 1000);
-    // return a function to run it when this component unmounts
+
     return () => {
       dispatch({ type: `CLEAR_RECORDS` });
-      // setIsLoading(true);
     };
   }, [socialReducer]);
 
@@ -67,9 +65,7 @@ function FriendCollection(props) {
     if (hasSearched) setHasSearched(false);
   };
 
-  // if (!friend) {
-  //   return <h2>Loading...</h2>;
-  // }
+
 
   function searchRecords(event) {
     event.preventDefault();
@@ -133,9 +129,6 @@ function FriendCollection(props) {
     });
   }, [records, filterParam]);
 
-  // if (isLoading) {
-  //   return <LoadingSpinner />;
-  // }
 
   return (
     <div>

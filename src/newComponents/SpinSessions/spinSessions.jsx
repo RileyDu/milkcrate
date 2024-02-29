@@ -8,7 +8,7 @@ import dayjs from 'dayjs'
 function SpinSessions(props) {
   const dispatch = useDispatch();
   const spins = useSelector((store) => store.spinsReducer)
-// console.log('what is in the spins?', spins);
+  
   useEffect(() => {
     dispatch({ type: "FETCH_SPINS" });
   }, [dispatch]);

@@ -19,7 +19,6 @@ function MyMilkcrate(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [filterParam, setFilterParam] = useState("date_addedNewest");
 
-  // console.log('whats in the crate mate?', records);
 
   useEffect(() => {
     const isFirstVisitSession =

@@ -23,15 +23,12 @@ function AddSpinForm(props) {
   const handleInputChangeDetails = (e) => {
     setSpinDetails(e.target.value);
   };
-  // const handleInputChangeDate = (e) => {
-  //   setSpinDate(e.target.value);
-  // };
+
 
   const handleInputChangeRecords = (selectedOptions) => {
     const selectedValues = selectedOptions.map((option) => option.value);
     setSpinRecords(selectedValues);
   };
-  // console.log('whats in the crate mate?', spinRecords);
 
   const handleInputChangeHours = (e) => {
     setSpinHours(e.target.value);
@@ -59,12 +56,7 @@ function AddSpinForm(props) {
       }, 1000);
     });
 
-  // new AirDatepicker("#datePicker", {
-  //   locale: localeEn,
-  //   onSelect: function(formattedDate, date, inst) {
-  //     setSpinDate(formattedDate);
-  //   }
-  // });
+
 
   useEffect(() => {
     const datepicker = new AirDatepicker("#datePicker", {
