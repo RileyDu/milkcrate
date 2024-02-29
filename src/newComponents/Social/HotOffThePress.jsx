@@ -41,7 +41,7 @@ function HotOffThePress(props) {
                       <h1 style={{ color: "white", paddingTop: "2em" }}>{record.title}</h1>
                       <p><em>{record.artist}</em></p>
                       <p>{record.username}'s milkcrate</p>
-                      <p>{formattedDate}</p>
+                      <p>added {formattedDate}</p>
                       
                     </div>
                   </div>

@@ -86,7 +86,8 @@ router.get("/latestListens", rejectUnauthenticated, (req, res) => {
   albums.artist,
   albums.coverart,
   friends.friend_username,
-  spins.listened_at
+  spins.listened_at,
+  spins.spin_details
 FROM
   "user"
 INNER JOIN friends ON "user".id = friends.user_id
@@ -96,9 +97,10 @@ INNER JOIN spins ON spin_albums.spin_id = spins.id
 WHERE
   "user".id = $1
 GROUP BY
-  albums.id, "user".username, spins.listened_at, friends.friend_username
+  albums.id, "user".username, spins.listened_at, friends.friend_username, spins.spin_details
 ORDER BY
-  spins.listened_at DESC;
+  spins.listened_at DESC
+  LIMIT 48;
     `;
   pool
     .query(query, [req.user.id])
