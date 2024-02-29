@@ -49,7 +49,7 @@ router.get("/friends/collection", rejectUnauthenticated, (req, res) => {
     });
 });
 
-//GET ALL FRIENDS RECORDS AND SORT BY DATE_ADDED
+//GET ALL FRIENDS RECORDS AND SORT BY DATE_ADDED [HOTP]
 router.get("/hotp", rejectUnauthenticated, (req, res) => {
   const query = `
   SELECT albums.*, usr.username
@@ -75,6 +75,35 @@ router.get("/hotp", rejectUnauthenticated, (req, res) => {
     })
     .catch((err) => {
       console.error("ERROR: Get HOTP", err);
+      res.sendStatus(500);
+    });
+});
+
+router.get("/latestListens", rejectUnauthenticated, (req, res) => {
+  const query = `
+  SELECT albums.*, usr.username
+  FROM albums
+  JOIN (
+      SELECT user_id AS friend_id
+      FROM friends
+      WHERE user_id = $1
+      UNION
+      SELECT friend_id
+      FROM friends
+      WHERE user_id = $1
+      UNION SELECT $1 AS friend_id -- Include the user's own id to fetch their records as well
+  ) AS user_friends ON albums.user_id = user_friends.friend_id
+  JOIN "user" usr ON albums.user_id = usr.id
+  ORDER BY albums.date_added DESC
+  LIMIT 48;
+    `;
+  pool
+    .query(query, [req.user.id])
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.error("ERROR: Get Latest Listens", err);
       res.sendStatus(500);
     });
 });

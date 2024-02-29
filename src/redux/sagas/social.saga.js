@@ -68,6 +68,15 @@ function* deleteFriendship(action) {
     }
   }
 
+  function* fetchLatestListens(action) {
+    try {
+      const response = yield axios.get(`/api/social/latestListens`);
+      yield put({ type: "SET_LATEST_LISTENS", payload: response.data });
+    } catch (error) {
+      console.error("Lastest listens GET failed", error);
+    }
+  }
+
 function* socialSaga() {
   console.log("Social saga started...");
   yield takeLatest("FETCH_FRIENDS", fetchFriends);
@@ -76,6 +85,7 @@ function* socialSaga() {
   yield takeLatest("FETCH_FRIENDS_RECORDS", fetchFriendsRecords);
   yield takeLatest("SEARCH_FRIENDS_RECORDS", searchFriendsRecords);
   yield takeLatest("FETCH_HOTP", fetchHOTP)
+  yield takeLatest("FETCH_LATEST_LISTENS", fetchLatestListens)
 }
 
 export default socialSaga;

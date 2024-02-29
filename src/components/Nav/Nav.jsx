@@ -61,7 +61,7 @@ function Nav() {
             className="btn btn-outline-secondary btn-sm me-3"
             onClick={() => history.push("/social/recentlySpun")}
           >
-            Recently Spun
+            Lastest Listens
           </button>
         )}
         {location.pathname === "/social/recentlySpun" && (
