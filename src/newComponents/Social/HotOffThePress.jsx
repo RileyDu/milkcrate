@@ -20,7 +20,7 @@ function HotOffThePress(props) {
       <div className="HOTPContainer">
         {records.length > 0 ? (
           <div className="container-gallery">
-                      <Row xs={1} sm={3} md={6} className="g-4">
+                      <Row xs={1} sm={3} md={6} className="g-0">
 
             {records.map((record, i) => {
               const formattedDate = record.date_added
@@ -39,8 +39,8 @@ function HotOffThePress(props) {
                     </div>
                     <div class="flip-card-back">
                       <h1 style={{ color: "white", paddingTop: "1em" }}>{record.title}</h1>
-                      <p>{record.artist}</p>
-                      <p>{record.username}</p>
+                      <p><em>{record.artist}</em></p>
+                      <p>{record.username}'s milkcrate</p>
                       <p>{formattedDate}</p>
                     </div>
                   </div>
