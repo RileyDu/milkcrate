@@ -65,7 +65,7 @@ function AddRecordForm(props) {
     setRecordDetails("");
 
     Swal.fire({
-      position: "top-end",
+      position: "center",
       icon: "success",
       title: "The record has been added to your milkcrate",
       showConfirmButton: false,
