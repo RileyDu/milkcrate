@@ -24,7 +24,7 @@ function HotOffThePress(props) {
 
             {records.map((record, i) => {
               const formattedDate = record.date_added
-                ? dayjs(record.date_added).format("M/DD/YYYY")
+                ? dayjs(record.date_added).format("M/DD/YY")
                 : "Unknown date";
               return (
                     <Col key={i}>

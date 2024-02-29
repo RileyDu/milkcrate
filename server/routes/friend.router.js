@@ -55,14 +55,13 @@ router.get("/hotp", rejectUnauthenticated, (req, res) => {
   SELECT albums.*, usr.username
   FROM albums
   JOIN (
-      SELECT user_id AS friend_id
-      FROM friends
-      WHERE user_id = $1
-      UNION
-      SELECT friend_id
-      FROM friends
-      WHERE user_id = $1
-      UNION SELECT $1 AS friend_id -- Include the user's own id to fetch their records as well
+    SELECT friend_id
+    FROM friends
+    WHERE user_id = $1
+    UNION
+    SELECT user_id AS friend_id
+    FROM friends
+    WHERE friend_id = $1
   ) AS user_friends ON albums.user_id = user_friends.friend_id
   JOIN "user" usr ON albums.user_id = usr.id
   ORDER BY albums.date_added DESC
