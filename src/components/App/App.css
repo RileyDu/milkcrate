@@ -206,9 +206,11 @@ input {
 }
 
 .record-clipart {
-  max-width: 450px;
   margin-top: -4em;
   margin-bottom: -8em;
+  width: 80%;
+  height: auto;
+  cursor: pointer;
 }
 
 
@@ -216,7 +218,7 @@ input {
 .landingContainer {
   display: flex;
   justify-content: space-around;
-  margin-top: 4em;
+  margin-top: 2em;
   flex-wrap: wrap;
 }
 
@@ -229,17 +231,25 @@ input {
   margin-bottom: 2em;
 }
 
-.socialPageText,
-.spinPageText {
-  font-size: xxx-large;
+.socialPageText {
+  font-size: xx-large;
   font-weight: bolder;
-  /* margin-top: 1em; */
+  margin-top: 1em;
   text-align: center;
 }
 
+.spinPageText {
+  font-size: xx-large;
+  font-weight: bolder;
+  /* margin-top: 1em; */
+  text-align: center;
+  text-decoration: underline;
+}
 
 .spinDetailsText {
-  font-size: 1em;
+  font-size: 1.5em;
+  text-align: center;
+  text-wrap: anywhere;
 }
 
 .infoPageContainer {
@@ -327,12 +337,13 @@ ul > li {
   /* display: flex; */
   /* flex-direction: column; */
   /* align-items: center; */
-  margin: auto 4em;
+  margin: 2em 4em 4em;
 }
 
 
 .social-crate {
-  /* width: 80%; */
+  width: 80%;
+  height: auto;
   margin-top: -4em;
   margin-bottom: -8em;
   cursor: pointer;
