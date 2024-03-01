@@ -17,6 +17,8 @@ function HotOffThePress(props) {
   return (
     <>
       <h2 className="header-tabs" style={{ marginBottom: "1em" }}>hot off the press</h2>
+      <p style={{ marginBottom: "1em", textAlign: "center" }}>what records your friends have picked up lately</p>
+
       <div className="HOTPContainer">
         {records.length > 0 ? (
           <div className="container-gallery">
