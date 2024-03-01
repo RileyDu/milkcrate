@@ -276,6 +276,9 @@ function FriendCollection(props) {
               </Col>
             ))}
           </Row>
+        </div>
+      )}
+      <div className="container-gallery">
           <div class="d-grid gap-2">
             <button
               className="btn btn-lg btn-dark dlt-btn"
@@ -284,8 +287,7 @@ function FriendCollection(props) {
               delete friend
             </button>
           </div>
-        </div>
-      )}
+          </div>
     </div>
   );
 }
