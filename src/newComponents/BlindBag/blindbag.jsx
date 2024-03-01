@@ -50,6 +50,7 @@ function Blindbag(props) {
           onClick={handleCoverArtClick}
           animate={{ rotate: 720 }}
           transition={{ ease: "linear", duration: 3, repeat: Infinity }}
+          style={{ cursor: "pointer" }}
         />
         )}
       </div>
@@ -61,6 +62,8 @@ function Blindbag(props) {
             src={currentCoverArt}
             alt={randomRecord.title || "Record Logo"}
             onClick={handleCoverArtClick}
+            style={{ cursor: "pointer" }}
+
           />
         </div>
           <div style={{ textAlign: "center", paddingTop: "4em" }}>

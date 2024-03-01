@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import '@sweetalert2/theme-dark/dark.css';
+import { Row, Col } from "react-bootstrap";
+
 
 function SocialPage(props) {
   const friends = useSelector((store) => store.socialReducer);
@@ -32,11 +34,12 @@ function SocialPage(props) {
 
   const history = useHistory();
   return (
-    <div>
-      <h2 className="header-tabs"> social </h2>
-      <div className="socialPageContainer">
+    <>
+    <h2 className="header-tabs"> social </h2>
+    <div className="socialPageContainer">
+      <Row xs={1} sm={2} md={3} className="g-6">
         {friends.map((friend, i) => (
-          <div className="socialPageItems" key={i}>
+          <Col key={i}>
             <img
               src="milkcrateLogo.svg"
               className="social-crate"
@@ -44,13 +47,13 @@ function SocialPage(props) {
                 history.push(`/social/friends/${friend.friend_id}`)
               }
             />
-            <p className="socialPageText">
+            <div className="socialPageText">
               {friend.friend_username}'s milkcrate.
-            </p>
-          </div>
-        ))}
+            </div>
+          </Col>))}
+        </Row>
       </div>
-    </div>
+      </>
   );
 }
 

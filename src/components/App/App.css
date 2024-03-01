@@ -205,14 +205,13 @@ input {
   list-style: circle;
 }
 
-.social-crate,
 .record-clipart {
   max-width: 450px;
   margin-top: -4em;
   margin-bottom: -8em;
 }
 
-.socialPageContainer,
+
 .spinPageContainer,
 .landingContainer {
   display: flex;
@@ -232,9 +231,10 @@ input {
 
 .socialPageText,
 .spinPageText {
-  font-size: xx-large;
+  font-size: xxx-large;
   font-weight: bolder;
-  margin-top: 1em;
+  /* margin-top: 1em; */
+  text-align: center;
 }
 
 
@@ -323,3 +323,17 @@ ul > li {
   margin-bottom: 1em
 }
 
+.socialPageContainer {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  margin: auto 4em;
+}
+
+
+.social-crate {
+  /* width: 80%; */
+  margin-top: -4em;
+  margin-bottom: -8em;
+  cursor: pointer;
+}
