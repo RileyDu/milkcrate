@@ -11,7 +11,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
   const query = `
       SELECT * FROM "spins"
       WHERE user_id = $1
-    ORDER BY id DESC;
+    ORDER BY listened_at DESC;
     `;
   pool
     .query(query, [req.user.id])
