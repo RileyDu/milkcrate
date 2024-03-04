@@ -16,7 +16,6 @@ function SingleSpin(props) {
 
   const spins = useSelector((store) => store.spinsReducer);
 
-
   useEffect(() => {
     dispatch({ type: "FETCH_SINGLE_SPIN", payload: id });
   }, [dispatch, id]);

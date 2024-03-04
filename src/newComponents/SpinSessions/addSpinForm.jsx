@@ -7,8 +7,8 @@ import AsyncSelect from "react-select/async";
 import AirDatepicker from "air-datepicker";
 import "air-datepicker/air-datepicker.css";
 import localeEn from "air-datepicker/locale/en";
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-import '@sweetalert2/theme-dark/dark.css';
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "@sweetalert2/theme-dark/dark.css";
 
 function AddSpinForm(props) {
   const dispatch = useDispatch();
@@ -23,7 +23,6 @@ function AddSpinForm(props) {
   const handleInputChangeDetails = (e) => {
     setSpinDetails(e.target.value);
   };
-
 
   const handleInputChangeRecords = (selectedOptions) => {
     const selectedValues = selectedOptions.map((option) => option.value);
@@ -55,8 +54,6 @@ function AddSpinForm(props) {
         resolve(filterRecords(inputValue));
       }, 1000);
     });
-
-
 
   useEffect(() => {
     const datepicker = new AirDatepicker("#datePicker", {
@@ -172,24 +169,24 @@ function AddSpinForm(props) {
               )}
               onChange={handleInputChangeRecords}
               className="form-control mb-3"
-              placeholder=''
+              placeholder=""
               styles={{
                 menu: (base) => ({
                   ...base,
-                  backgroundColor: 'darkgrey',
+                  backgroundColor: "darkgrey",
                 }),
                 option: (base, state) => ({
                   ...base,
-                  color: 'white',
-                  padding: '8px 12px', 
+                  color: "white",
+                  padding: "8px 12px",
                 }),
                 control: (base) => ({
                   ...base,
-                  padding: '10px',
+                  padding: "10px",
                 }),
                 multiValue: (base) => ({
                   ...base,
-                  marginRight: '8px',
+                  marginRight: "8px",
                 }),
               }}
             />

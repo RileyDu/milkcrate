@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 // import { useEffect } from "react";
@@ -64,8 +64,6 @@ function FriendCollection(props) {
     if (hasSearched) setHasSearched(false);
   };
 
-
-
   function searchRecords(event) {
     event.preventDefault();
     console.log("checking payload of submit", searchQuery);
@@ -101,8 +99,6 @@ function FriendCollection(props) {
     setHasSearched(false);
   }
 
-
-
   const sortedRecords = useMemo(() => {
     // Using slice to create a shallow copy of records before sorting to avoid mutating the original state
     return [...records].sort((a, b) => {
@@ -127,7 +123,6 @@ function FriendCollection(props) {
       }
     });
   }, [records, filterParam]);
-
 
   return (
     <div>
@@ -279,15 +274,15 @@ function FriendCollection(props) {
         </div>
       )}
       <div className="container-gallery">
-          <div class="d-grid gap-2">
-            <button
-              className="btn btn-lg btn-dark dlt-btn"
-              onClick={() => deleteFriend()}
-            >
-              delete friend
-            </button>
-          </div>
-          </div>
+        <div class="d-grid gap-2">
+          <button
+            className="btn btn-lg btn-dark dlt-btn"
+            onClick={() => deleteFriend()}
+          >
+            delete friend
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

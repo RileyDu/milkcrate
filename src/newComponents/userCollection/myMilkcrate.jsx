@@ -19,7 +19,6 @@ function MyMilkcrate(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [filterParam, setFilterParam] = useState("date_addedNewest");
 
-
   useEffect(() => {
     const isFirstVisitSession =
       sessionStorage.getItem("isFirstVisitSession") === null;
@@ -74,8 +73,6 @@ function MyMilkcrate(props) {
     setHasSearched(false);
   }
 
-
-
   const sortedRecords = useMemo(() => {
     // Using slice to create a shallow copy of records before sorting to avoid mutating the original state
     return [...records].sort((a, b) => {
@@ -100,7 +97,7 @@ function MyMilkcrate(props) {
       }
     });
   }, [records, filterParam]);
-  
+
   if (isLoading) {
     return <LoadingSpinner />;
   }

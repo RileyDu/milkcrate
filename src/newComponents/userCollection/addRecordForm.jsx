@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-import '@sweetalert2/theme-dark/dark.css';
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "@sweetalert2/theme-dark/dark.css";
 
 function AddRecordForm(props) {
   const dispatch = useDispatch();
@@ -106,26 +106,25 @@ function AddRecordForm(props) {
             <label for="titleFormInput">Enter Record Title</label>
           </div>
 
-            <select
-              value={recordMood}
-              id="moodDropDown"
-              className="form-select mb-3"
-              onChange={(e) => {
-                const selectedMood = e.target.value;
-                console.log("Selected Mood from user:", selectedMood);
-                setRecordMood(selectedMood);
-              }}
-            >
-              {/* onChange assigns the selected value to local state */}
-              <option value=""> Select Record Mood </option>
-              {/* make shift placeholder above */}
-              {moods.map((mood) => (
-                <option key={mood.id} value={mood.id}>
-                  {mood.mood}
-                </option>
-              ))}
-            </select>
-
+          <select
+            value={recordMood}
+            id="moodDropDown"
+            className="form-select mb-3"
+            onChange={(e) => {
+              const selectedMood = e.target.value;
+              console.log("Selected Mood from user:", selectedMood);
+              setRecordMood(selectedMood);
+            }}
+          >
+            {/* onChange assigns the selected value to local state */}
+            <option value=""> Select Record Mood </option>
+            {/* make shift placeholder above */}
+            {moods.map((mood) => (
+              <option key={mood.id} value={mood.id}>
+                {mood.mood}
+              </option>
+            ))}
+          </select>
 
           <div class="form-floating mb-3">
             <textarea
@@ -136,12 +135,14 @@ function AddRecordForm(props) {
               placeholder=""
               rows={3}
               id="detailsFormInput"
-              style={{height: '10em'}}
+              style={{ height: "10em" }}
             />
             <label htmlFor="detailsFormInput">Enter Record Details </label>
           </div>
           <div className="d-grid gap-2">
-          <button className="btn btn-lg btn-primary" type="submit">ADD RECORD</button>
+            <button className="btn btn-lg btn-primary" type="submit">
+              ADD RECORD
+            </button>
           </div>
         </form>
       </div>

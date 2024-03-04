@@ -19,10 +19,8 @@ function* fetchSpins() {
 
 function* fetchSingleSpin(action) {
   try {
-    const response = yield axios.get(
-      `/api/spins/single/${action.payload}`,
-    );
-console.log('response from single spin get:', response.data);
+    const response = yield axios.get(`/api/spins/single/${action.payload}`);
+    console.log("response from single spin get:", response.data);
     yield put({ type: "SET_SPINS", payload: response.data });
   } catch (error) {
     console.log("single spin get request failed", error);
@@ -40,9 +38,7 @@ function* addSpins(action) {
 
 function* deleteSpin(action) {
   try {
-    const response = yield axios.delete(
-      `/api/spins/${action.payload}`
-    );
+    const response = yield axios.delete(`/api/spins/${action.payload}`);
     yield put({ type: "FETCH_SPINS" });
   } catch (error) {
     console.error("User get request failed", error);

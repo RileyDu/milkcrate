@@ -1,8 +1,8 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import LoginPage from '../LoginPage/LoginPage';
-import {useSelector} from 'react-redux';
-import LandingPage from '../LandingPage/LandingPage'
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import LoginPage from "../LoginPage/LoginPage";
+import { useSelector } from "react-redux";
+import LandingPage from "../LandingPage/LandingPage";
 
 // A Custom Wrapper Component -- This will keep our code DRY.
 // Responsible for watching redux state, and returning an appropriate component
@@ -28,15 +28,14 @@ function ProtectedRoute({ component, children, ...props }) {
       // are now passed along to the 'Route' Component
       {...props}
     >
-      {user.id ?
+      {user.id ? (
         // If the user is logged in, show the protected component
         <ProtectedComponent />
-        :
+      ) : (
         // Otherwise, redirect to the Loginpage
         <LandingPage />
-      }
+      )}
     </Route>
-
   );
 }
 

@@ -39,12 +39,22 @@ function InfoPage() {
             <strong>Socials:</strong>
           </div>
           <div>
-          <a href="https://github.com/RileyDu/milkcrate">
-          <span id="infoPills" className="badge rounded-pill bg-primary infoPills">GitHub</span>
-          </a>
-          <a href="https://www.linkedin.com/in/rileydu">
-          <span id="infoPills" className="badge rounded-pill bg-primary infoPills">LinkedIn</span>
-          </a>
+            <a href="https://github.com/RileyDu/milkcrate">
+              <span
+                id="infoPills"
+                className="badge rounded-pill bg-primary infoPills"
+              >
+                GitHub
+              </span>
+            </a>
+            <a href="https://www.linkedin.com/in/rileydu">
+              <span
+                id="infoPills"
+                className="badge rounded-pill bg-primary infoPills"
+              >
+                LinkedIn
+              </span>
+            </a>
           </div>
         </div>
       </div>

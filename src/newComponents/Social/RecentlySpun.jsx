@@ -6,7 +6,6 @@ import { Row, Col } from "react-bootstrap";
 import dayjs from "dayjs";
 import "./HOTP.css";
 
-
 function RecentlySpun(props) {
   const dispatch = useDispatch();
   const records = useSelector((store) => store.latestListensReducer);
@@ -18,7 +17,9 @@ function RecentlySpun(props) {
   return (
     <div>
       <h2 className="header-tabs">latest listens</h2>
-      <p style={{ marginBottom: "1em", textAlign: "center" }}>what your friends have been listening to</p>
+      <p style={{ marginBottom: "1em", textAlign: "center" }}>
+        what your friends have been listening to
+      </p>
       <div className="HOTPContainer">
         {records.length > 0 ? (
           <div className="container-gallery">
@@ -50,7 +51,9 @@ function RecentlySpun(props) {
                           <p>
                             <em>{record.artist}</em>
                           </p>
-                          <p>{record.friend_username} spun on {formattedDate}</p>
+                          <p>
+                            {record.friend_username} spun on {formattedDate}
+                          </p>
                           <p>{record.spin_details}</p>
                         </div>
                       </div>

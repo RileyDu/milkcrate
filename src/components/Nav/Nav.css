@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:black;
+  background-color: black;
   overflow: hidden;
 }
 
@@ -15,7 +15,7 @@
 
 .nav-section.left {
   justify-content: flex-start;
-  padding-left: 4em; 
+  padding-left: 4em;
 }
 
 .nav-section.right {
@@ -23,11 +23,10 @@
   padding-right: 4em;
 }
 
-
 .nav-title {
   margin: 0;
   color: #f2f2f2;
-  padding: 0 10px; 
+  padding: 0 10px;
 }
 
 .navLink {
@@ -39,4 +38,3 @@
   text-decoration: none;
   font-size: 15px;
 }
-

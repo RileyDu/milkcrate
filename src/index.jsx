@@ -1,18 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 
-import store from './redux/store';
+import store from "./redux/store";
 
-import App from './components/App/App';
+import App from "./components/App/App";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootswatch/dist/lux/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootswatch/dist/lux/bootstrap.min.css";
 
-
-const root = ReactDOM.createRoot(document.getElementById('react-root'));
+const root = ReactDOM.createRoot(document.getElementById("react-root"));
 root.render(
-    <Provider store={store}>
-      <App />
-    </Provider>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );

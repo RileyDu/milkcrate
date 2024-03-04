@@ -21,7 +21,7 @@ function LoginForm() {
           password: password,
         },
       });
-      history.push('/user')
+      history.push("/user");
     } else {
       dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
@@ -29,50 +29,54 @@ function LoginForm() {
 
   return (
     <>
-    <form onSubmit={login}>
-      <div className="loginFormcontainer">
-      <h2 style={{ textAlign: "center"}}>Login</h2>
-      {errors.loginMessage && (
-        <h3 className="alert" role="alert">
-          {errors.loginMessage}
-        </h3>
-      )}
-      <div className="form-floating mb-3">
-        <input
-          type="text"
-          id="username"
-          required
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-          className="form-control"
-          placeholder=""
-        />
-        <label htmlFor="username">Username:</label>
-      </div>
-      <div className="form-floating mb-3">
-          <input
-            type="password"
-            id="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            className="form-control"
-            placeholder=""
-          />
-        <label htmlFor="password">
-          Password:
-        </label>
-      </div>
+      <form onSubmit={login}>
+        <div className="loginFormcontainer">
+          <h2 style={{ textAlign: "center" }}>Login</h2>
+          {errors.loginMessage && (
+            <h3 className="alert" role="alert">
+              {errors.loginMessage}
+            </h3>
+          )}
+          <div className="form-floating mb-3">
+            <input
+              type="text"
+              id="username"
+              required
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              className="form-control"
+              placeholder=""
+            />
+            <label htmlFor="username">Username:</label>
+          </div>
+          <div className="form-floating mb-3">
+            <input
+              type="password"
+              id="password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              className="form-control"
+              placeholder=""
+            />
+            <label htmlFor="password">Password:</label>
+          </div>
+          <div className="d-grid gap-2">
+            <button className="btn btn-primary" type="submit">
+              login
+            </button>
+          </div>
+        </div>
+      </form>
       <div className="d-grid gap-2">
-      <button className="btn btn-primary" type="submit" >login</button>
-
+        <button
+          className="btn btn-outline-secondary mt-3"
+          onClick={() => history.push("/registration")}
+        >
+          register
+        </button>
       </div>
-      </div>
-    </form>
-    <div className="d-grid gap-2">
-      <button className="btn btn-outline-secondary mt-3" onClick={() => history.push("/registration")}>register</button>
-      </div>
-      </>
+    </>
   );
 }
 

@@ -23,7 +23,7 @@ function LandingPage() {
           <img className="record-clipart" src="milkcrateLogo.svg" />
         </div>
         <div className="landingLoginContainer">
-          <LoginForm/>
+          <LoginForm />
         </div>
       </div>
 

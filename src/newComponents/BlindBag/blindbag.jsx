@@ -9,7 +9,6 @@ function Blindbag(props) {
   const [coverArtClicked, setCoverArtClicked] = useState(false);
 
   useEffect(() => {
-
     if (!coverArtClicked) {
       getBlindBag();
     }
@@ -23,7 +22,7 @@ function Blindbag(props) {
     if (coverArtClicked) {
       setCurrentCoverArt(randomRecord.coverart);
     }
-  }, [randomRecord, coverArtClicked]); 
+  }, [randomRecord, coverArtClicked]);
 
   function handleCoverArtClick() {
     if (!coverArtClicked) {
@@ -41,37 +40,35 @@ function Blindbag(props) {
         <div className="d-grid gap-2"></div>
       </div>
       <div className="blindbag-img">
-
         {!coverArtClicked && (
-        <motion.img
-          id="shuffle-img"
-          src="TheRecord.svg"
-          alt={randomRecord.title || "Record Logo"}
-          onClick={handleCoverArtClick}
-          animate={{ rotate: 720 }}
-          transition={{ ease: "linear", duration: 3, repeat: Infinity }}
-          style={{ cursor: "pointer" }}
-        />
-        )}
-      </div>
-      {coverArtClicked && ( 
-        <>
-        <div className="blindbag-img">
-          <img
+          <motion.img
             id="shuffle-img"
-            src={currentCoverArt}
+            src="TheRecord.svg"
             alt={randomRecord.title || "Record Logo"}
             onClick={handleCoverArtClick}
+            animate={{ rotate: 720 }}
+            transition={{ ease: "linear", duration: 3, repeat: Infinity }}
             style={{ cursor: "pointer" }}
-
           />
-        </div>
+        )}
+      </div>
+      {coverArtClicked && (
+        <>
+          <div className="blindbag-img">
+            <img
+              id="shuffle-img"
+              src={currentCoverArt}
+              alt={randomRecord.title || "Record Logo"}
+              onClick={handleCoverArtClick}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
           <div style={{ textAlign: "center", paddingTop: "4em" }}>
             <h2>
               {randomRecord.title} by <em>{randomRecord.artist}</em>
             </h2>
           </div>
-          </>
+        </>
       )}
     </div>
   );

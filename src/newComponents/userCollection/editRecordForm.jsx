@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-import '@sweetalert2/theme-dark/dark.css';
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "@sweetalert2/theme-dark/dark.css";
 
 function EditRecordForm(props) {
   const { id } = useParams();
@@ -17,7 +17,7 @@ function EditRecordForm(props) {
   );
   const [recordArtist, setRecordArtist] = useState(record.artist);
   const [recordTitle, setRecordTitle] = useState(record.title);
-  const [recordMood, setRecordMood] = useState('');
+  const [recordMood, setRecordMood] = useState("");
   const [recordDetails, setRecordDetails] = useState(record.details);
 
   const handleInputChangeArtist = (e) => {

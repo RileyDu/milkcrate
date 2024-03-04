@@ -1,13 +1,13 @@
-import { combineReducers } from 'redux';
-import errors from './errors.reducer';
-import user from './user.reducer';
-import spinsReducer from './spins.reducer';
-import blindbagReducer from './blindbag.reducer';
-import socialReducer from './social.reducer';
-import recordReducer from './record.reducer';
-import moodReducer from './mood.reducer';
-import hotpReducer from './hotp.reducer';
-import latestListensReducer from './latestListens.reducer';
+import { combineReducers } from "redux";
+import errors from "./errors.reducer";
+import user from "./user.reducer";
+import spinsReducer from "./spins.reducer";
+import blindbagReducer from "./blindbag.reducer";
+import socialReducer from "./social.reducer";
+import recordReducer from "./record.reducer";
+import moodReducer from "./mood.reducer";
+import hotpReducer from "./hotp.reducer";
+import latestListensReducer from "./latestListens.reducer";
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -24,7 +24,7 @@ const rootReducer = combineReducers({
   recordReducer,
   moodReducer,
   hotpReducer,
-  latestListensReducer
+  latestListensReducer,
 });
 
 export default rootReducer;

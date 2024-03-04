@@ -1,4 +1,3 @@
-
 html,
 body,
 #react-root {
@@ -142,7 +141,6 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 #shuffle-img {
@@ -159,7 +157,7 @@ input {
   display: flex;
   /* flex-direction: column; */
   align-items: center;
-  gap: 5em; 
+  gap: 5em;
 }
 
 .coverArtContainer,
@@ -213,7 +211,6 @@ input {
   cursor: pointer;
 }
 
-
 .spinPageContainer,
 .landingContainer {
   display: flex;
@@ -256,27 +253,26 @@ input {
   display: flex;
   align-items: start;
   gap: 4em; /* Adjust the gap between the image and the text as needed */
-  padding: 20px; 
-  
+  padding: 20px;
 }
 
 /* Logo Container */
 .infoLogoContainer {
-  flex-basis: 50%; 
-  text-align: center; 
+  flex-basis: 50%;
+  text-align: center;
 }
 
 .infoLogo {
   max-width: 450px;
   margin-top: -4em;
-  margin-bottom: -8em; 
+  margin-bottom: -8em;
 }
 
 .infoTextContainer {
-  flex-basis: 50%; 
+  flex-basis: 50%;
   display: flex;
   flex-direction: column;
-  gap: 10px; 
+  gap: 10px;
   padding-top: 3em;
   padding-right: 1em;
 }
@@ -330,7 +326,7 @@ ul > li {
   justify-content: center;
   align-items: center;
   gap: 1em;
-  margin-bottom: 1em
+  margin-bottom: 1em;
 }
 
 .socialPageContainer {
@@ -339,7 +335,6 @@ ul > li {
   /* align-items: center; */
   margin: 2em 4em 4em;
 }
-
 
 .social-crate {
   width: 80%;
