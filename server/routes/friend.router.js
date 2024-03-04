@@ -33,9 +33,11 @@ ORDER BY friends.id DESC;
 // GET a friend's collection
 router.get("/friends/collection", rejectUnauthenticated, (req, res) => {
   const query = `
-      SELECT * FROM "albums"
-      WHERE user_id = $1
-        ORDER BY "id" DESC;
+  SELECT albums.*, moods.mood AS mood
+  FROM "albums"
+  JOIN "moods" ON albums.mood = moods.id
+  WHERE albums.user_id = $1
+  ORDER BY albums.date_added DESC;
     `;
   pool
     .query(query, [req.query.id])
