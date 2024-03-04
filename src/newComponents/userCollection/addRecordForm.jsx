@@ -38,7 +38,7 @@ function AddRecordForm(props) {
       recordMood
     );
 
-    if (!recordArtist || !recordTitle || !recordMood || !recordDetails) {
+    if (!recordArtist || !recordTitle || !recordMood) {
       Swal.fire({
         title: "Attention!",
         text: "Please fill form before submit",
