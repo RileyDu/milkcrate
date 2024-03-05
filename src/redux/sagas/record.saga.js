@@ -1,7 +1,7 @@
 import axios from "axios";
 import { put, takeLatest } from "redux-saga/effects";
 
-// worker Saga: will be fired on "FETCH_USER" actions
+// worker Saga: will be fired on "FETCH_RECORD" actions
 function* fetchRecords() {
   try {
     const response = yield axios.get("/api/record");
@@ -11,6 +11,7 @@ function* fetchRecords() {
   }
 }
 
+// worker Saga: will be fired on "POST_RECORD" actions
 function* postRecord(action) {
   try {
     const response = yield axios.post("/api/record/add", action.payload);
@@ -20,6 +21,7 @@ function* postRecord(action) {
   }
 }
 
+// worker Saga: will be fired on "EDIT_RECORD" actions
 function* editRecord(action) {
   try {
     const response = yield axios.put("/api/record/edit", action.payload);
@@ -29,6 +31,7 @@ function* editRecord(action) {
   }
 }
 
+// worker Saga: will be fired on "DELETE_RECORD" actions
 function* deleteRecord(action) {
   try {
     const response = yield axios.delete(`/api/record/${action.payload}`);
@@ -38,6 +41,7 @@ function* deleteRecord(action) {
   }
 }
 
+// worker Saga: will be fired on "SEARCH_RECORDS" actions
 function* searchRecords(action) {
   try {
     const searchTerm = encodeURIComponent(action.payload.search);
@@ -48,8 +52,7 @@ function* searchRecords(action) {
   }
 }
 
-//STILL NEEDS THE STUPID SEARCH FEATURE
-
+// watcher Saga: handles all record actions
 function* recordSaga() {
   yield takeLatest("FETCH_RECORDS", fetchRecords);
   yield takeLatest("POST_RECORD", postRecord);

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { put, takeLatest } from "redux-saga/effects";
 
+// worker Saga: will be fired on "FETCH_MOOD" actions
 function* fetchMoods() {
   try {
     const config = {
@@ -16,6 +17,7 @@ function* fetchMoods() {
   }
 }
 
+// watcher Saga: handles mood actions
 function* moodSaga() {
   yield takeLatest("FETCH_MOOD", fetchMoods);
 }

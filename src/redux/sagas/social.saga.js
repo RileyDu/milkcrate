@@ -1,7 +1,7 @@
 import axios from "axios";
 import { put, takeLatest } from "redux-saga/effects";
 
-// worker Saga: will be fired on "FETCH_USER" actions
+// worker Saga: will be fired on "FETCH_FRIENDS" actions
 function* fetchFriends() {
   try {
     const config = {
@@ -17,6 +17,7 @@ function* fetchFriends() {
   }
 }
 
+// worker Saga: will be fired on "POST_FRIENDSHIP" actions
 function* postFriendship(action) {
   try {
     const response = yield axios.post("/api/social/add", action.payload);
@@ -26,6 +27,8 @@ function* postFriendship(action) {
   }
 }
 
+
+// worker Saga: will be fired on "DELETE_FRIENDSHIP" actions
 function* deleteFriendship(action) {
   try {
     const config = {
@@ -42,6 +45,7 @@ function* deleteFriendship(action) {
   }
 }
 
+// worker Saga: will be fired on "FETCH_FRIENDS_RECORDS" actions
 function* fetchFriendsRecords(action) {
   try {
     const response = yield axios.get(
@@ -53,6 +57,7 @@ function* fetchFriendsRecords(action) {
   }
 }
 
+// worker Saga: will be fired on "SEARCH_FRIENDS_RECORDS" actions
 function* searchFriendsRecords(action) {
   try {
     const searchTerm = encodeURIComponent(action.payload.search);
@@ -65,6 +70,7 @@ function* searchFriendsRecords(action) {
   }
 }
 
+// worker Saga: will be fired on "FETCH_HOTP" actions
 function* fetchHOTP(action) {
   try {
     const response = yield axios.get(`/api/social/hotp`);
@@ -74,6 +80,7 @@ function* fetchHOTP(action) {
   }
 }
 
+// worker Saga: will be fired on "FETCH_LATEST_LISTENS" actions
 function* fetchLatestListens(action) {
   try {
     const response = yield axios.get(`/api/social/latestListens`);
@@ -83,6 +90,7 @@ function* fetchLatestListens(action) {
   }
 }
 
+// watcher Saga: handles spins actions
 function* socialSaga() {
   console.log("Social saga started...");
   yield takeLatest("FETCH_FRIENDS", fetchFriends);

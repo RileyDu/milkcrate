@@ -1,7 +1,7 @@
 import axios from "axios";
 import { put, takeLatest } from "redux-saga/effects";
 
-// worker Saga: will be fired on "FETCH_USER" actions
+// worker Saga: will be fired on "FETCH_BLINDBAG" actions
 function* fetchBlindbag() {
   try {
     const config = {
@@ -15,6 +15,7 @@ function* fetchBlindbag() {
   }
 }
 
+// watcher Saga: handles blindbag actions
 function* blindbagSaga() {
   yield takeLatest("FETCH_BLINDBAG", fetchBlindbag);
 }

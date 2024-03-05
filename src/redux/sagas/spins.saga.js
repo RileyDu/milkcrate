@@ -1,7 +1,7 @@
 import axios from "axios";
 import { put, take, takeLatest } from "redux-saga/effects";
 
-// worker Saga: will be fired on "FETCH_USER" actions
+// worker Saga: will be fired on "FETCH_SPINS" actions
 function* fetchSpins() {
   try {
     const config = {
@@ -17,6 +17,7 @@ function* fetchSpins() {
   }
 }
 
+// worker Saga: will be fired on "FETCH_SINGLE_SPIN" actions
 function* fetchSingleSpin(action) {
   try {
     const response = yield axios.get(`/api/spins/single/${action.payload}`);
@@ -27,6 +28,7 @@ function* fetchSingleSpin(action) {
   }
 }
 
+// worker Saga: will be fired on "POST_SPINS" actions
 function* addSpins(action) {
   try {
     const response = yield axios.post("/api/spins/add", action.payload);
@@ -36,6 +38,7 @@ function* addSpins(action) {
   }
 }
 
+// worker Saga: will be fired on "DELETE_SPIN" actions
 function* deleteSpin(action) {
   try {
     const response = yield axios.delete(`/api/spins/${action.payload}`);
@@ -45,6 +48,7 @@ function* deleteSpin(action) {
   }
 }
 
+// watcher Saga: handles spins actions
 function* spinsSaga() {
   yield takeLatest("FETCH_SPINS", fetchSpins);
   yield takeLatest("POST_SPINS", addSpins);
