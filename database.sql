@@ -93,12 +93,6 @@ select * from "spins";
 select * from "friends";
 select * from "moods";
 
-CREATE INDEX "idx_albums_title_trgm" ON "albums" USING gist ("title" gist_trgm_ops);
-CREATE INDEX "idx_albums_artist_trgm" ON "albums" USING gist ("artist" gist_trgm_ops);
-CREATE INDEX "idx_albums_tags_trgm" ON "albums" USING gist ("tags" gist_trgm_ops);
-CREATE INDEX "idx_albums_mood_trgm" ON "albums" USING gist (CAST("mood" AS TEXT) gist_trgm_ops);
-
-CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 
 
