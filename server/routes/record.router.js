@@ -41,7 +41,7 @@ router.post("/add", rejectUnauthenticated, (req, res) => {
     .then((response) => {
       const finalAlbumTitle = response.data.album.name;
       const finalArtist = response.data.album.artist;
-      const finalCoverArt = response.data.album.image[4]["#text"] ? response.data.album.image[4]["#text"] : "public/milkcrateLogo.svg";
+      const finalCoverArt = response.data.album.image[4]["#text"] ? response.data.album.image[4]["#text"] : "browserIcon.png";
       const tagsObject = response.data.album.tags.tag;
       const finalTags =
         tagsObject && tagsObject.length > 0

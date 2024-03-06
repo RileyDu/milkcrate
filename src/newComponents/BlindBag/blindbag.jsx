@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 
-function Blindbag(props) {
+function Blindbag() {
   const dispatch = useDispatch();
   const randomRecord = useSelector((store) => store.blindbagReducer);
   const [currentCoverArt, setCurrentCoverArt] = useState("TheRecord.svg");
