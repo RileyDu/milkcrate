@@ -16,14 +16,15 @@ function LandingPage() {
 
   return (
     <div className="container">
-      <h1 style={{ textAlign: "center", paddingTop: "1em" }}>{heading}</h1>
+      {/* <h1 style={{ textAlign: "center", paddingTop: "1em" }}>{heading}</h1> */}
 
       <div className="landingContainer">
         <div className="landingLogoContainer">
-          <img className="record-clipart" src="milkcrateLogo.svg" />
+          <img className="record-clipart" src="crate_sticker.jpeg" style={{ marginTop: "1em" }}/>
         </div>
         <div className="landingLoginContainer">
           <LoginForm />
+          <p>check</p>
         </div>
       </div>
 
