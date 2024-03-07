@@ -24,7 +24,7 @@ function Nav() {
   return (
     <div className="nav">
       <div className="nav-section left">
-        {location.pathname === "/user" && (
+        {location.pathname === "/user/profile" && (
           <button
             className="btn btn-outline-secondary btn-sm"
             onClick={() => history.push("/user/add")}
@@ -35,7 +35,7 @@ function Nav() {
         {isRecordDetailPage && (
           <button
             className="btn btn-outline-secondary btn-sm"
-            onClick={() => history.push("/user")}
+            onClick={() => history.push("/user/profile")}
           >
             home
           </button>
@@ -43,7 +43,7 @@ function Nav() {
         {location.pathname === "/user/add" && (
           <button
             className="btn btn-outline-secondary btn-sm"
-            onClick={() => history.push("/user")}
+            onClick={() => history.push("/user/profile")}
           >
             home
           </button>
@@ -131,7 +131,7 @@ function Nav() {
       </div>
       <div className="nav-section center">
         {user.id ? (
-          <Link to="/user">
+          <Link to="/user/profile">
             <h2 className="nav-title">milkcrate.</h2>
           </Link>
         ) : (
@@ -149,7 +149,7 @@ function Nav() {
 
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
+            <Link className="navLink" to="/user/profile">
               home
             </Link>
             <Link className="navLink" to="/social">

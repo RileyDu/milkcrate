@@ -21,7 +21,7 @@ function LoginForm() {
           password: password,
         },
       });
-      history.push("/user");
+      history.push("/user/profile");
     } else {
       dispatch({ type: "LOGIN_INPUT_ERROR" });
     }

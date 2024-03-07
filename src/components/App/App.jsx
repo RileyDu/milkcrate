@@ -51,7 +51,7 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
-          <Redirect exact from="/" to="/user" />
+          <Redirect exact from="/" to="/home" />
 
           {/* Visiting localhost:5173/about will show the about page. */}
           <Route
@@ -69,7 +69,7 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/user/profile"
           >
             <MyMilkcrate />
           </ProtectedRoute>
@@ -175,3 +175,5 @@ function App() {
 }
 
 export default App;
+
+
