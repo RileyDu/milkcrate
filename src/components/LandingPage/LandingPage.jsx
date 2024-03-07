@@ -24,7 +24,7 @@ function LandingPage() {
         </div>
         <div className="landingLoginContainer">
           <LoginForm />
-          <p>check</p>
+          {/* <p>check</p> */}
         </div>
       </div>
 
