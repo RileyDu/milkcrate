@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect } from "react";
 
 function RegisterForm() {
   const [username, setUsername] = useState("");
@@ -8,6 +9,14 @@ function RegisterForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
   const history = useHistory();
+  const users = useSelector((store) => store.user);
+
+  // useEffect(() => {
+  //   if (users && users.id > 0) {
+  //     history.push("/user/profile");
+  //   }
+  // }, [users, history]);
+
 
   const registerUser = (event) => {
     event.preventDefault();
@@ -19,6 +28,7 @@ function RegisterForm() {
         password: password,
       },
     });
+    // history.push("/user/profile");
   }; // end registerUser
 
   return (
