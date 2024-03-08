@@ -251,6 +251,15 @@ function MyMilkcrate(props) {
           </Row>
         </div>
       )}
+
+<button
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => history.push("/user/add")}
+            id="addRecordBtn"
+            
+          >
+            Add record
+          </button>
     </div>
   );
 }

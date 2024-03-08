@@ -297,8 +297,9 @@ ul > li {
 }
 
 #editRecordBackBtn,
-#friendBackBtn {
-  position: fixed;
+#friendBackBtn,
+#addRecordBtn {
+  position: absolute;
   top: 0;
   left: 0;
   margin-top: 1.4em;

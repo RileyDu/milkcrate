@@ -17,7 +17,7 @@ function* postRecord(action) {
     const response = yield axios.post("/api/record/add", action.payload);
     yield put({ type: "FETCH_RECORDS" });
   } catch (error) {
-    console.log("User get request failed", error);
+    console.log("POST record request failed", error);
   }
 }
 

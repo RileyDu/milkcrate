@@ -45,7 +45,7 @@ function RecordDetails() {
           type: "DELETE_RECORD",
           payload: record.id,
         });
-        history.push(`/user`); // takes user back to home
+        history.push(`/user/profile`); // takes user back to home
 
         // Show deletion success message
         Swal.fire("Deleted!", "Your file has been deleted.", "success");

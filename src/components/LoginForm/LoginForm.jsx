@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+// import { useEffect } from "react";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const errors = useSelector((store) => store.errors);
+  const users = useSelector((store) => store.user); // Adjust path according to your store
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -21,11 +23,14 @@ function LoginForm() {
           password: password,
         },
       });
-      history.push("/user/profile");
     } else {
       dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
   }; // end login
+
+  useEffect(() => {
+    if (users.id) history.push("/user/profile");
+  }, [users, history]);
 
   return (
     <>
