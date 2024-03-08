@@ -238,7 +238,7 @@ function MyMilkcrate(props) {
 
       {sortedRecords.length > 0 && (
         <div className="container-gallery">
-          <Row xs={1} sm={3} md={6} className="g-4">
+          <Row xs={2} sm={3} md={6} className="g-4">
             {sortedRecords.map((record, i) => (
               <Col key={i}>
                 <img
