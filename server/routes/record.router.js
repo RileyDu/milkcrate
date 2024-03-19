@@ -78,56 +78,6 @@ function insertAlbum(title, artist, coverArt, tags, mood, details, userId, res) 
     });
 }
 
-//   axios
-//     .get(
-//       `http://ws.audioscrobbler.com/2.0/?api_key=${LAST_FM_API_KEY}&format=json&method=album.getinfo&artist=${albumArtist}&album=${albumTitle}&autocorrect=1`
-//     )
-//     .then((response) => {
-//       console.log("Last.fm response:", response.data);
-//       const finalAlbumTitle = response.data.album.name ? response.data.album.name : albumTitle;
-//       const finalArtist = response.data.album.artist ? response.data.album.artist : albumArtist;
-//       const finalCoverArt = response.data.album.image[4]["#text"] ? response.data.album.image[4]["#text"] : "browserIcon.png";
-//       const tagsObject = response.data.album.tags.tag;
-//       const finalTags =
-//         tagsObject && tagsObject.length > 0
-//           ? tagsObject.map((tag) => tag.name)
-//           : [];
-//       const finalMood = albumMood;
-//       const finalDetails = albumDetails;
-
-//       // POST TO DB WITH FORM DATA (ALBUM MOOD AND DETAILS ONLY) AND LAST.FM OBJECT (COVER ART, ARTIST, ALBUM AND TAGS)
-//       const insertRecordQuery = `
-//           INSERT INTO "albums" 
-//           ("title", "artist", "coverart", "tags", "mood", "details", "user_id")
-//           VALUES
-//           ($1, $2, $3, $4, $5, $6, $7)
-//         `;
-
-//       const insertRecordValues = [
-//         finalAlbumTitle,
-//         finalArtist,
-//         finalCoverArt,
-//         JSON.stringify(finalTags),
-//         finalMood,
-//         finalDetails,
-//         req.user.id,
-//       ];
-
-//       pool
-//         .query(insertRecordQuery, insertRecordValues)
-//         .then(() => {
-//           res.sendStatus(201);
-//         })
-//         .catch((err) => {
-//           console.error("ERROR: Adding album to DB", err);
-//           res.sendStatus(500);
-//         });
-//     })
-//     .catch((err) => {
-//       console.error("ERROR: Fetching album information from Last.fm", err);
-//       res.sendStatus(500);
-//     });
-// });
 
 //GET albums from milkcrate W/SEARCH params
 router.get("/search", rejectUnauthenticated, (req, res) => {

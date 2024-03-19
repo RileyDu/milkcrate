@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./LandingPage.css";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 // CUSTOM COMPONENTS
 import RegisterForm from "../RegisterForm/RegisterForm";
@@ -14,6 +15,13 @@ function LandingPage() {
     history.push("/login");
   };
 
+  Swal.fire({
+    icon: "info",
+    title: "over 350 records have been added to MILKCRATE.!! THANK YOU!",
+    showConfirmButton: false,
+    timer: 2750,
+  });
+
   return (
     <div className="container">
       {/* <h1 style={{ textAlign: "center", paddingTop: "1em" }}>{heading}</h1> */}
@@ -26,6 +34,7 @@ function LandingPage() {
           <LoginForm />
           {/* <p>check</p> */}
         </div>
+        
       </div>
 
       {/* <div className="grid">
@@ -52,8 +61,9 @@ function LandingPage() {
             </button>
           </center>
         </div>
-      </div> */}
+  </div> */}
     </div>
+
   );
 }
 

@@ -24,14 +24,6 @@ function Nav() {
   return (
     <div className="nav">
       <div className="nav-section left">
-        {/* {location.pathname === "/user/profile" && (
-          <button
-            className="btn btn-outline-secondary btn-sm"
-            onClick={() => history.push("/user/add")}
-          >
-            Add record
-          </button>
-        )} */}
         {isRecordDetailPage && (
           <button
             className="btn btn-outline-secondary btn-sm"

@@ -1,31 +1,32 @@
-import React from "react";
+import React from 'react';
+import { Container, Row, Col, Image, ListGroup, Badge } from 'react-bootstrap';
 
 function InfoPage() {
   return (
-    <div>
-      <h2 className="header-tabs">Info</h2>
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col md={12}>
+          <h2 className="header-tabs text-center">Info</h2>
+        </Col>
+      </Row>
 
-      <div className="infoPageContainer">
-        <div className="infoLogoContainer">
-          <img
-            src="milkcrateLogo.svg"
-            alt="Milkcrate Logo"
-            className="infoLogo"
-          />
-        </div>
+      <Row className="infoPageContainer">
+        <Col md={6} className="infoLogoContainer d-flex justify-content-center align-items-start">
+          <Image src="milkcrateLogo.svg" alt="Milkcrate Logo" className="infoLogo" />
+        </Col>
 
-        <div className="infoTextContainer">
-          <div className="infoHeaders">
+        <Col md={6} className="infoTextContainer">
+          <div className="infoHeaders mt-3">
             <strong>How to use:</strong>
           </div>
-          <ol>
-            <li>Log in or register.</li>
-            <li>Add records to your milkcrate.</li>
-            <li>Add friends to see their milkcrate.</li>
-            <li>Create spin sessions to log what you've been listening to.</li>
-          </ol>
+          <ListGroup as="ol" numbered>
+            <ListGroup.Item as="li">Log in or register.</ListGroup.Item>
+            <ListGroup.Item as="li">Add records to your milkcrate.</ListGroup.Item>
+            <ListGroup.Item as="li">Add friends to see their milkcrate.</ListGroup.Item>
+            <ListGroup.Item as="li">Create spin sessions to log what you've been listening to.</ListGroup.Item>
+          </ListGroup>
 
-          <div className="infoHeaders">
+          <div className="infoHeaders mt-3">
             <strong>Feature request or bug:</strong>
           </div>
           <div>
@@ -35,30 +36,21 @@ function InfoPage() {
             helps us improve and tailor Milkcrate to better serve you, the user.
           </div>
 
-          <div className="infoHeaders">
+          <div className="infoHeaders mt-3">
             <strong>Socials:</strong>
           </div>
           <div>
             <a href="https://github.com/RileyDu/milkcrate">
-              <span
-                id="infoPills"
-                className="badge rounded-pill bg-primary infoPills"
-              >
-                GitHub
-              </span>
+              <Badge bg="primary" className="infoPills">GitHub</Badge>
             </a>
+            {' '}
             <a href="https://www.linkedin.com/in/rileydu">
-              <span
-                id="infoPills"
-                className="badge rounded-pill bg-primary infoPills"
-              >
-                LinkedIn
-              </span>
+              <Badge bg="primary" className="infoPills">LinkedIn</Badge>
             </a>
           </div>
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

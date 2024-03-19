@@ -11,13 +11,6 @@ function RegisterForm() {
   const history = useHistory();
   const users = useSelector((store) => store.user);
 
-  // useEffect(() => {
-  //   if (users && users.id > 0) {
-  //     history.push("/user/profile");
-  //   }
-  // }, [users, history]);
-
-
   const registerUser = (event) => {
     event.preventDefault();
 
@@ -28,8 +21,8 @@ function RegisterForm() {
         password: password,
       },
     });
-    // history.push("/user/profile");
-  }; // end registerUser
+    
+  }; 
 
   return (
     <div className="container">
