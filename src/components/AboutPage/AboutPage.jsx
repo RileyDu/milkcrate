@@ -1,33 +1,33 @@
-import React from "react";
-
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+import React from 'react';
+import { Container, Row, Col, Image, ListGroup, Badge } from 'react-bootstrap';
 
 function AboutPage() {
   return (
-    <div>
-      <h2 className="header-tabs">about</h2>
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col xs={12}>
+          <h2 className="header-tabs text-center">about</h2>
+        </Col>
+      </Row>
 
-      <div className="infoPageContainer">
-        <div className="infoLogoContainer">
-          <img src="TheRecord.svg" alt="Milkcrate Logo" className="infoLogo" />
-        </div>
+      <Row className="infoPageContainer">
+        <Col xs={12} lg={6} className="infoLogoContainer d-flex justify-content-center align-items-start">
+          <Image src="TheRecord.svg" alt="Milkcrate Logo" className="infoLogo" />
+        </Col>
 
-        <div className="infoTextContainer">
-          <div className="infoHeaders">
+        <Col xs={12} lg={6} className="infoTextContainer">
+          <div className="infoHeaders mt-3">
             <strong>milkcrate. features</strong>
           </div>
-          <ul>
-            <li>digitizes your record collection</li>
-            <li>lets you see your friends' collections</li>
-            <li>keep a log of records you have played</li>
-            <li>lets you easily search through hundreds of records</li>
-            <li>and more!</li>
-          </ul>
+          <ListGroup as="ul">
+            <ListGroup.Item>digitizes your record collection</ListGroup.Item>
+            <ListGroup.Item>lets you see your friends' collections</ListGroup.Item>
+            <ListGroup.Item>keep a log of records you have played</ListGroup.Item>
+            <ListGroup.Item>lets you easily search through hundreds of records</ListGroup.Item>
+            <ListGroup.Item>and more!</ListGroup.Item>
+          </ListGroup>
 
-          <div className="infoHeaders">
+          <div className="infoHeaders mt-3">
             <strong>Why milkcrate.</strong>
           </div>
           <div>
@@ -39,30 +39,21 @@ function AboutPage() {
             around a shared passion for vinyl.
           </div>
 
-          <div className="infoHeaders">
+          <div className="infoHeaders mt-3">
             <strong>Socials:</strong>
           </div>
           <div>
             <a href="https://github.com/RileyDu/milkcrate">
-              <span
-                id="infoPills"
-                className="badge rounded-pill bg-primary infoPills"
-              >
-                GitHub
-              </span>
+              <Badge bg="primary" className="infoPills">GitHub</Badge>
             </a>
+            {' '}
             <a href="https://www.linkedin.com/in/rileydu">
-              <span
-                id="infoPills"
-                className="badge rounded-pill bg-primary infoPills"
-              >
-                LinkedIn
-              </span>
+              <Badge bg="primary" className="infoPills">LinkedIn</Badge>
             </a>
           </div>
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
