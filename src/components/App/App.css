@@ -289,9 +289,9 @@ ul > li {
   font-size: 1.25em;
 }
 
+/* #editRecordBtn, */
 #editRecordBackBtn,
-#friendBackBtn,
-#addRecordBtn {
+#friendBackBtn {
   position: absolute;
   top: 0;
   left: 0;

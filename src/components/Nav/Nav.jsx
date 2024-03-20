@@ -9,8 +9,8 @@ function CustomNav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" className="nav">
-      <Navbar.Brand as={Link} to={user.id ? "/user/profile" : "/home"}>milkcrate.</Navbar.Brand>
+    <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" className="nav custom-navbar">
+      <Navbar.Brand as={Link} to={user.id ? "/user/profile" : "/home"} className="mx-auto custom-navbar-brand">milkcrate.</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
@@ -35,3 +35,5 @@ function CustomNav() {
 }
 
 export default CustomNav;
+
+// Nav links depending on all the loccations?
