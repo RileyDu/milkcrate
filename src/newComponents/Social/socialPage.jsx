@@ -34,6 +34,34 @@ function SocialPage(props) {
   return (
     <>
       <h2 className="header-tabs"> social </h2>
+      <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mt-3">
+      <button
+            className="btn btn-outline-primary"
+            onClick={() => history.push("/social/add")}
+            id="addRecordBtn"
+            style={{ width: '200px' }}
+          >
+            Add friend
+          </button>
+
+      <button
+            className="btn btn-outline-primary"
+            onClick={() => history.push("/social/recentlySpun")}
+            id="addRecordBtn"
+            style={{ width: '200px' }}
+          >
+            Latest Listens
+          </button>
+
+      <button
+            className="btn btn-outline-primary"
+            onClick={() => history.push("/social/hotp")}
+            id="addRecordBtn"
+            style={{ width: '200px' }}
+          >
+            Hot Off The Press
+          </button>
+          </div>
       <div className="socialPageContainer">
         <Row xs={1} sm={2} md={3} className="g-6">
           {friends.map((friend, i) => (
