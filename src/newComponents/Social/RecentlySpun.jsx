@@ -5,9 +5,11 @@ import { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import dayjs from "dayjs";
 import "./HOTP.css";
+import { useHistory } from "react-router-dom";
 
 function RecentlySpun(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const records = useSelector((store) => store.latestListensReducer);
 
   useEffect(() => {
@@ -17,6 +19,16 @@ function RecentlySpun(props) {
   return (
     <div>
       <h2 className="header-tabs">latest listens</h2>
+      <div class="d-grid gap-2 d-md-flex justify-content-center mb-3">
+      <button
+            className="btn btn-outline-primary"
+            onClick={() => history.push("/social")}
+            id="addRecordBtn"
+            style={{ width: '400px' }}
+          >
+            Back to social
+          </button>
+          </div>
       <p style={{ marginBottom: "1em", textAlign: "center" }}>
         what your friends have been listening to
       </p>
