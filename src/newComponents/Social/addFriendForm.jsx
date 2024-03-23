@@ -59,6 +59,9 @@ function AddFriendForm(props) {
             <button className="btn btn-lg btn-primary" type="submit">
               ADD FRIEND
             </button>
+            <button className="btn btn-lg btn-outline-primary" onClick={() => history.push("/social")}>
+              Back to Social
+            </button>
           </div>
         </form>
       </div>
