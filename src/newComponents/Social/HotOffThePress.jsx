@@ -5,9 +5,11 @@ import { useDispatch } from "react-redux";
 import dayjs from "dayjs";
 import "./HOTP.css";
 import { Row, Col } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 function HotOffThePress(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const records = useSelector((store) => store.hotpReducer);
 
   useEffect(() => {
@@ -17,6 +19,16 @@ function HotOffThePress(props) {
   return (
     <>
       <h2 className="header-tabs">hot off the press</h2>
+      <div class="d-grid gap-2 d-md-flex justify-content-center mb-3">
+      <button
+            className="btn btn-outline-primary"
+            onClick={() => history.push("/social")}
+            id="addRecordBtn"
+            style={{ width: '400px' }}
+          >
+            Back to social
+          </button>
+          </div>
       <p style={{ marginBottom: "1em", textAlign: "center" }}>
         what your friends have picked up lately
       </p>
