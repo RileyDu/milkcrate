@@ -18,6 +18,16 @@ function SpinSessions(props) {
   return (
     <div>
       <h2 className="header-tabs">spins</h2>
+      <div class="d-grid gap-2 d-md-flex justify-content-center mt-4">
+      <button
+            className="btn btn-outline-primary"
+            onClick={() => history.push("/spins/add")}
+            id="addRecordBtn"
+            style={{ width: '400px' }}
+          >
+            Add Spin
+          </button>
+          </div>
       {spins?.length > 0 && (
         <div className="spinPageContainer">
           <Row xs={1} sm={2} md={3} className="g-6">
