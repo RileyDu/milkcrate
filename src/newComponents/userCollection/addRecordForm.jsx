@@ -143,6 +143,9 @@ function AddRecordForm(props) {
             <button className="btn btn-lg btn-primary" type="submit">
               ADD RECORD
             </button>
+            <button className="btn btn-lg btn-outline-primary" onClick={() => history.push("/user/profile") }>
+              Back to Home
+            </button>
           </div>
         </form>
       </div>
