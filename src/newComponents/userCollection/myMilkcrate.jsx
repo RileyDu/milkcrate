@@ -211,7 +211,7 @@ function MyMilkcrate(props) {
               id="searchInput"
               className="form-control"
             />
-            <label htmlFor="searchInput">
+            <label id="searchLabel" htmlFor="searchInput">
               Search by Album, Artist, or Tags
             </label>
           </div>
