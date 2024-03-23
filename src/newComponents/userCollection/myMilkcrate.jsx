@@ -105,6 +105,16 @@ function MyMilkcrate(props) {
   return (
     <div>
       <h2 className="header-tabs">{username}'s milkcrate.</h2>
+      <div class="d-grid gap-2 d-md-flex justify-content-center mb-3">
+      <button
+            className="btn btn-outline-primary"
+            onClick={() => history.push("/user/add")}
+            id="addRecordBtn"
+            style={{ width: '400px' }}
+          >
+            Add record
+          </button>
+          </div>
 
       <div className="form-group">
         <div className="form-floating mb-3" id="filterBtns">
@@ -202,18 +212,18 @@ function MyMilkcrate(props) {
 
         {/* search bar */}
         <form onSubmit={(event) => searchRecords(event)}>
-          <div className="form-floating mb-3">
+          <div className="form mb-3">
             <input
               type="text"
-              placeholder=""
+              placeholder="Search by Album, Artist, or Tags"
               value={searchQuery}
               onChange={handleInputChangeSearch}
               id="searchInput"
               className="form-control"
             />
-            <label id="searchLabel" htmlFor="searchInput">
+            {/* <label id="searchLabel" htmlFor="searchInput">
               Search by Album, Artist, or Tags
-            </label>
+            </label> */}
           </div>
           <div class="d-grid gap-2">
             {searchQuery && !hasSearched && (
@@ -251,15 +261,6 @@ function MyMilkcrate(props) {
           </Row>
         </div>
       )}
-
-<button
-            className="btn btn-outline-secondary btn-sm"
-            onClick={() => history.push("/user/add")}
-            id="addRecordBtn"
-            
-          >
-            Add record
-          </button>
     </div>
   );
 }

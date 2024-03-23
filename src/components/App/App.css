@@ -289,7 +289,7 @@ ul > li {
   font-size: 1.25em;
 }
 
-#addRecordBtn,
+
 #editRecordBackBtn,
 #friendBackBtn {
   position: absolute;
@@ -344,12 +344,14 @@ body, .nav-link {
 }
 
 /* Dark theme styles */
-body.dark, body.dark .btn, body.dark h2{
+body.dark, body.dark h2{
   background-color: black; /* Dark background */
   color: #FFF; /* Light text */
 }
 
-body.dark #searchInput, body.dark #searchLabel{
-  background-color: black;
-  /* color: #FFF; */
+
+body.dark .btn, body.dark #searchInput , body.dark #searchLabel{
+  background-color: white;
+  color: black;
+  border: 1px solid white;
 }
