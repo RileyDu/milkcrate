@@ -315,12 +315,32 @@ ul > li {
   margin-bottom: -8em;
 }
 
-#filterBtns {
+/* #filterBtns {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1em;
   margin-bottom: 1em;
+} */
+
+#filterLabel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#addRecordBtn {
+  width: 35%; /* Makes the button responsive */
+  padding: 10px; /* Adjust padding as needed */
+  font-size: 16px; /* Adjust font size as needed */
+}
+
+@media (max-width: 768px) {
+  #addRecordBtn {
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+  }
 }
 
 .socialPageContainer {

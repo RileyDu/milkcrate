@@ -110,14 +110,13 @@ function MyMilkcrate(props) {
             className="btn btn-outline-primary"
             onClick={() => history.push("/user/add")}
             id="addRecordBtn"
-            style={{ width: '400px' }}
           >
             Add record
           </button>
           </div>
 
       <div className="form-group">
-        <div className="form-floating mb-3" id="filterBtns">
+        <div className="d-flex flex-wrap justify-content-center mb-3" id="filterBtns">
           <div
             id="filterLabel"
             className="btn-group"
@@ -248,7 +247,7 @@ function MyMilkcrate(props) {
 
       {sortedRecords.length > 0 && (
         <div className="container-gallery">
-          <Row sm={2} md={4} lg={6} className="g-4">
+          <Row  xs={2} sm={2} md={4} lg={6} className="g-4">
             {sortedRecords.map((record, i) => (
               <Col key={i}>
                 <img
