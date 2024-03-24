@@ -41,6 +41,7 @@
 
 .custom-navbar {
   position: relative;
+  z-index: 1020;
 }
 
 .custom-navbar-brand {
@@ -48,4 +49,23 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: 3em !important;
+}
+
+/* Mobile view: Apply padding to the nav links in the hamburger menu */
+@media (max-width: 768px) {
+  .nav.custom-navbar .navbar-collapse .nav-link {
+    padding: 10px; /* Adjust padding as needed */
+  }
+
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: black; /* Match your navbar bg color */
+  }
+}
+
+.custom-navbar .navbar-toggler {
+  margin: 0rem 1rem; /* Adjust the top/bottom and left/right padding as needed */
 }

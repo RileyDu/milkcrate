@@ -27,7 +27,7 @@ function LogOutButton(props) {
         history.push("/home");
       }}
     >
-      Log Out
+      LOG OUT
     </button>
   );
 }

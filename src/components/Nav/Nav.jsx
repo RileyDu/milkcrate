@@ -37,10 +37,10 @@ function CustomNav() {
               <Nav.Link as={Link} to="/social">Social</Nav.Link>
               <Nav.Link as={Link} to="/spins">Spins</Nav.Link>
               <Nav.Link as={Link} to="/blindbag">Blind Bag</Nav.Link>
-              <Nav.Link as="button" onClick={toggleTheme}>
+              <Nav.Link  onClick={toggleTheme}>
                 {theme === 'light' ? 'DARK MODE' : 'LIGHT MODE'}
               </Nav.Link>
-              <LogOutButton className="nav-link" />
+              <LogOutButton as={Link} className="nav-link" />
             </>
           )}
         </Nav>
