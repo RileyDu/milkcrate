@@ -127,6 +127,15 @@ function FriendCollection(props) {
   return (
     <div>
       <h2 className="header-tabs">{friend.friend_username}'s milkcrate.</h2>
+      <div className="d-grid gap-2 d-md-flex justify-content-center mb-3">
+      <button
+            className="btn btn-outline-primary"
+            onClick={() => history.push("/social")}
+            id="addRecordBtn"
+          >
+            Back to social
+          </button>
+          </div>
       <div className="form-group">
         <div className="form-floating mb-3" id="filterBtns">
           <div
@@ -220,21 +229,19 @@ function FriendCollection(props) {
             </label>
           </div>
         </div>
+        
 
         {/* search bar */}
         <form onSubmit={(event) => searchRecords(event)}>
-          <div className="form-floating mb-3">
+          <div className="form mb-3">
             <input
               type="text"
-              placeholder=""
+              placeholder="Search by Album, Artist, or Tags"
               value={searchQuery}
               onChange={handleInputChangeSearch}
               id="searchInput"
               className="form-control"
             />
-            <label htmlFor="searchInput">
-              Search by Album, Artist, or Tags
-            </label>
           </div>
           <div class="d-grid gap-2">
             {searchQuery && !hasSearched && (
@@ -256,6 +263,7 @@ function FriendCollection(props) {
           </div>
         </form>
       </div>
+      
       {sortedRecords.length > 0 && (
         <div className="container-gallery">
           <Row xs={1} sm={3} md={6} className="g-4">
