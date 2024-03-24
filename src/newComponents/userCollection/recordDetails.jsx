@@ -63,7 +63,16 @@ function RecordDetails() {
   return (
     <div>
       <h2 className="header-tabs"> {record.title} Details</h2>
-
+      <div class="d-grid gap-2 d-md-flex justify-content-center mt-5">
+      <button
+            className="btn btn-outline-primary"
+            onClick={() => history.push("/user/profile")}
+            id="addRecordBtn"
+            style={{ width: '400px' }}
+          >
+            Back to home
+          </button>
+          </div>
       <div className="recordDetailsContainer">
         <div className="coverArtContainer">
           <img src={record.coverart} alt={record.title} className="coverArt" />
