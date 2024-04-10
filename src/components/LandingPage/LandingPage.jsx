@@ -17,7 +17,7 @@ function LandingPage() {
 
   Swal.fire({
     icon: "info",
-    title: "over 350 records have been added to MILKCRATE.!! THANK YOU!",
+    title: "over 450 records have been added to MILKCRATE.!! THANK YOU!",
     showConfirmButton: false,
     timer: 2750,
   });

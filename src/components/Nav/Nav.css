@@ -49,12 +49,20 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: 3em !important;
+  padding-top: 5em;
 }
 
-/* Mobile view: Apply padding to the nav links in the hamburger menu */
+@media (min-width: 769px) {
+  .custom-navbar .navbar-collapse {
+    margin-right: 20px; 
+  }
+  
+}
+
+
 @media (max-width: 768px) {
   .nav.custom-navbar .navbar-collapse .nav-link {
-    padding: 10px; /* Adjust padding as needed */
+    padding: 10px;
   }
 
   .navbar-collapse {
@@ -62,10 +70,10 @@
     top: 100%;
     left: 0;
     right: 0;
-    background-color: black; /* Match your navbar bg color */
+    background-color: black; 
   }
 }
 
 .custom-navbar .navbar-toggler {
-  margin: 0rem 1rem; /* Adjust the top/bottom and left/right padding as needed */
+  margin: 0rem 1rem; 
 }
