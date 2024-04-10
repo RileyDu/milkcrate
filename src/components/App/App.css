@@ -310,7 +310,7 @@ ul > li {
 }
 
 .loading-spinner {
-  max-width: 750px;
+  max-width: 50px;
   margin-top: -4em;
   margin-bottom: -8em;
 }
@@ -353,8 +353,6 @@ ul > li {
 .social-crate {
   width: 80%;
   height: auto;
-  margin-top: -4em;
-  margin-bottom: -8em;
   cursor: pointer;
 }
 

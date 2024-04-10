@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import dayjs from "dayjs";
 import { Row, Col } from "react-bootstrap";
+import { ThemeContext } from "../../components/App/ThemeContext";
+
 
 function SpinSessions(props) {
   const dispatch = useDispatch();
   const spins = useSelector((store) => store.spinsReducer);
+  const { theme } = useContext(ThemeContext);
+
 
   useEffect(() => {
     dispatch({ type: "FETCH_SPINS" });
@@ -38,8 +42,8 @@ function SpinSessions(props) {
               return (
                 <Col key={i}>
                   <img
-                    className="record-clipart mx-auto d-block"
-                    src="TheRecord.svg"
+                    className="social-crate mx-auto d-block"
+                    src={theme === 'light' ? "TheRecord.svg" : "WhiteRecord.svg"}
                     onClick={() => history.push(`/spins/details/${spin.id}`)}
                   />
                   <p className="spinPageText">{formattedDate}</p>
