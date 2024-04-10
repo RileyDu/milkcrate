@@ -6,7 +6,11 @@ import {
   Switch,
 } from "react-router-dom";
 
+import { ThemeContext } from './ThemeContext';
+
 import { useDispatch, useSelector } from "react-redux";
+
+import { useState } from "react";
 
 import Nav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
@@ -41,11 +45,18 @@ function App() {
 
   const user = useSelector((store) => store.user);
 
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   useEffect(() => {
     dispatch({ type: "FETCH_USER" });
   }, [dispatch]);
 
   return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
     <Router>
       <div>
         <Nav />
@@ -171,6 +182,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </ThemeContext.Provider>
   );
 }
 

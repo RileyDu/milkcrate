@@ -13,7 +13,7 @@ function Footer() {
       <Link className="badge rounded-pill bg-primary me-2" to="/info">
         info
       </Link>
-      &copy; MILKCRATE.
+      &copy; MILKCRATE. (v1.0.21)
       <Link className="badge rounded-pill bg-primary ms-2" to="/about">
         about
       </Link>

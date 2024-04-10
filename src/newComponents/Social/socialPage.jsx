@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from "react";
@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "@sweetalert2/theme-dark/dark.css";
 import { Row, Col } from "react-bootstrap";
+import { ThemeContext } from "../../components/App/ThemeContext";
 
 function SocialPage(props) {
   const friends = useSelector((store) => store.socialReducer);
@@ -31,6 +32,16 @@ function SocialPage(props) {
   }, [friends.length]);
 
   const history = useHistory();
+
+  const { theme } = useContext(ThemeContext);
+
+  console.log("theme is social", theme);
+  // const [milkcrateLogo, setMilkcrateLogo] = useState(theme === 'light' ? "milkcrateLogo.svg" : "WhiteMilkcrate.svg");
+
+  // useEffect(() => {
+  //   setMilkcrateLogo(theme === 'light' ? "milkcrateLogo.svg" : "WhiteMilkcrate.svg");
+  // }, [theme]);
+
   return (
     <>
       <h2 className="header-tabs"> social </h2>
@@ -67,7 +78,7 @@ function SocialPage(props) {
           {friends.map((friend, i) => (
             <Col key={i}>
               <img
-                src="milkcrateLogo.svg"
+                src={theme === 'light' ? "milkcrateLogo.svg" : "WhiteMilkcrate.svg"}
                 className="social-crate mx-auto d-block"
                 onClick={() =>
                   history.push(`/social/friends/${friend.friend_id}`)

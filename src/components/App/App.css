@@ -373,5 +373,5 @@ body.dark, body.dark h2{
 body.dark .btn, body.dark #searchInput , body.dark #searchLabel{
   background-color: white;
   color: black;
-  border: 1px solid white;
+  border: 2px solid black;
 }

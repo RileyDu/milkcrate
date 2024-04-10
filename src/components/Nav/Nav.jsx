@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
+import { ThemeContext } from '../../components/App/ThemeContext';
 
 function CustomNav() {
   const user = useSelector((store) => store.user);
   // State to manage the theme
-  const [theme, setTheme] = useState('light'); // Default theme
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     // Apply the theme class to the body or a specific container
     document.body.className = theme;
   }, [theme]); // This effect runs whenever the theme state changes
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
+
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" className="nav custom-navbar">
