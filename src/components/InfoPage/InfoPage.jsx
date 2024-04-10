@@ -10,13 +10,13 @@ function InfoPage() {
         </Col>
       </Row>
 
-      <Row className="infoPageContainer">
+      <Row className="infoPageContainer mt-5">
         <Col md={6} className="infoLogoContainer d-flex justify-content-center align-items-start">
           <Image src="milkcrateLogo.svg" alt="Milkcrate Logo" className="infoLogo" />
         </Col>
 
         <Col md={6} className="infoTextContainer">
-          <div className="infoHeaders mt-3">
+          <div className="infoHeaders mt-5">
             <strong>How to use:</strong>
           </div>
           <ListGroup as="ol" numbered>

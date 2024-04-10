@@ -256,9 +256,8 @@ input {
 }
 
 .infoLogo {
-  max-width: 450px;
-  margin-top: -4em;
-  margin-bottom: -8em;
+  max-width: 400px;
+  margin-top: 2em;
 }
 
 /* .infoTextContainer {

@@ -10,7 +10,7 @@ function AboutPage() {
         </Col>
       </Row>
 
-      <Row className="infoPageContainer">
+      <Row className="infoPageContainer mt-5">
         <Col xs={12} lg={6} className="infoLogoContainer d-flex justify-content-center align-items-start">
           <Image src="TheRecord.svg" alt="Milkcrate Logo" className="infoLogo" />
         </Col>

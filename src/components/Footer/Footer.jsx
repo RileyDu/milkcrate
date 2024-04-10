@@ -9,15 +9,20 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer>
-      <Link className="badge rounded-pill bg-primary me-2" to="/info">
-        info
-      </Link>
-      &copy; MILKCRATE. (v1.0.21)
-      <Link className="badge rounded-pill bg-primary ms-2" to="/about">
-        about
-      </Link>
+    <footer className="footer">
+      <div className="container">
+        <nav aria-label="Footer navigation">
+          <Link className="badge rounded-pill bg-primary me-2" to="/info" aria-label="Information Page">
+            Info
+          </Link>
+          <span>&copy; MILKCRATE. (v1.0.25)</span>
+          <Link className="badge rounded-pill bg-primary ms-2" to="/about" aria-label="About Page">
+            About
+          </Link>
+        </nav>
+      </div>
     </footer>
+
   );
 }
 
