@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
+import { ThemeContext } from "../../components/App/ThemeContext";
+
 
 function Blindbag() {
   const dispatch = useDispatch();
   const randomRecord = useSelector((store) => store.blindbagReducer);
   const [currentCoverArt, setCurrentCoverArt] = useState("TheRecord.svg");
   const [coverArtClicked, setCoverArtClicked] = useState(false);
+  const { theme } = useContext(ThemeContext);
+
 
   useEffect(() => {
     if (!coverArtClicked) {
@@ -35,7 +39,8 @@ function Blindbag() {
 
   return (
     <div>
-      <h2 className="header-tabs">blindbag</h2>
+      <h1 className="header-tabs">blindbag</h1>
+      <br></br>
       <div className="container">
         <div className="d-grid gap-2"></div>
       </div>
@@ -43,7 +48,7 @@ function Blindbag() {
         {!coverArtClicked && (
           <motion.img
             id="shuffle-img"
-            src="TheRecord.svg"
+            src={theme === 'light' ? "TheRecord.svg" : "WhiteRecord.svg"}
             alt={randomRecord.title || "Record Logo"}
             onClick={handleCoverArtClick}
             animate={{ rotate: 720 }}
