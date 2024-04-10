@@ -39,7 +39,7 @@ function Blindbag() {
 
   return (
     <div>
-      <h1 className="header-tabs">blindbag</h1>
+      <h2 className="header-tabs">blindbag</h2>
       <br></br>
       <div className="container">
         <div className="d-grid gap-2"></div>
