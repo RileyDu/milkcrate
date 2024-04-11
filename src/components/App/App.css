@@ -293,8 +293,8 @@ input {
 }
 
 .socialPageText {
-  font-size: xx-large;
-  font-weight: bolder;
+  font-size: 2em;
+  font-weight: 500;
   margin-top: 1em;
   text-align: center;
 }

@@ -72,7 +72,7 @@ function SocialPage(props) {
             <Col key={i}>
               <img
                 src={theme === 'light' ? "milkcrateLogo.svg" : "WhiteMilkcrate.svg"}
-                className="social-crate mx-auto d-block"
+                className="social-crate mx-auto d-block mt-5"
                 onClick={() =>
                   history.push(`/social/friends/${friend.friend_id}`)
                 }
