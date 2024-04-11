@@ -193,6 +193,10 @@ input {
   .editRecordBtn {
     margin-right: 1em;
   }
+
+  .spinsListItem {
+    list-style: circle;
+  }
 }
 
 @media (max-width: 768px) {
@@ -214,22 +218,25 @@ input {
 
   .coverArt,
   .spinCoverArt {
-    max-width: 90%; /* Adjust based on your design */
-    min-width: auto; /* Remove minimum width constraint */
+    max-width: 90%; 
+    min-width: auto; 
   }
 
   .textContent,
   .spinTextContainer {
     flex: 100%;
     margin-top: 1em;
-    font-size: large; /* Adjust font size for readability on small screens */
-    /* font-weight: bold; */
+    font-size: large; 
     margin-right: 1em;
     margin-left: 1em;
-    text-align: center; /* Center text for mobile view */
+    text-align: center; 
   }
 
   .textContent strong {
+    font-weight: bold;
+  }
+
+  .spinTextContainer strong {
     font-weight: bold;
   }
 
@@ -245,6 +252,11 @@ input {
   .editRecordBtn {
     margin-right: 1em;
   }
+
+  .spinsListItem {
+    list-style: none;
+    font-size: 1.2em;
+  }
 }
 
 .bg-primary {
@@ -252,9 +264,7 @@ input {
 }
 
 
-.spinsListItem {
-  list-style: circle;
-}
+
 
 .record-clipart {
   margin-top: -4em;
