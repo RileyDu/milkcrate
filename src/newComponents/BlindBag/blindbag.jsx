@@ -73,16 +73,18 @@ function Blindbag() {
           </div>
         </>
       )}
-      <div className="d-grid gap-2 d-md-flex justify-content-center mt-5">
+      <div className="container">
+      <div className="d-grid gap-2 d-md-flex justify-content-center mt-3">
         <input
           className="form-control"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          placeholder="Filter by title, artist, or mood..."
+          placeholder="Filter by title, artist, tags, or mood..."
         />
-        <button className="btn btn-primary" onClick={getBlindBag}>
+        <button className="btn btn-outline-primary" onClick={getBlindBag}>
           Apply Filter
         </button>
+      </div>
       </div>
     </div>
   );
