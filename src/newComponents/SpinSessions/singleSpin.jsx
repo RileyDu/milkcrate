@@ -13,11 +13,23 @@ function SingleSpin(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
+  const [fadeEffect, setFadeEffect] = useState(true);
+
 
   const spins = useSelector((store) => store.spinsReducer);
 
   useEffect(() => {
     dispatch({ type: "FETCH_SINGLE_SPIN", payload: id });
+    const checkFade = () => {
+      setFadeEffect(window.innerWidth >= 768);
+    };
+
+    checkFade();
+    window.addEventListener('resize', checkFade); 
+
+    return () => {
+      window.removeEventListener('resize', checkFade); 
+    };
   }, [dispatch, id]);
 
   function deleteSpin() {
@@ -74,8 +86,8 @@ function SingleSpin(props) {
           <div className="spinDetailsContainer">
             <div className="spinCarouselContainer">
               <Carousel
-                interval={1000}
-                fade={true}
+                interval={1500}
+                fade={fadeEffect}
                 controls={false}
                 indicators={false}
               >

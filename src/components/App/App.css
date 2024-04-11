@@ -216,8 +216,7 @@ input {
     justify-content: center;
   }
 
-  .coverArt,
-  .spinCoverArt {
+  .coverArt{
     max-width: 90%; 
     min-width: auto; 
   }
