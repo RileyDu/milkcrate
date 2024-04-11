@@ -374,3 +374,7 @@ body.dark .btn, body.dark #searchInput , body.dark #searchLabel{
   color: black;
   border: 2px solid black;
 }
+
+body.dark label{
+  color: black;
+}
