@@ -20,9 +20,9 @@ function Blindbag() {
 
   function handleCoverArtClick() {
     if (!coverArtClicked) {
+      getBlindBag();
       setCurrentCoverArt(randomRecord.coverart);
       setCoverArtClicked(true);
-      getBlindBag();
     } else {
       getBlindBag();
     }
@@ -44,6 +44,7 @@ function Blindbag() {
       setCurrentCoverArt(randomRecord.coverart);
     }
   }, [randomRecord, coverArtClicked]);
+
 
   useEffect(() => {
     return () => {
@@ -79,17 +80,20 @@ function Blindbag() {
           <div className="blindbag-img">
             <img
               id="shuffle-img"
-              src={currentCoverArt}
+              src={currentCoverArt || "BLISS.png"}
               alt={randomRecord.title || "Record Logo"}
               onClick={handleCoverArtClick}
               style={{ cursor: "pointer" }}
             />
           </div>
+          {randomRecord.title && (
+            
           <div style={{ textAlign: "center", paddingTop: "4em" }}>
             <h2>
               {randomRecord.title} by <em>{randomRecord.artist}</em>
             </h2>
           </div>
+          )}
         </>
       )}
       <div className="container">
