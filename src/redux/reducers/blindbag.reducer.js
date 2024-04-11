@@ -2,6 +2,8 @@ const blindbagReducer = (state = {}, action) => {
   switch (action.type) {
     case "SET_BLINDBAG":
       return action.payload;
+    case "CLEAR_BLINDBAG":
+      return {};
     default:
       return state;
   }

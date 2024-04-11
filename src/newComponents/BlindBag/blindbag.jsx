@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { ThemeContext } from "../../components/App/ThemeContext";
@@ -9,19 +9,35 @@ function Blindbag() {
   const [currentCoverArt, setCurrentCoverArt] = useState("TheRecord.svg");
   const [coverArtClicked, setCoverArtClicked] = useState(false);
   const [filter, setFilter] = useState("");
-
   const { theme } = useContext(ThemeContext);
+  const initialRender = useRef(true);
 
-  useEffect(() => {
-    if (!coverArtClicked) {
-      getBlindBag();
-    }
-  }, [coverArtClicked]);
 
   function getBlindBag() {
     dispatch({ type: "FETCH_BLINDBAG", payload: filter });
-    console.log('filter',filter);
+    setCoverArtClicked(true);
   }
+
+  function handleCoverArtClick() {
+    if (!coverArtClicked) {
+      setCurrentCoverArt(randomRecord.coverart);
+      setCoverArtClicked(true);
+      getBlindBag();
+    } else {
+      getBlindBag();
+    }
+  }
+
+  function clearFilter() {
+    setFilter("");
+  }
+
+  useEffect(() => {
+    if (!coverArtClicked && !initialRender.current) {
+      getBlindBag();
+    }
+    initialRender.current = false;
+  }, [coverArtClicked]);
 
   useEffect(() => {
     if (coverArtClicked) {
@@ -29,14 +45,17 @@ function Blindbag() {
     }
   }, [randomRecord, coverArtClicked]);
 
-  function handleCoverArtClick() {
-    if (!coverArtClicked) {
-      setCurrentCoverArt(randomRecord.coverart);
-      setCoverArtClicked(true);
-    } else {
-      getBlindBag();
-    }
-  }
+  useEffect(() => {
+    return () => {
+      // Dispatch an action to clear the reducer
+      dispatch({ type: "CLEAR_BLINDBAG" });
+      // Clear the filter state
+      setFilter("");
+      console.log('Cleanup executed on unmount');
+    };
+  }, []);
+
+
 
   return (
     <div>
@@ -82,7 +101,10 @@ function Blindbag() {
           placeholder="Filter by title, artist, tags, or mood..."
         />
         <button className="btn btn-outline-primary" onClick={getBlindBag}>
-          Apply Filter
+          Filter
+        </button>
+        <button className="btn btn-outline-danger" onClick={clearFilter}>
+          Clear
         </button>
       </div>
       </div>
