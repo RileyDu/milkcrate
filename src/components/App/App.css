@@ -137,16 +137,7 @@ input {
   border-radius: 0% !important;
 }
 
-.blindbag-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-#shuffle-img {
-  height: 450px;
-  width: 450px;
-}
 
 #datePicker {
   text-align: center;
@@ -196,6 +187,17 @@ input {
 
   .spinsListItem {
     list-style: circle;
+  }
+
+  .blindbag-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #shuffle-img {
+    height: 450px;
+    width: 450px;
   }
 }
 
@@ -255,6 +257,16 @@ input {
   .spinsListItem {
     list-style: none;
     font-size: 1.2em;
+  }
+  .blindbag-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #shuffle-img {
+    height: 300px;
+    width: 300px;
   }
 }
 
