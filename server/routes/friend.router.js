@@ -118,13 +118,15 @@ ORDER BY
 router.get("/friends/collection/search", rejectUnauthenticated, (req, res) => {
   const searchTerm = `%${req.query.search}%`;
   const query = `
-  SELECT *
-  FROM "albums"
+  SELECT albums.*, moods.mood
+  FROM albums
+  JOIN moods ON albums.mood = moods.id
   WHERE
-  ("title" ILIKE $1
-  OR "artist" ILIKE $1
-  OR "tags" ILIKE $1)
-  AND "user_id" = $2
+    (albums.title ILIKE $1
+     OR albums.artist ILIKE $1
+     OR albums.tags ILIKE $1
+     OR moods.mood ILIKE $1)
+    AND albums.user_id = $2
     `;
   pool
     .query(query, [searchTerm, req.query.id])
