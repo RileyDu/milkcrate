@@ -34,7 +34,7 @@ function SpinSessions(props) {
           </div>
       {spins?.length > 0 && (
         <div className="spinPageContainer">
-          <Row xs={1} sm={2} md={3} className="g-6">
+          <Row xs={1} sm={2} md={3} className="g-0">
             {spins.map((spin, i) => {
               const formattedDate = spin.listened_at
                 ? dayjs(spin.listened_at).format("MM/DD/YYYY")
@@ -46,8 +46,8 @@ function SpinSessions(props) {
                     src={theme === 'light' ? "TheRecord.svg" : "WhiteRecord.svg"}
                     onClick={() => history.push(`/spins/details/${spin.id}`)}
                   />
-                  <p className="spinPageText">{formattedDate}</p>
-                  <p className="spinDetailsText">{spin.spin_details}</p>
+                  <div className="spinPageText">{formattedDate}</div>
+                  <div className="spinDetailsText">{spin.spin_details}</div>
                 </Col>
               );
             })}

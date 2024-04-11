@@ -237,8 +237,8 @@ input {
 
 .spinPageText {
   font-size: xx-large;
-  font-weight: bolder;
-  /* margin-top: 1em; */
+  font-weight: 600;
+  margin-top: .5em;
   text-align: center;
   text-decoration: underline;
 }
@@ -246,7 +246,9 @@ input {
 .spinDetailsText {
   font-size: 1.5em;
   text-align: center;
-  text-wrap: anywhere;
+  text-wrap:wrap;
+  margin-bottom: 1.5em;
+  font-weight: lighter;
 }
 
 /* Logo Container */
