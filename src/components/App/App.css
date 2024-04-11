@@ -141,6 +141,8 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1em;
+  margin-bottom: 5em;
 }
 
 #shuffle-img {
