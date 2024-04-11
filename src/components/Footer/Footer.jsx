@@ -15,7 +15,7 @@ function Footer() {
           <Link className="badge rounded-pill bg-primary me-2" to="/info" aria-label="Information Page">
             Info
           </Link>
-          <span>&copy; MILKCRATE. (v1.0.25)</span>
+          <span>&copy; MILKCRATE. (v1.2.6)</span>
           <Link className="badge rounded-pill bg-primary ms-2" to="/about" aria-label="About Page">
             About
           </Link>
