@@ -1,7 +1,13 @@
 import React from 'react';
 import { Container, Row, Col, Image, ListGroup, Badge } from 'react-bootstrap';
+import { useContext } from 'react';
+import { ThemeContext } from '../../components/App/ThemeContext';
+
 
 function AboutPage() {
+  const { theme } = useContext(ThemeContext);
+
+
   return (
     <Container>
       <Row className="justify-content-md-center">
@@ -12,7 +18,7 @@ function AboutPage() {
 
       <Row className="infoPageContainer mt-5">
         <Col xs={12} lg={6} className="infoLogoContainer d-flex justify-content-center align-items-start">
-          <Image src="TheRecord.svg" alt="Milkcrate Logo" className="infoLogo" />
+          <Image src={theme === 'light' ? "TheRecord.svg" : "WhiteRecord.svg"} alt="Milkcrate Logo" className="infoLogo" />
         </Col>
 
         <Col xs={12} lg={6} className="infoTextContainer">

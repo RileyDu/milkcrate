@@ -35,13 +35,6 @@ function SocialPage(props) {
 
   const { theme } = useContext(ThemeContext);
 
-  console.log("theme is social", theme);
-  // const [milkcrateLogo, setMilkcrateLogo] = useState(theme === 'light' ? "milkcrateLogo.svg" : "WhiteMilkcrate.svg");
-
-  // useEffect(() => {
-  //   setMilkcrateLogo(theme === 'light' ? "milkcrateLogo.svg" : "WhiteMilkcrate.svg");
-  // }, [theme]);
-
   return (
     <>
       <h2 className="header-tabs"> social </h2>
