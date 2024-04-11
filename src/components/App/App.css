@@ -152,52 +152,105 @@ input {
   text-align: center;
 }
 
-.recordDetailsContainer,
-.spinDetailsContainer {
-  display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-  gap: 5em;
-}
+@media (min-width: 769px) {
+  .recordDetailsContainer,
+  .spinDetailsContainer {
+    display: flex;
+    align-items: center;
+    gap: 5em;
+  }
 
-.coverArtContainer,
-.spinCarouselContainer {
-  margin-left: 20em;
-  margin-top: 4em;
-  flex: 50%;
-}
+  .coverArtContainer,
+  .spinCarouselContainer {
+    margin-left: 20em;
+    margin-top: 4em;
+    flex: 50%;
+  }
 
-.coverArt,
+  .coverArt,
 .spinCoverArt {
   width: 100%;
   max-width: 600px;
 }
 
-.textContent,
-.spinTextContainer {
-  flex: 50%;
-  margin-top: 1em;
-  font-size: xx-large;
-  font-weight: bolder;
-  margin-right: 4em;
+  .textContent,
+  .spinTextContainer {
+    flex: 50%;
+    margin-top: 1em;
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-right: 4em;
+  }
+  .buttonBar {
+    margin-left: 4em;
+    margin-right: 3em;
+  }
+  
+  .deleteRecordBtn {
+    margin-left: 1em;
+  }
+  
+  .editRecordBtn {
+    margin-right: 1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .recordDetailsContainer,
+  .spinDetailsContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
+
+  .coverArtContainer,
+  .spinCarouselContainer {
+    margin-left: 0;
+    margin-top: 2em;
+    flex: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .coverArt,
+  .spinCoverArt {
+    max-width: 90%; /* Adjust based on your design */
+    min-width: auto; /* Remove minimum width constraint */
+  }
+
+  .textContent,
+  .spinTextContainer {
+    flex: 100%;
+    margin-top: 1em;
+    font-size: large; /* Adjust font size for readability on small screens */
+    /* font-weight: bold; */
+    margin-right: 1em;
+    margin-left: 1em;
+    text-align: center; /* Center text for mobile view */
+  }
+
+  .textContent strong {
+    font-weight: bold;
+  }
+
+  .buttonBar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .deleteRecordBtn {
+    margin-left: 1em;
+  }
+  
+  .editRecordBtn {
+    margin-right: 1em;
+  }
 }
 
 .bg-primary {
   margin-right: 0.5em;
 }
 
-.buttonBar {
-  margin-left: 4em;
-  margin-right: 3em;
-}
-
-.deleteRecordBtn {
-  margin-left: 1em;
-}
-
-.editRecordBtn {
-  margin-right: 1em;
-}
 
 .spinsListItem {
   list-style: circle;
