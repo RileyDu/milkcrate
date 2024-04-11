@@ -236,7 +236,7 @@ function FriendCollection(props) {
           <div className="form mb-3">
             <input
               type="text"
-              placeholder="Search by Album, Artist, or Tags"
+              placeholder="Search by Album, Artist, Tags, or Mood..."
               value={searchQuery}
               onChange={handleInputChangeSearch}
               id="searchInput"
