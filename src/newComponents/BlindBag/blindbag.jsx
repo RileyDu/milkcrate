@@ -8,6 +8,8 @@ function Blindbag() {
   const randomRecord = useSelector((store) => store.blindbagReducer);
   const [currentCoverArt, setCurrentCoverArt] = useState("TheRecord.svg");
   const [coverArtClicked, setCoverArtClicked] = useState(false);
+  const [filter, setFilter] = useState("");
+
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -17,7 +19,8 @@ function Blindbag() {
   }, [coverArtClicked]);
 
   function getBlindBag() {
-    dispatch({ type: "FETCH_BLINDBAG" });
+    dispatch({ type: "FETCH_BLINDBAG", payload: filter });
+    console.log('filter',filter);
   }
 
   useEffect(() => {
@@ -71,7 +74,15 @@ function Blindbag() {
         </>
       )}
       <div className="d-grid gap-2 d-md-flex justify-content-center mt-5">
-        <button className="btn btn-outline-primary">Filter</button>
+        <input
+          className="form-control"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          placeholder="Filter by title, artist, or mood..."
+        />
+        <button className="btn btn-primary" onClick={getBlindBag}>
+          Apply Filter
+        </button>
       </div>
     </div>
   );
