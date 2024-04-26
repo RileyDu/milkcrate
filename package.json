@@ -6,6 +6,8 @@
     "node": "18.x"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.13.0",
+    "@cloudinary/url-gen": "^1.19.0",
     "@sweetalert2/theme-dark": "^5.0.16",
     "@sweetalert2/themes": "^5.0.16",
     "air-datepicker": "^3.4.0",

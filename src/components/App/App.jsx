@@ -16,6 +16,9 @@ import Nav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 import "./App.css";
 
+import {Cloudinary} from "@cloudinary/url-gen";
+
+
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import AboutPage from "../AboutPage/AboutPage";
@@ -35,7 +38,7 @@ import SingleSpin from "../../newComponents/SpinSessions/singleSpin";
 import AddRecordForm from "../../newComponents/userCollection/addRecordForm";
 import EditRecordForm from "../../newComponents/userCollection/editRecordForm";
 import RecordDetails from "../../newComponents/userCollection/recordDetails";
-import TestSite from "../../newComponents/SpinSessions/selectTester";
+import TestSite from "../../newComponents/zTestSite/TestSite";
 import HotOffThePress from "../../newComponents/Social/HotOffThePress";
 import RecentlySpun from "../../newComponents/Social/RecentlySpun";
 // import '@sweetalert2/themes/dark/dark.css';
@@ -54,6 +57,12 @@ function App() {
   useEffect(() => {
     dispatch({ type: "FETCH_USER" });
   }, [dispatch]);
+
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'demo'
+    }
+  });
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
