@@ -42,6 +42,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
@@ -52,6 +53,7 @@ footer {
   max-width: 90%;
   max-height: 90%;
   overflow: auto;
+  z-index: 1001;
 }
 
 .modal-close {
@@ -62,4 +64,5 @@ footer {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  z-index: 1002;
 }
