@@ -25,7 +25,7 @@ function Footer() {
           >
             Info
           </Link>
-          <span>&copy; MILKCRATE. (v1.3.0)</span>
+          <span>&copy; MILKCRATE. (v1.3.1)</span>
           <Link
             className="badge rounded-pill bg-primary ms-2"
             to="/about"
@@ -40,7 +40,7 @@ function Footer() {
             aria-label="Show modal"
             onClick={handleShowModal}
           >
-            🥛 THE MILKMAN 🥛
+            ✨🥛 THE MILKMAN 🥛✨
           </Link>
         </nav>
       </div>

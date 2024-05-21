@@ -45,7 +45,7 @@ footer {
 }
 
 .modal-content {
-  background: white;
+  background: rgb(167, 14, 14);
   padding: 20px;
   border-radius: 4px;
   position: relative;
@@ -56,8 +56,8 @@ footer {
 
 .modal-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 25px;
   background: none;
   border: none;
   font-size: 1.5rem;
