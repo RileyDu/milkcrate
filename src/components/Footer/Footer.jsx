@@ -25,7 +25,7 @@ function Footer() {
           >
             Info
           </Link>
-          <span>&copy; MILKCRATE. (v1.3.1)</span>
+          <span>&copy; MILKCRATE. (v1.3.2)</span>
           <Link
             className="badge rounded-pill bg-primary ms-2"
             to="/about"

@@ -15,12 +15,12 @@ function LandingPage() {
     history.push("/login");
   };
 
-  Swal.fire({
-    icon: "info",
-    title: "over 450 records have been added to MILKCRATE.!! THANK YOU!",
-    showConfirmButton: false,
-    timer: 2750,
-  });
+  // Swal.fire({
+  //   icon: "info",
+  //   title: "over 450 records have been added to MILKCRATE.!! THANK YOU!",
+  //   showConfirmButton: false,
+  //   timer: 2750,
+  // });
 
   return (
     <div className="container">
