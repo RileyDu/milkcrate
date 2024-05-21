@@ -9,6 +9,8 @@ function AboutPage() {
 
 
   return (
+    <>
+      <iframe src="https://milkcratechatbot-6419.chipp.ai" height="800px" width="100%" frameborder="0" title="MILKCRATE. Chat Bot"/>
     <Container>
       <Row className="justify-content-md-center">
         <Col xs={12}>
@@ -60,6 +62,7 @@ function AboutPage() {
         </Col>
       </Row>
     </Container>
+    </>
   );
 }
 
